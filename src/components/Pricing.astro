@@ -1,0 +1,97 @@
+---
+---
+
+<section class="py-[100px] relative" id="pricing">
+  <div class="max-w-[1280px] mx-auto px-6">
+    <div class="text-center mb-14">
+      <div class="inline-flex items-center gap-2 font-mono text-[11px] tracking-[3px] text-primary uppercase bg-[rgba(0,212,255,0.08)] border border-[rgba(0,212,255,0.4)] px-4 py-1.5 rounded-full mb-5">
+        <span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse-dot"></span>
+        Planes
+      </div>
+      <h2 class="font-display text-[clamp(32px,4vw,52px)] font-bold leading-[1.1] gradient-text mb-5">Crece con Nexus</h2>
+      <!-- Toggle -->
+      <div class="flex items-center gap-3 justify-center mt-5 text-[13px]">
+        <span>Mensual</span>
+        <label class="relative w-[42px] h-[22px] cursor-pointer">
+          <input type="checkbox" id="btog" class="opacity-0 w-0 h-0" />
+          <span id="toggle-slider" class="absolute inset-0 bg-bg-card border border-[rgba(0,212,255,0.15)] rounded-full transition-all cursor-pointer before:content-[''] before:absolute before:h-[14px] before:w-[14px] before:left-[3px] before:bottom-[3px] before:bg-primary before:rounded-full before:transition-all"></span>
+        </label>
+        <span>Anual <span class="bg-[rgba(0,255,179,0.15)] text-accent2 px-1.5 py-px rounded-full text-[10px] font-mono">20% OFF</span></span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 items-start">
+      <!-- Starter -->
+      <div class="bg-bg-card border border-[rgba(0,212,255,0.15)] rounded-2xl p-7 transition-all hover:border-[rgba(0,212,255,0.4)]">
+        <div class="font-display text-xs font-bold text-text-muted tracking-[2px] uppercase mb-2.5">Starter</div>
+        <div>
+          <span class="text-lg text-text-muted align-top mt-1.5 inline-block">$</span>
+          <span id="starter-price" class="font-display text-[44px] font-black" data-m="99" data-a="79">99</span>
+          <span class="text-[13px] text-text-muted">/mes</span>
+        </div>
+        <p class="text-xs text-text-muted my-2.5 leading-[1.5]">Para equipos pequeños que quieren empezar a automatizar</p>
+        <ul class="list-none flex flex-col gap-2 mb-6">
+          {['✓ Hasta 3 canales','✓ 5,000 conversaciones/mes','✓ Agente IA Básico','✓ 2 usuarios','✓ App Móvil incluida','✓ Soporte por email'].map(f => (
+            <li class="text-[13px] text-text-muted py-1.5 border-b border-[rgba(0,212,255,0.15)]">{f}</li>
+          ))}
+        </ul>
+        <a href="#demo" class="flex items-center justify-center gap-2.5 bg-transparent text-primary font-semibold text-[15px] px-8 py-[13px] rounded-full border border-[rgba(0,212,255,0.4)] cursor-pointer no-underline transition-all hover:bg-[rgba(0,212,255,0.08)] hover:-translate-y-0.5">Empezar Gratis</a>
+      </div>
+
+      <!-- Growth (featured) -->
+      <div class="relative bg-bg-card border border-primary rounded-2xl p-7 shadow-glow-primary scale-[1.03] transition-all hover:border-[rgba(0,212,255,0.6)]">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primary to-secondary text-black text-[11px] font-bold px-3.5 py-0.5 rounded-full whitespace-nowrap">⭐ Más Popular</div>
+        <div class="font-display text-xs font-bold text-primary tracking-[2px] uppercase mb-2.5">Growth</div>
+        <div>
+          <span class="text-lg text-text-muted align-top mt-1.5 inline-block">$</span>
+          <span id="growth-price" class="font-display text-[44px] font-black" data-m="299" data-a="239">299</span>
+          <span class="text-[13px] text-text-muted">/mes</span>
+        </div>
+        <p class="text-xs text-text-muted my-2.5 leading-[1.5]">Para empresas en crecimiento que quieren escalar rápido</p>
+        <ul class="list-none flex flex-col gap-2 mb-6">
+          {['✓ Canales ilimitados','✓ 50,000 conversaciones/mes','✓ Agente IA Avanzado + VoIP','✓ 15 usuarios','✓ Agentes de automatización','✓ Analítica avanzada','✓ Soporte prioritario 24/7'].map(f => (
+            <li class="text-[13px] text-text-muted py-1.5 border-b border-[rgba(0,212,255,0.15)]">{f}</li>
+          ))}
+        </ul>
+        <a href="#demo" class="btn-primary-glow flex items-center justify-center gap-2.5 bg-gradient-to-br from-primary to-secondary text-white font-bold text-[15px] px-8 py-[14px] rounded-full border-none cursor-pointer no-underline shadow-glow-primary">
+          <span class="relative z-10">Comenzar Ahora</span>
+        </a>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="bg-bg-card border border-[rgba(0,212,255,0.15)] rounded-2xl p-7 transition-all hover:border-[rgba(0,212,255,0.4)]">
+        <div class="font-display text-xs font-bold text-text-muted tracking-[2px] uppercase mb-2.5">Enterprise</div>
+        <span class="font-display text-[26px] text-text-base">Custom</span>
+        <p class="text-xs text-text-muted my-2.5 leading-[1.5]">Para grandes empresas con necesidades específicas</p>
+        <ul class="list-none flex flex-col gap-2 mb-6">
+          {['✓ Todo en Growth','✓ Conversaciones ilimitadas','✓ Usuarios ilimitados','✓ IA personalizada con tus datos','✓ Integraciones custom','✓ SLA garantizado 99.9%','✓ Gerente de cuenta dedicado'].map(f => (
+            <li class="text-[13px] text-text-muted py-1.5 border-b border-[rgba(0,212,255,0.15)]">{f}</li>
+          ))}
+        </ul>
+        <a href="#demo" class="flex items-center justify-center gap-2.5 bg-transparent text-primary font-semibold text-[15px] px-8 py-[13px] rounded-full border border-[rgba(0,212,255,0.4)] cursor-pointer no-underline transition-all hover:bg-[rgba(0,212,255,0.08)] hover:-translate-y-0.5">Hablar con Ventas</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const tog = document.getElementById('btog') as HTMLInputElement;
+  const slider = document.getElementById('toggle-slider');
+  const starterPrice = document.getElementById('starter-price') as HTMLElement;
+  const growthPrice = document.getElementById('growth-price') as HTMLElement;
+
+  tog?.addEventListener('change', () => {
+    const annual = tog.checked;
+    if (slider) {
+      slider.style.setProperty('--tw-translate-x', annual ? '20px' : '0');
+    }
+    if (starterPrice) starterPrice.textContent = annual ? starterPrice.dataset.a! : starterPrice.dataset.m!;
+    if (growthPrice) growthPrice.textContent = annual ? growthPrice.dataset.a! : growthPrice.dataset.m!;
+  });
+</script>
+
+<style>
+  #btog:checked ~ #toggle-slider::before {
+    transform: translateX(20px);
+  }
+</style>

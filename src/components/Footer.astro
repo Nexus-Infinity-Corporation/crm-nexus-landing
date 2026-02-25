@@ -1,0 +1,69 @@
+---
+---
+
+<footer class="bg-bg-card border-t border-[rgba(0,212,255,0.15)] pt-[54px] pb-[26px]">
+  <div class="max-w-[1280px] mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-[50px] mb-11">
+      <!-- Brand -->
+      <div>
+        <a href="#" class="flex items-center gap-3 no-underline mb-3.5">
+          <svg width="30" height="30" viewBox="0 0 36 36">
+            <polygon points="18,2 34,10 34,26 18,34 2,26 2,10" fill="none" stroke="url(#fg2)" stroke-width="2"/>
+            <circle cx="18" cy="18" r="4" fill="url(#fg2)"/>
+            <defs>
+              <linearGradient id="fg2" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00D4FF"/>
+                <stop offset="100%" stop-color="#7B2FFF"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <div>
+            <span class="block font-display text-[15px] font-black text-primary tracking-[3px] leading-none">NEXUS</span>
+            <span class="block font-mono text-[8px] text-text-muted tracking-[2px] mt-0.5">INFINITY CORPORATION</span>
+          </div>
+        </a>
+        <p class="text-[13px] text-text-muted leading-[1.7] mb-[18px] max-w-[260px]">La plataforma CRM+IA multicanal más avanzada para empresas que quieren crecer sin límites.</p>
+        <div class="flex gap-2.5">
+          {['📘','📸','🎵','💼'].map(icon => (
+            <a href="#" class="w-9 h-9 rounded-lg bg-bg-dark border border-[rgba(0,212,255,0.15)] flex items-center justify-center text-[15px] no-underline transition-all hover:border-[rgba(0,212,255,0.4)] hover:-translate-y-0.5">{icon}</a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Links Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-[26px]">
+        {[
+          { title: 'Plataforma', links: ['CRM Multicanal','App Móvil','Agente IA 24/7','Llamadas VoIP','Analítica'] },
+          { title: 'Canales', links: ['Facebook','Instagram','TikTok','WhatsApp API','Email & SMS'] },
+          { title: 'Empresa', links: ['Sobre Nosotros','Casos de Éxito','Blog','Carreras','Partners'] },
+          { title: 'Soporte', links: ['Documentación','API Reference','Status Sistema','Centro de Ayuda','Contacto'] },
+        ].map(col => (
+          <div>
+            <h5 class="font-display text-[10px] tracking-[2px] text-primary mb-3.5">{col.title}</h5>
+            {col.links.map(link => (
+              <a href="#" class="block text-xs text-text-muted no-underline mb-1.5 transition-colors hover:text-primary">{link}</a>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Bottom -->
+    <div class="flex flex-col md:flex-row items-center justify-between pt-5 border-t border-[rgba(0,212,255,0.15)] gap-3.5 flex-wrap">
+      <div class="flex gap-[18px]">
+        {['Privacidad','Términos','GDPR','Cookies'].map(l => (
+          <a href="#" class="text-[11px] text-text-dim no-underline transition-colors hover:text-primary">{l}</a>
+        ))}
+      </div>
+      <p class="text-[11px] text-text-dim">© 2025 Nexus Infinity Corporation. Todos los derechos reservados.</p>
+      <div class="flex items-center gap-2.5">
+        <span class="font-mono text-[9px] text-text-dim bg-bg-dark border border-[rgba(0,212,255,0.15)] px-1.5 py-0.5 rounded">🔒 SSL</span>
+        <span class="font-mono text-[9px] text-text-dim bg-bg-dark border border-[rgba(0,212,255,0.15)] px-1.5 py-0.5 rounded">✓ SOC2</span>
+        <span class="font-mono text-[9px] text-text-dim bg-bg-dark border border-[rgba(0,212,255,0.15)] px-1.5 py-0.5 rounded">🌐 ISO 27001</span>
+        <div class="flex items-center gap-1.5 font-mono text-[10px] text-accent2">
+          <span class="w-[7px] h-[7px] bg-accent2 rounded-full animate-pulse-dot"></span> 99.9% Uptime
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

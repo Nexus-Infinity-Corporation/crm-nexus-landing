@@ -1,0 +1,60 @@
+---
+---
+
+<section class="py-[100px] relative" id="platform">
+  <div class="max-w-[1280px] mx-auto px-6">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 font-mono text-[11px] tracking-[3px] text-primary uppercase bg-[rgba(0,212,255,0.08)] border border-[rgba(0,212,255,0.4)] px-4 py-1.5 rounded-full mb-5">
+        <span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse-dot"></span>
+        ¿Por qué Nexus Infinity?
+      </div>
+      <h2 class="font-display text-[clamp(32px,4vw,52px)] font-bold leading-[1.1] gradient-text mb-5">El caos multicanal tiene solución</h2>
+      <p class="text-lg text-text-muted leading-[1.7] max-w-[600px] mx-auto">La mayoría de empresas pierden clientes por tener herramientas desconectadas. Nosotros lo cambiamos todo.</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-6 items-center">
+      <!-- Bad -->
+      <div class="p-8 rounded-2xl border bg-[rgba(255,45,120,0.04)] border-[rgba(255,45,120,0.2)]">
+        <div class="flex items-center gap-3 mb-5">
+          <span class="w-[34px] h-[34px] rounded-full flex items-center justify-center text-base font-bold bg-[rgba(255,45,120,0.15)] text-accent">✗</span>
+          <h3 class="font-display text-base font-bold">Sin Nexus Infinity</h3>
+        </div>
+        <ul class="list-none flex flex-col gap-2.5">
+          {['🔴 Múltiples apps desconectadas entre sí','🔴 Clientes sin respuesta fuera de horario','🔴 Datos dispersos sin análisis centralizado','🔴 Equipo saturado con tareas repetitivas','🔴 Sin visibilidad del historial del cliente','🔴 Pérdida de leads por falta de seguimiento','🔴 Costo alto de operación manual'].map(item => (
+            <li class="text-[13px] text-text-muted py-[7px] border-b border-[rgba(0,212,255,0.15)]">{item}</li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Center Arrow -->
+      <div class="text-center flex flex-col items-center gap-2.5">
+        <div class="animate-float">
+          <svg width="56" height="56" viewBox="0 0 60 60">
+            <circle cx="30" cy="30" r="29" fill="none" stroke="url(#ag)" stroke-width="2"/>
+            <path d="M20 30h20M32 22l8 8-8 8" stroke="url(#ag)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <defs>
+              <linearGradient id="ag" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00D4FF"/>
+                <stop offset="100%" stop-color="#7B2FFF"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="font-display text-[10px] font-black gradient-text-primary-secondary tracking-[2px] text-center">NEXUS<br/>INFINITY</div>
+      </div>
+
+      <!-- Good -->
+      <div class="p-8 rounded-2xl border bg-[rgba(0,255,179,0.04)] border-[rgba(0,255,179,0.2)]">
+        <div class="flex items-center gap-3 mb-5">
+          <span class="w-[34px] h-[34px] rounded-full flex items-center justify-center text-base font-bold bg-[rgba(0,255,179,0.15)] text-accent2">✓</span>
+          <h3 class="font-display text-base font-bold">Con Nexus Infinity</h3>
+        </div>
+        <ul class="list-none flex flex-col gap-2.5">
+          {['🟢 Todo centralizado en una sola plataforma','🟢 Agente IA atiende 24/7 sin intervención','🟢 Dashboard unificado con analítica en tiempo real','🟢 Automatización del 80% del flujo de trabajo','🟢 Vista 360° completa de cada cliente','🟢 Seguimiento automático sin perderse un lead','🟢 ROI positivo desde el primer mes'].map(item => (
+            <li class="text-[13px] text-text-muted py-[7px] border-b border-[rgba(0,212,255,0.15)]">{item}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

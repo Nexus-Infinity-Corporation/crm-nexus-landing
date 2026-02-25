@@ -1,0 +1,71 @@
+---
+---
+
+<section class="py-[100px] relative bg-[rgba(7,15,30,0.6)]" id="ai-agent">
+  <div class="max-w-[1280px] mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-[70px] items-center">
+      <!-- Left Visual -->
+      <div>
+        <!-- AI Core rings -->
+        <div class="relative flex items-center justify-center w-[220px] h-[220px] mx-auto mb-9">
+          <div class="absolute w-full h-full rounded-full border border-[rgba(0,212,255,0.2)] animate-glow-rotate"></div>
+          <div class="absolute w-3/4 h-3/4 rounded-full border border-[rgba(123,47,255,0.3)] animate-glow-rotate-rev"></div>
+          <div class="absolute w-1/2 h-1/2 rounded-full border border-[rgba(0,212,255,0.4)] animate-glow-rotate-fast"></div>
+          <div class="relative z-10 text-center bg-bg-card2 border border-[rgba(0,212,255,0.4)] rounded-full w-[110px] h-[110px] flex flex-col items-center justify-center shadow-glow-primary">
+            <span class="text-[28px]">🤖</span>
+            <span class="font-display text-[9px] text-primary tracking-[2px] mt-0.5">Nexus IA</span>
+            <span class="font-mono text-[8px] text-accent2 mt-0.5">● Activo 24/7</span>
+          </div>
+        </div>
+
+        <!-- Stats bubbles -->
+        <div class="flex justify-center gap-3.5 flex-wrap mb-9">
+          {[{val:'1,247',label:'chats hoy'},{val:'2.1s',label:'resp. media'},{val:'84%',label:'resolución'},{val:'47',label:'idiomas'}].map(s => (
+            <div class="bg-bg-card border border-[rgba(0,212,255,0.15)] rounded-xl px-3.5 py-2.5 text-center min-w-[76px]">
+              <strong class="block font-display text-base text-primary">{s.val}</strong>
+              <span class="text-[10px] text-text-dim font-mono">{s.label}</span>
+            </div>
+          ))}
+        </div>
+
+        <!-- Flow -->
+        <div class="flex items-center gap-1.5 justify-center flex-wrap">
+          {[{em:'💬',label:'Mensaje'},{em:'🧠',label:'IA analiza'},{em:'⚡',label:'Responde'},{em:'✅',label:'Resuelto'}].map((step, i, arr) => (
+            <>
+              <div class="bg-bg-card border border-[rgba(0,212,255,0.15)] rounded-lg px-2.5 py-2.5 text-center min-w-[66px]">
+                <div class="text-lg">{step.em}</div>
+                <span class="text-[9px] text-text-muted block mt-0.5">{step.label}</span>
+              </div>
+              {i < arr.length - 1 && <span class="text-primary text-base">→</span>}
+            </>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right Content -->
+      <div>
+        <div class="inline-flex items-center gap-2 font-mono text-[11px] tracking-[3px] text-primary uppercase bg-[rgba(0,212,255,0.08)] border border-[rgba(0,212,255,0.4)] px-4 py-1.5 rounded-full mb-5">
+          <span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse-dot"></span>
+          Agente IA 24/7
+        </div>
+        <h2 class="font-display text-[clamp(32px,4vw,52px)] font-bold leading-[1.1] gradient-text mb-5">Tu mejor agente<br/>nunca duerme</h2>
+        <p class="text-lg text-text-muted leading-[1.7] max-w-[600px]">El Agente Nexus IA atiende clientes a las 3am, domingos y festivos. Entrenado con el conocimiento de tu empresa, responde como un experto real.</p>
+        <div class="flex flex-col gap-2.5 mt-[26px]">
+          {[
+            { title: 'NLP Avanzado', desc: 'Comprende intenciones, no solo palabras clave' },
+            { title: 'Aprendizaje Continuo', desc: 'Mejora con cada conversación' },
+            { title: 'Escalación Inteligente', desc: 'Transfiere a humano con contexto completo' },
+            { title: 'Sentiment Analysis', desc: 'Detecta emociones y ajusta el tono' },
+            { title: 'Multiidioma', desc: 'Responde en el idioma del cliente automáticamente' },
+            { title: 'Personalidad Configurable', desc: 'Define el tono y voz de tu marca' },
+          ].map(item => (
+            <div class="flex gap-2.5 items-start py-2.5 border-b border-[rgba(0,212,255,0.15)] text-[13px]">
+              <div class="w-5 h-5 rounded-full bg-[rgba(0,255,179,0.15)] text-accent2 flex items-center justify-center text-[11px] font-bold flex-shrink-0 mt-0.5">✓</div>
+              <div><strong>{item.title}</strong> — {item.desc}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

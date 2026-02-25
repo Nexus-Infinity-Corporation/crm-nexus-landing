@@ -1,0 +1,91 @@
+---
+---
+
+<section class="py-[100px] relative bg-[rgba(7,15,30,0.5)]" id="crm">
+  <div class="max-w-[1280px] mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-[60px] items-center">
+      <!-- Left -->
+      <div>
+        <div class="inline-flex items-center gap-2 font-mono text-[11px] tracking-[3px] text-primary uppercase bg-[rgba(0,212,255,0.08)] border border-[rgba(0,212,255,0.4)] px-4 py-1.5 rounded-full mb-5">
+          <span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse-dot"></span>
+          CRM Multicanal
+        </div>
+        <h2 class="font-display text-[clamp(32px,4vw,52px)] font-bold leading-[1.1] gradient-text mb-5">Todos tus canales,<br/>una sola bandeja</h2>
+        <p class="text-lg text-text-muted leading-[1.7] max-w-[600px]">Facebook, Instagram, TikTok, WhatsApp, App Móvil, Email y SMS unificados con vista 360° de cada cliente.</p>
+        <div class="flex flex-col gap-4 mt-8">
+          {[
+            { icon: '🎯', title: 'Pipeline Visual Kanban', desc: 'Arrastra leads a través de etapas de venta personalizadas' },
+            { icon: '👤', title: 'Vista 360° del Cliente', desc: 'Historial completo de interacciones en todos los canales' },
+            { icon: '🏷️', title: 'Etiquetado Automático IA', desc: 'Clasificación inteligente por intención, urgencia y segmento' },
+            { icon: '⚡', title: 'Asignación Inteligente', desc: 'IA asigna al agente correcto según skills y disponibilidad' },
+          ].map(feat => (
+            <div class="flex gap-3.5 p-4 bg-bg-card border border-[rgba(0,212,255,0.15)] rounded-lg transition-all hover:border-[rgba(0,212,255,0.4)] hover:translate-x-1">
+              <span class="text-[22px] flex-shrink-0">{feat.icon}</span>
+              <div>
+                <strong class="text-[13px] block mb-0.5">{feat.title}</strong>
+                <p class="text-xs text-text-muted">{feat.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right: CRM Dashboard mockup -->
+      <div class="bg-bg-card border border-[rgba(0,212,255,0.15)] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+        <!-- Window header -->
+        <div class="flex items-center gap-1.5 px-3.5 py-2.5 bg-bg-card2 border-b border-[rgba(0,212,255,0.15)]">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#FF5F57]"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-[#FEBC2E]"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-[#28C840]"></span>
+          <span class="ml-2.5 font-mono text-[11px] text-text-muted">Nexus CRM · Bandeja Unificada</span>
+          <span class="ml-auto font-mono text-[10px] text-accent2 animate-pulse-dot">● LIVE</span>
+        </div>
+        <!-- Body -->
+        <div class="flex h-[340px]">
+          <!-- Sidebar -->
+          <div class="w-[125px] p-2.5 border-r border-[rgba(0,212,255,0.15)] flex-shrink-0">
+            {[
+              { icon: '💬', label: 'Todos', count: 47, active: true },
+              { icon: '📘', label: 'Facebook', count: 12 },
+              { icon: '📸', label: 'Instagram', count: 19 },
+              { icon: '🎵', label: 'TikTok', count: 8 },
+              { icon: '📱', label: 'App Móvil', count: 5 },
+              { icon: '📧', label: 'Email', count: 3 },
+            ].map(item => (
+              <div class={`flex items-center gap-1.5 text-[11px] px-2 py-[7px] rounded-md cursor-pointer mb-0.5 transition-all ${item.active ? 'bg-[rgba(0,212,255,0.08)] text-primary' : 'text-text-muted hover:bg-[rgba(0,212,255,0.08)] hover:text-primary'}`}>
+                <span>{item.icon}</span> {item.label}
+                <span class="ml-auto bg-primary text-black text-[9px] font-bold px-[5px] py-px rounded-full">{item.count}</span>
+              </div>
+            ))}
+          </div>
+          <!-- Conversations -->
+          <div class="flex-1 overflow-y-auto">
+            {[
+              { initials: 'JM', gradient: 'from-[#1877F2] to-[#0a5ec0]', name: 'Juan Martínez', channel: 'FB', channelColor: 'text-[#1877F2] bg-[rgba(24,119,242,0.2)]', preview: 'Necesito info del plan empresarial...', time: '2m', badge: '3', active: true },
+              { initials: 'AM', gradient: 'from-[#E1306C] to-[#833AB4]', name: 'Ana M.', channel: 'IG', channelColor: 'text-[#E1306C] bg-[rgba(225,48,108,0.2)]', preview: '¿Tienen integración con Shopify?', time: '5m', tag: '🔥 Hot', tagClass: 'bg-[rgba(255,45,120,0.15)] text-accent' },
+              { initials: 'CR', gradient: 'from-[#010101] to-[#69C9D0]', name: 'Carlos R.', channel: 'TT', channelColor: 'text-[#69C9D0] bg-[rgba(105,201,208,0.2)]', preview: 'Vi tu video y quiero más info...', time: '12m' },
+              { initials: 'SL', gradient: 'from-primary to-secondary', name: 'Sofia L.', channel: 'APP', channelColor: 'text-primary bg-[rgba(0,212,255,0.2)]', preview: 'Llamada en espera · 00:42', time: 'Ahora', tag: '📞', tagClass: 'bg-[rgba(0,255,179,0.15)] text-accent2' },
+              { initials: 'MP', gradient: 'from-[#25D366] to-[#128C7E]', name: 'Miguel P.', channel: 'WA', channelColor: 'text-[#25D366] bg-[rgba(37,211,102,0.2)]', preview: 'Perfecto, procedo con el pago ✓', time: '1h', tag: '✓', tagClass: 'bg-[rgba(0,255,179,0.1)] text-accent2' },
+            ].map(conv => (
+              <div class={`flex items-center gap-2 px-3 py-2.5 border-b border-[rgba(0,212,255,0.15)] cursor-pointer transition-all hover:bg-[rgba(0,212,255,0.05)] ${conv.active ? 'bg-[rgba(0,212,255,0.05)]' : ''}`}>
+                <div class={`w-[34px] h-[34px] rounded-full flex items-center justify-center text-[11px] font-bold flex-shrink-0 bg-gradient-to-br ${conv.gradient}`}>{conv.initials}</div>
+                <div class="flex-1 min-w-0">
+                  <div class="text-xs font-semibold flex items-center gap-1.5">
+                    {conv.name}
+                    <span class={`font-mono text-[9px] font-bold px-1 py-px rounded-sm ${conv.channelColor}`}>{conv.channel}</span>
+                  </div>
+                  <div class="text-[10px] text-text-dim mt-0.5 truncate">{conv.preview}</div>
+                </div>
+                <div class="flex flex-col items-end gap-0.5 flex-shrink-0">
+                  <span class="text-[10px] text-text-dim">{conv.time}</span>
+                  {conv.badge && <span class="bg-primary text-black text-[9px] font-bold px-[5px] py-px rounded-full">{conv.badge}</span>}
+                  {conv.tag && <span class={`text-[9px] font-semibold px-[5px] py-0.5 rounded-sm ${conv.tagClass}`}>{conv.tag}</span>}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

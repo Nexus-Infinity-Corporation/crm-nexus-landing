@@ -1,0 +1,91 @@
+---
+---
+
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-[1000] py-4 bg-[rgba(3,8,16,0.85)] backdrop-blur-xl border-b border-[rgba(0,212,255,0.15)] transition-all duration-300">
+  <div class="max-w-[1280px] mx-auto px-6">
+    <div class="flex items-center gap-10">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-3 no-underline">
+        <div class="animate-float">
+          <svg width="36" height="36" viewBox="0 0 36 36">
+            <polygon points="18,2 34,10 34,26 18,34 2,26 2,10" fill="none" stroke="url(#lg1)" stroke-width="2"/>
+            <polygon points="18,8 28,13 28,23 18,28 8,23 8,13" fill="rgba(0,212,255,0.1)" stroke="url(#lg1)" stroke-width="1"/>
+            <circle cx="18" cy="18" r="4" fill="url(#lg1)"/>
+            <defs>
+              <linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00D4FF"/>
+                <stop offset="100%" stop-color="#7B2FFF"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div>
+          <span class="block font-display text-lg font-black text-primary tracking-[3px] leading-none">NEXUS</span>
+          <span class="block font-mono text-[8px] text-text-muted tracking-[2px] mt-0.5">INFINITY CORPORATION</span>
+        </div>
+      </a>
+
+      <!-- Nav Links -->
+      <ul class="hidden lg:flex list-none gap-2 ml-auto">
+        <li><a href="#platform" class="flex items-center gap-1 text-text-muted no-underline text-sm px-3.5 py-2 rounded-lg transition-all hover:text-primary hover:bg-[rgba(0,212,255,0.06)]">Plataforma</a></li>
+        <li class="relative has-dropdown">
+          <a href="#channels" class="flex items-center gap-1 text-text-muted no-underline text-sm px-3.5 py-2 rounded-lg transition-all hover:text-primary hover:bg-[rgba(0,212,255,0.06)]">Canales ▾</a>
+          <div class="dropdown-menu absolute top-[calc(100%+10px)] left-1/2 bg-bg-card2 border border-[rgba(0,212,255,0.15)] rounded-lg p-2 min-w-[200px] shadow-[0_20px_40px_rgba(0,0,0,0.5)]">
+            <a href="#channels" class="flex items-center gap-2.5 px-3.5 py-2.5 rounded-md text-sm text-text-muted hover:text-primary hover:bg-[rgba(0,212,255,0.06)] transition-all"><span>📘</span> Facebook & Instagram</a>
+            <a href="#channels" class="flex items-center gap-2.5 px-3.5 py-2.5 rounded-md text-sm text-text-muted hover:text-primary hover:bg-[rgba(0,212,255,0.06)] transition-all"><span>🎵</span> TikTok</a>
+            <a href="#mobile" class="flex items-center gap-2.5 px-3.5 py-2.5 rounded-md text-sm text-text-muted hover:text-primary hover:bg-[rgba(0,212,255,0.06)] transition-all"><span>📱</span> App Móvil</a>
+            <a href="#channels" class="flex items-center gap-2.5 px-3.5 py-2.5 rounded-md text-sm text-text-muted hover:text-primary hover:bg-[rgba(0,212,255,0.06)] transition-all"><span>💬</span> WhatsApp</a>
+          </div>
+        </li>
+        <li><a href="#mobile" class="flex items-center gap-1 text-text-muted no-underline text-sm px-3.5 py-2 rounded-lg transition-all hover:text-primary hover:bg-[rgba(0,212,255,0.06)]">App Móvil</a></li>
+        <li><a href="#ai-agent" class="flex items-center gap-1 text-text-muted no-underline text-sm px-3.5 py-2 rounded-lg transition-all hover:text-primary hover:bg-[rgba(0,212,255,0.06)]">IA 24/7</a></li>
+        <li><a href="#analytics" class="flex items-center gap-1 text-text-muted no-underline text-sm px-3.5 py-2 rounded-lg transition-all hover:text-primary hover:bg-[rgba(0,212,255,0.06)]">Analítica</a></li>
+        <li><a href="#pricing" class="flex items-center gap-1 text-text-muted no-underline text-sm px-3.5 py-2 rounded-lg transition-all hover:text-primary hover:bg-[rgba(0,212,255,0.06)]">Precios</a></li>
+      </ul>
+
+      <!-- CTA Buttons -->
+      <div class="flex items-center gap-2.5">
+        <a href="#demo" class="hidden sm:inline-flex items-center gap-2.5 bg-transparent text-primary font-semibold text-[13px] px-5 py-2.5 rounded-full border border-[rgba(0,212,255,0.4)] cursor-pointer no-underline transition-all hover:bg-[rgba(0,212,255,0.08)] hover:translate-y-[-2px] hover:shadow-glow-primary">Ver Demo</a>
+        <a href="#demo" class="btn-primary-glow inline-flex items-center gap-2.5 bg-gradient-to-br from-primary to-secondary text-white font-bold text-[13px] px-5 py-2.5 rounded-full border-none cursor-pointer no-underline shadow-glow-primary">
+          <span class="relative z-10">Empezar Gratis</span>
+        </a>
+        <!-- Mobile toggle -->
+        <button id="nav-toggle" class="lg:hidden flex flex-col gap-[5px] bg-transparent border-none cursor-pointer p-1">
+          <span class="block w-6 h-0.5 bg-primary"></span>
+          <span class="block w-6 h-0.5 bg-primary"></span>
+          <span class="block w-6 h-0.5 bg-primary"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div id="mobile-menu" class="hidden fixed top-[73px] left-0 right-0 z-[999] bg-[rgba(3,8,16,0.98)] border-b border-[rgba(0,212,255,0.15)] backdrop-blur-xl p-6 flex flex-col gap-2">
+  <a href="#platform" class="text-text-muted py-3 border-b border-[rgba(0,212,255,0.1)] hover:text-primary transition-colors">Plataforma</a>
+  <a href="#channels" class="text-text-muted py-3 border-b border-[rgba(0,212,255,0.1)] hover:text-primary transition-colors">Canales</a>
+  <a href="#mobile" class="text-text-muted py-3 border-b border-[rgba(0,212,255,0.1)] hover:text-primary transition-colors">App Móvil</a>
+  <a href="#ai-agent" class="text-text-muted py-3 border-b border-[rgba(0,212,255,0.1)] hover:text-primary transition-colors">IA 24/7</a>
+  <a href="#analytics" class="text-text-muted py-3 border-b border-[rgba(0,212,255,0.1)] hover:text-primary transition-colors">Analítica</a>
+  <a href="#pricing" class="text-text-muted py-3 hover:text-primary transition-colors">Precios</a>
+</div>
+
+<script>
+  // Navbar scroll
+  window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    if (navbar) {
+      if (window.scrollY > 50) {
+        navbar.classList.add('bg-[rgba(3,8,16,0.97)]', 'shadow-[0_4px_30px_rgba(0,0,0,0.5)]');
+      } else {
+        navbar.classList.remove('bg-[rgba(3,8,16,0.97)]', 'shadow-[0_4px_30px_rgba(0,0,0,0.5)]');
+      }
+    }
+  });
+
+  // Mobile toggle
+  document.getElementById('nav-toggle')?.addEventListener('click', () => {
+    const menu = document.getElementById('mobile-menu');
+    menu?.classList.toggle('hidden');
+  });
+</script>

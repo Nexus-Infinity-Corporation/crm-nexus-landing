@@ -1,17 +1,73 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import ProblemSolution from '../components/ProblemSolution.astro';
+import CRM from '../components/CRM.astro';
+import MobileApp from '../components/MobileApp.astro';
+import AIAgent from '../components/AIAgent.astro';
+import VoIP from '../components/VoIP.astro';
+import Agents from '../components/Agents.astro';
+import Channels from '../components/Channels.astro';
+import Analytics from '../components/Analytics.astro';
+import Pricing from '../components/Pricing.astro';
+import CaseStudies from '../components/CaseStudies.astro';
+import Demo from '../components/Demo.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout>
+  <!-- Fixed Background Effects -->
+  <div class="bg-grid-pattern fixed top-0 left-0 w-full h-full pointer-events-none z-0"></div>
+  <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+    <div class="absolute w-[500px] h-[500px] bg-secondary rounded-full blur-[80px] opacity-[0.12] -top-[100px] -right-[100px] animate-float-slow"></div>
+    <div class="absolute w-[400px] h-[400px] bg-primary rounded-full blur-[80px] opacity-[0.12] bottom-[20%] -left-[100px] animate-float-2"></div>
+    <div class="absolute w-[300px] h-[300px] bg-accent rounded-full blur-[80px] opacity-[0.12] top-1/2 right-[20%] animate-float-3"></div>
+  </div>
+
+  <!-- Content (z-10 relative to backgrounds) -->
+  <div class="relative z-10">
+    <Navbar />
+    <main>
+      <Hero />
+      <ProblemSolution />
+      <CRM />
+      <MobileApp />
+      <AIAgent />
+      <VoIP />
+      <Agents />
+      <Channels />
+      <Analytics />
+      <Pricing />
+      <CaseStudies />
+      <Demo />
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>
+
+<script>
+  // Intersection Observer for scroll animations
+  const observerElements = document.querySelectorAll('.observe-anim');
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+  observerElements.forEach((el) => observer.observe(el));
+
+  // Live counter simulation for CRM sidebar badges
+  setInterval(() => {
+    document.querySelectorAll<HTMLElement>('.b-cnt').forEach((el) => {
+      if (Math.random() > 0.75) {
+        const current = parseInt(el.textContent || '0');
+        el.textContent = String(Math.max(1, current + (Math.random() > 0.5 ? 1 : -1)));
+      }
+    });
+  }, 2500);
+</script>

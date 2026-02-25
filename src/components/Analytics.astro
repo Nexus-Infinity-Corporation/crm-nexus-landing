@@ -1,0 +1,77 @@
+---
+const bars = [
+  { label: '📘 Facebook', width: '72%', color: '#1877F2', val: '1,247' },
+  { label: '📸 Instagram', width: '58%', color: 'linear-gradient(90deg,#833AB4,#E1306C)', val: '987' },
+  { label: '🎵 TikTok', width: '36%', color: '#69C9D0', val: '612' },
+  { label: '📱 App Móvil', width: '46%', color: '#00D4FF', val: '783' },
+  { label: '💬 WhatsApp', width: '85%', color: '#25D366', val: '1,456' },
+];
+---
+
+<section class="py-[100px] relative bg-[rgba(7,15,30,0.5)]" id="analytics">
+  <div class="max-w-[1280px] mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-[60px] items-center">
+      <!-- Left -->
+      <div>
+        <div class="inline-flex items-center gap-2 font-mono text-[11px] tracking-[3px] text-primary uppercase bg-[rgba(0,212,255,0.08)] border border-[rgba(0,212,255,0.4)] px-4 py-1.5 rounded-full mb-5">
+          <span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse-dot"></span>
+          Analítica & Datos
+        </div>
+        <h2 class="font-display text-[clamp(32px,4vw,52px)] font-bold leading-[1.1] gradient-text mb-5">Decide con datos,<br/>no con intuición</h2>
+        <p class="text-lg text-text-muted leading-[1.7] max-w-[600px]">Dashboard en tiempo real con todos los KPIs que importan. Reportes automáticos directamente en tu inbox cada día.</p>
+        <div class="grid grid-cols-2 gap-3.5 mt-8">
+          {[
+            { em: '⚡', val: '2.1 min', label: 'Tiempo resp. promedio' },
+            { em: '🤖', val: '84%', label: 'Resolución automática IA' },
+            { em: '💰', val: '340%', label: 'Aumento conversiones' },
+            { em: '⭐', val: '4.9/5', label: 'CSAT promedio' },
+          ].map(kpi => (
+            <div class="flex gap-2.5 p-3.5 bg-bg-card border border-[rgba(0,212,255,0.15)] rounded-lg">
+              <span class="text-xl">{kpi.em}</span>
+              <div>
+                <strong class="block font-display text-lg text-primary">{kpi.val}</strong>
+                <p class="text-[11px] text-text-muted mt-0.5">{kpi.label}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right: Chart mockup -->
+      <div class="bg-bg-card border border-[rgba(0,212,255,0.15)] rounded-2xl overflow-hidden">
+        <div class="flex items-center gap-1.5 px-3.5 py-2.5 bg-bg-card2 border-b border-[rgba(0,212,255,0.15)]">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#FF5F57]"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-[#FEBC2E]"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-[#28C840]"></span>
+          <span class="ml-2 font-mono text-[10px] text-text-muted">Analytics · Tiempo Real</span>
+        </div>
+        <div class="p-[18px]">
+          <div class="font-mono text-[10px] text-text-muted mb-3.5 tracking-[1px]">Conversaciones por canal — Hoy</div>
+          <div class="flex flex-col gap-2.5">
+            {bars.map(bar => (
+              <div class="flex items-center gap-2.5">
+                <span class="text-[11px] w-[95px] flex-shrink-0 text-text-muted">{bar.label}</span>
+                <div class="flex-1 h-[7px] bg-bg-dark rounded-sm overflow-hidden">
+                  <div class="h-full rounded-sm" style={`width:${bar.width};background:${bar.color}`}></div>
+                </div>
+                <span class="font-mono text-[10px] text-text-muted w-[38px] text-right">{bar.val}</span>
+              </div>
+            ))}
+          </div>
+          <div class="flex gap-[18px] mt-[18px] pt-3.5 border-t border-[rgba(0,212,255,0.15)]">
+            {[
+              { val: '5,085', label: 'Total hoy', color: 'text-accent2' },
+              { val: '4,271', label: 'Resueltas por IA', color: 'text-primary' },
+              { val: '814', label: 'Escaladas', color: 'text-secondary' },
+            ].map(s => (
+              <div class="flex-1 text-center">
+                <div class={`font-display text-xl font-bold ${s.color}`}>{s.val}</div>
+                <div class="font-mono text-[10px] text-text-dim mt-0.5">{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

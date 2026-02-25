@@ -1,0 +1,70 @@
+---
+const cases = [
+  {
+    company: 'RetailMax',
+    quote: '"Redujimos el tiempo de respuesta de 4 horas a 2 minutos. El agente IA resuelve el 85% de consultas solo."',
+    metrics: [{ val: '-95%', label: 'Tiempo respuesta' }, { val: '+280%', label: 'Ventas online' }],
+    initials: 'MR',
+    avatarBg: 'from-[#3a5a7a] to-[#6b8faf]',
+    name: 'María Rodríguez',
+    role: 'CEO, RetailMax',
+    featured: false,
+  },
+  {
+    company: 'BancoPlus',
+    quote: '"Incrementamos conversiones 340% en 90 días. El ROI fue positivo desde el primer mes. Recomiendo 100%."',
+    metrics: [{ val: '+340%', label: 'Conversiones' }, { val: '12x', label: 'ROI primer mes' }],
+    initials: 'CP',
+    avatarBg: 'from-primary to-secondary',
+    name: 'Carlos Pérez',
+    role: 'Director Digital, BancoPlus',
+    featured: true,
+    companyColor: 'text-primary',
+  },
+  {
+    company: 'EduGlobal',
+    quote: '"Las llamadas VoIP desde la app cambiaron todo. Nuestros asesores atienden desde cualquier lugar con toda la info."',
+    metrics: [{ val: '+190%', label: 'Inscripciones' }, { val: '4.9★', label: 'Satisfacción' }],
+    initials: 'AL',
+    avatarBg: 'from-accent to-secondary',
+    name: 'Ana López',
+    role: 'COO, EduGlobal',
+    featured: false,
+  },
+];
+---
+
+<section class="py-[100px] relative bg-[rgba(7,15,30,0.5)]" id="cases">
+  <div class="max-w-[1280px] mx-auto px-6">
+    <div class="text-center mb-14">
+      <div class="inline-flex items-center gap-2 font-mono text-[11px] tracking-[3px] text-primary uppercase bg-[rgba(0,212,255,0.08)] border border-[rgba(0,212,255,0.4)] px-4 py-1.5 rounded-full mb-5">
+        <span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse-dot"></span>
+        Casos de Éxito
+      </div>
+      <h2 class="font-display text-[clamp(32px,4vw,52px)] font-bold leading-[1.1] gradient-text mb-5">Resultados reales,<br/>empresas reales</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {cases.map(c => (
+        <div class={`observe-anim bg-bg-card border rounded-2xl p-[26px] transition-all hover:-translate-y-1 ${c.featured ? 'border-primary shadow-glow-primary' : 'border-[rgba(0,212,255,0.15)] hover:border-[rgba(0,212,255,0.4)]'}`}>
+          <div class={`font-display text-base font-black mb-3.5 ${c.companyColor || 'text-text-muted'}`}>{c.company}</div>
+          <p class="text-[13px] text-text-muted leading-[1.7] italic mb-[18px]">{c.quote}</p>
+          <div class="flex gap-[18px] mb-[18px] pb-[18px] border-b border-[rgba(0,212,255,0.15)]">
+            {c.metrics.map(m => (
+              <div>
+                <strong class="block font-display text-xl text-primary">{m.val}</strong>
+                <span class="text-[11px] text-text-dim">{m.label}</span>
+              </div>
+            ))}
+          </div>
+          <div class="flex items-center gap-2.5">
+            <div class={`w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-bold flex-shrink-0 bg-gradient-to-br ${c.avatarBg}`}>{c.initials}</div>
+            <div>
+              <strong class="block text-xs">{c.name}</strong>
+              <small class="text-[11px] text-text-dim">{c.role}</small>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

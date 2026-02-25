@@ -1,0 +1,106 @@
+---
+---
+
+<section class="py-[100px] relative" id="mobile">
+  <div class="max-w-[1280px] mx-auto px-6">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 font-mono text-[11px] tracking-[3px] text-primary uppercase bg-[rgba(0,212,255,0.08)] border border-[rgba(0,212,255,0.4)] px-4 py-1.5 rounded-full mb-5">
+        <span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse-dot"></span>
+        ⭐ Feature Principal
+      </div>
+      <h2 class="font-display text-[clamp(32px,4vw,52px)] font-bold leading-[1.1] gradient-text mb-5">La App Móvil más poderosa<br/>para tu equipo</h2>
+      <p class="text-lg text-text-muted leading-[1.7] max-w-[600px] mx-auto">Todo tu CRM, conversaciones, reportes y agente IA en la palma de tu mano. iOS y Android.</p>
+      <!-- Store buttons -->
+      <div class="flex gap-3.5 justify-center mt-6">
+        <a href="#" class="flex items-center gap-2.5 bg-bg-card2 border border-[rgba(0,212,255,0.4)] px-[18px] py-[11px] rounded-xl no-underline text-text-base transition-all hover:bg-[rgba(0,212,255,0.08)] hover:shadow-glow-primary">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <div><span class="block text-[10px] text-text-muted">Disponible en</span><span class="block font-display text-[13px] font-bold">App Store</span></div>
+        </a>
+        <a href="#" class="flex items-center gap-2.5 bg-bg-card2 border border-[rgba(0,212,255,0.4)] px-[18px] py-[11px] rounded-xl no-underline text-text-base transition-all hover:bg-[rgba(0,212,255,0.08)] hover:shadow-glow-primary">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M3.18 23.76c.28.15.59.19.91.1L14.03 12 4.09.14c-.32-.1-.63-.05-.91.1C2.61.56 2.35 1.16 2.35 2v19.76c0 .84.26 1.44.83 1.98v.02zm14.69-10.33l-2.78-2.78 2.78-2.78 3.14 1.81c.9.51.9 1.43 0 1.94l-3.14 1.81z"/></svg>
+          <div><span class="block text-[10px] text-text-muted">Disponible en</span><span class="block font-display text-[13px] font-bold">Google Play</span></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <!-- Feature 1 -->
+      <div class="observe-anim bg-bg-card border border-[rgba(0,212,255,0.15)] rounded-2xl p-[26px] transition-all hover:border-[rgba(0,212,255,0.4)] hover:-translate-y-1 hover:shadow-glow-primary">
+        <div class="flex items-center gap-2.5 mb-3">
+          <span class="font-display text-[11px] font-bold gradient-text-primary-secondary">01</span>
+          <h3 class="text-[15px] font-bold">Dashboard en Tiempo Real</h3>
+        </div>
+        <p class="text-[13px] text-text-muted leading-[1.6]">KPIs actualizados al segundo. Ve tus ventas, conversaciones activas y resolución IA desde cualquier lugar.</p>
+        <div class="flex gap-2 mt-3.5">
+          {[{label:'Ventas hoy',val:'$12,450',color:'text-accent2'},{label:'Chats activos',val:'234',color:'text-primary'},{label:'IA resolvió',val:'87%',color:'text-secondary'}].map(s => (
+            <div class="flex-1 bg-bg-card2 border border-[rgba(0,212,255,0.15)] rounded-lg p-2 text-center">
+              <div class="text-[10px] text-text-dim font-mono">{s.label}</div>
+              <div class={`font-display text-[13px] font-bold mt-0.5 ${s.color}`}>{s.val}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="observe-anim bg-bg-card border border-[rgba(0,212,255,0.15)] rounded-2xl p-[26px] transition-all hover:border-[rgba(0,212,255,0.4)] hover:-translate-y-1 hover:shadow-glow-primary">
+        <div class="flex items-center gap-2.5 mb-3">
+          <span class="font-display text-[11px] font-bold gradient-text-primary-secondary">02</span>
+          <h3 class="text-[15px] font-bold">Push Notifications Inteligentes</h3>
+        </div>
+        <p class="text-[13px] text-text-muted leading-[1.6]">IA filtra el ruido y notifica solo lo importante: leads calientes, escalaciones y oportunidades críticas.</p>
+        <div class="flex flex-col gap-1.5 mt-3.5">
+          <div class="flex items-center gap-2 px-2.5 py-2 bg-[rgba(255,45,120,0.07)] border border-[rgba(255,45,120,0.2)] rounded-lg text-[11px]">
+            <span>🔥</span><div><strong class="block">Lead HOT detectado</strong><small class="text-text-dim text-[10px]">Juan M. listo para comprar — 1 min</small></div>
+          </div>
+          <div class="flex items-center gap-2 px-2.5 py-2 bg-[rgba(255,184,0,0.07)] border border-[rgba(255,184,0,0.2)] rounded-lg text-[11px]">
+            <span>⚡</span><div><strong class="block">Escalación requerida</strong><small class="text-text-dim text-[10px]">Cliente 3 min sin respuesta</small></div>
+          </div>
+          <div class="flex items-center gap-2 px-2.5 py-2 bg-[rgba(0,212,255,0.05)] border border-[rgba(0,212,255,0.15)] rounded-lg text-[11px]">
+            <span>📊</span><div><strong class="block">Reporte diario listo</strong><small class="text-text-dim text-[10px]">Tus métricas disponibles</small></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="observe-anim bg-bg-card border border-[rgba(0,212,255,0.15)] rounded-2xl p-[26px] transition-all hover:border-[rgba(0,212,255,0.4)] hover:-translate-y-1 hover:shadow-glow-primary">
+        <div class="flex items-center gap-2.5 mb-3">
+          <span class="font-display text-[11px] font-bold gradient-text-primary-secondary">03</span>
+          <h3 class="text-[15px] font-bold">Modo Offline + Sincronización</h3>
+        </div>
+        <p class="text-[13px] text-text-muted leading-[1.6]">Trabaja sin conexión. La app guarda localmente y sincroniza automáticamente al recuperar señal.</p>
+        <div class="mt-[18px]">
+          <div class="h-1 bg-bg-dark rounded-sm overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-primary to-secondary rounded-sm animate-sync"></div>
+          </div>
+          <div class="flex items-center gap-1.5 text-[11px] text-text-muted mt-2">
+            <span class="w-[7px] h-[7px] bg-accent2 rounded-full animate-pulse-dot"></span>
+            <span>Sincronizando 47 registros...</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="observe-anim bg-bg-card border border-[rgba(0,212,255,0.15)] rounded-2xl p-[26px] transition-all hover:border-[rgba(0,212,255,0.4)] hover:-translate-y-1 hover:shadow-glow-primary">
+        <div class="flex items-center gap-2.5 mb-3">
+          <span class="font-display text-[11px] font-bold gradient-text-primary-secondary">04</span>
+          <h3 class="text-[15px] font-bold">Gestión de Equipo Móvil</h3>
+        </div>
+        <p class="text-[13px] text-text-muted leading-[1.6]">Asigna conversaciones, supervisa agentes y controla el rendimiento desde tu móvil en tiempo real.</p>
+        <div class="flex flex-col gap-1.5 mt-3.5">
+          {[
+            { initials: 'MR', gradient: 'from-primary to-secondary', name: 'María R.', info: '12 chats activos', dot: 'bg-accent2 shadow-[0_0_8px_var(--accent2)]' },
+            { initials: 'CP', gradient: 'from-accent to-secondary', name: 'Carlos P.', info: '8 chats activos', dot: 'bg-accent2 shadow-[0_0_8px_var(--accent2)]' },
+            { initials: 'LG', gradient: 'from-[#FFB800] to-[#FF6B00]', name: 'Luis G.', info: 'En descanso', dot: 'bg-[#FFB800]' },
+          ].map(ag => (
+            <div class="flex items-center gap-2 py-1.5 border-b border-[rgba(0,212,255,0.15)]">
+              <div class={`w-[30px] h-[30px] rounded-full flex items-center justify-center text-[10px] font-bold flex-shrink-0 bg-gradient-to-br ${ag.gradient}`}>{ag.initials}</div>
+              <div><strong class="block text-xs">{ag.name}</strong><small class="text-[10px] text-text-dim">{ag.info}</small></div>
+              <span class={`w-[9px] h-[9px] rounded-full ml-auto ${ag.dot}`}></span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

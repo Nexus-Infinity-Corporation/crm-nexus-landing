@@ -1,0 +1,95 @@
+---
+const agents = [
+  {
+    icon: '💰',
+    bg: 'from-[rgba(0,212,255,0.2)] to-[rgba(0,212,255,0.05)]',
+    title: 'Agente de Ventas IA',
+    tag: '24/7 Activo',
+    features: [
+      '→ Califica leads con scoring automático (1-100)',
+      '→ Envía propuestas personalizadas con IA generativa',
+      '→ Hace seguimiento cada 24-48h sin intervención',
+      '→ Detecta oportunidades de upsell y cross-sell',
+    ],
+    metric: '340%',
+    metricLabel: 'aumento en conversiones',
+  },
+  {
+    icon: '🛟',
+    bg: 'from-[rgba(123,47,255,0.2)] to-[rgba(123,47,255,0.05)]',
+    title: 'Agente de Soporte IA',
+    tag: '80% Auto-resolución',
+    features: [
+      '→ Resuelve el 80% de tickets sin intervención humana',
+      '→ Consulta base de conocimiento en tiempo real',
+      '→ Genera y categoriza tickets automáticamente',
+      '→ Escala con contexto completo cuando es necesario',
+    ],
+    metric: '2 min',
+    metricLabel: 'tiempo respuesta promedio',
+  },
+  {
+    icon: '📣',
+    bg: 'from-[rgba(255,45,120,0.2)] to-[rgba(255,45,120,0.05)]',
+    title: 'Agente de Marketing IA',
+    tag: 'Hiperpersonalización',
+    features: [
+      '→ Segmenta audiencias por comportamiento real',
+      '→ Sugiere el mejor horario de envío por usuario',
+      '→ Personaliza mensajes según historial de compras',
+      '→ Genera contenido para cada canal automáticamente',
+    ],
+    metric: '5x',
+    metricLabel: 'mejor tasa de apertura',
+  },
+  {
+    icon: '📊',
+    bg: 'from-[rgba(0,255,179,0.2)] to-[rgba(0,255,179,0.05)]',
+    title: 'Agente de Datos IA',
+    tag: 'Insights Proactivos',
+    features: [
+      '→ Genera reportes ejecutivos automáticos cada día',
+      '→ Detecta anomalías y tendencias en tiempo real',
+      '→ Envía alertas proactivas al equipo directivo',
+      '→ Predice tendencias con modelos de Machine Learning',
+    ],
+    metric: '98%',
+    metricLabel: 'precisión en predicciones',
+  },
+];
+---
+
+<section class="py-[100px] relative bg-[rgba(7,15,30,0.5)]" id="agents">
+  <div class="max-w-[1280px] mx-auto px-6">
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 font-mono text-[11px] tracking-[3px] text-primary uppercase bg-[rgba(0,212,255,0.08)] border border-[rgba(0,212,255,0.4)] px-4 py-1.5 rounded-full mb-5">
+        <span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse-dot"></span>
+        🤖 Agentes de Automatización
+      </div>
+      <h2 class="font-display text-[clamp(32px,4vw,52px)] font-bold leading-[1.1] gradient-text mb-5">Tu equipo de robots<br/>que nunca descansa</h2>
+      <p class="text-lg text-text-muted leading-[1.7] max-w-[600px] mx-auto">Agentes especializados que automatizan el 80% del trabajo repetitivo para que tu equipo humano se enfoque en lo que importa.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {agents.map(agent => (
+        <div class="observe-anim bg-bg-card border border-[rgba(0,212,255,0.15)] rounded-2xl p-7 transition-all hover:border-[rgba(0,212,255,0.4)] hover:-translate-y-1">
+          <div class="flex gap-3.5 items-center mb-[18px]">
+            <div class={`w-12 h-12 rounded-xl flex items-center justify-center text-xl flex-shrink-0 bg-gradient-to-br ${agent.bg}`}>{agent.icon}</div>
+            <div>
+              <h3 class="text-base font-bold mb-1">{agent.title}</h3>
+              <span class="font-mono text-[9px] bg-[rgba(0,212,255,0.1)] text-primary px-[7px] py-px rounded-full border border-[rgba(0,212,255,0.15)]">{agent.tag}</span>
+            </div>
+          </div>
+          <div class="flex flex-col gap-1.5 mb-[18px]">
+            {agent.features.map(f => (
+              <div class="text-xs text-text-muted py-1 border-b border-[rgba(0,212,255,0.15)]">{f}</div>
+            ))}
+          </div>
+          <div class="flex items-baseline gap-1.5">
+            <span class="font-display text-[26px] font-bold text-primary">{agent.metric}</span>
+            <span class="text-xs text-text-muted">{agent.metricLabel}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
