@@ -18,19 +18,27 @@ import Footer from '../components/Footer.astro';
 
     <main class="min-h-screen flex flex-col items-center justify-center pt-[100px] pb-24 px-6">
 
+      <!-- Language toggle -->
+      <div class="flex items-center gap-2 mb-8">
+        <button id="btn-en" class="lang-btn font-mono text-[11px] tracking-[2px] uppercase px-4 py-1.5 rounded-full border transition-all bg-[rgba(0,212,255,0.12)] border-primary text-primary">EN</button>
+        <button id="btn-es" class="lang-btn font-mono text-[11px] tracking-[2px] uppercase px-4 py-1.5 rounded-full border transition-all bg-transparent border-[rgba(0,212,255,0.2)] text-text-muted">ES</button>
+      </div>
+
       <!-- Hero label -->
       <div class="inline-flex items-center gap-2.5 bg-[rgba(123,47,255,0.1)] border border-[rgba(123,47,255,0.3)] px-[18px] py-2 rounded-full mb-7 font-mono text-xs text-[#B088FF]">
         <span class="w-2 h-2 bg-accent2 rounded-full animate-pulse-dot"></span>
-        <span>Selecciona tu Plataforma Nexus Infinity</span>
+        <span class="t-en">Select your Nexus Infinity Platform</span>
+        <span class="t-es hidden">Selecciona tu Plataforma Nexus Infinity</span>
       </div>
 
       <!-- Heading -->
       <h1 class="font-display text-[clamp(28px,4vw,56px)] font-black leading-[1.1] text-white text-center mb-4 tracking-[-1px]">
-        ¿Qué solución<br/>
-        <span class="gradient-text-brand">necesitas hoy?</span>
+        <span class="t-en">Which solution<br/><span class="gradient-text-brand">do you need today?</span></span>
+        <span class="t-es hidden">¿Qué solución<br/><span class="gradient-text-brand">necesitas hoy?</span></span>
       </h1>
       <p class="text-[15px] sm:text-[17px] text-text-muted leading-[1.75] text-center max-w-[540px] mb-14">
-        Elige la plataforma que mejor se adapta a tu negocio. Ambas potenciadas con <strong class="text-primary">Inteligencia Artificial</strong> y listas para escalar.
+        <span class="t-en">Choose the platform that best fits your business. Both powered by <strong class="text-primary">Artificial Intelligence</strong> and ready to scale.</span>
+        <span class="t-es hidden">Elige la plataforma que mejor se adapta a tu negocio. Ambas potenciadas con <strong class="text-primary">Inteligencia Artificial</strong> y listas para escalar.</span>
       </p>
 
       <!-- Selector Cards -->
@@ -48,7 +56,8 @@ import Footer from '../components/Footer.astro';
 
           <!-- Selected badge -->
           <div class="card-badge absolute -top-3 left-6 bg-gradient-to-r from-primary to-secondary text-black text-[11px] font-bold px-3.5 py-0.5 rounded-full opacity-0 transition-opacity duration-300">
-            ✓ Seleccionado
+            <span class="t-en">✓ Selected</span>
+            <span class="t-es hidden">✓ Seleccionado</span>
           </div>
 
           <!-- Icon -->
@@ -63,24 +72,34 @@ import Footer from '../components/Footer.astro';
           </div>
 
           <h2 class="font-display text-[22px] sm:text-[26px] font-bold text-white mb-3 leading-tight">
-            CRM Multicanal<br/>
-            <span class="text-primary">con IA</span>
+            <span class="t-en">Multichannel CRM<br/><span class="text-primary">with AI</span></span>
+            <span class="t-es hidden">CRM Multicanal<br/><span class="text-primary">con IA</span></span>
           </h2>
 
           <p class="text-[14px] text-text-muted leading-[1.75] mb-6">
-            Gestiona todos tus canales de comunicación — Facebook, Instagram, TikTok, WhatsApp y más — desde un panel unificado. Agentes de IA que atienden, califican y convierten <strong class="text-text-base">24/7</strong> sin intervención humana.
+            <span class="t-en">Manage all your communication channels — Facebook, Instagram, TikTok, WhatsApp and more — from a unified dashboard. AI Agents that attend, qualify and convert <strong class="text-text-base">24/7</strong> without human intervention.</span>
+            <span class="t-es hidden">Gestiona todos tus canales de comunicación — Facebook, Instagram, TikTok, WhatsApp y más — desde un panel unificado. Agentes de IA que atienden, califican y convierten <strong class="text-text-base">24/7</strong> sin intervención humana.</span>
           </p>
 
           <!-- Feature pills -->
           <ul class="flex flex-wrap gap-2 mb-7">
-            {['Omnicanal', 'Agentes IA', 'VoIP', 'App Móvil', 'Automatización'].map(f => (
-              <li class="text-[11px] font-mono text-primary bg-[rgba(0,212,255,0.07)] border border-[rgba(0,212,255,0.2)] px-2.5 py-1 rounded-full">{f}</li>
+            {[
+              { en: 'Omnichannel', es: 'Omnicanal' },
+              { en: 'AI Agents',   es: 'Agentes IA' },
+              { en: 'VoIP',        es: 'VoIP' },
+              { en: 'Mobile App',  es: 'App Móvil' },
+              { en: 'Automation',  es: 'Automatización' },
+            ].map(f => (
+              <li class="text-[11px] font-mono text-primary bg-[rgba(0,212,255,0.07)] border border-[rgba(0,212,255,0.2)] px-2.5 py-1 rounded-full">
+                <span class="t-en">{f.en}</span><span class="t-es hidden">{f.es}</span>
+              </li>
             ))}
           </ul>
 
           <!-- CTA -->
           <div class="card-cta flex items-center gap-2 text-[13px] font-semibold text-primary transition-all duration-300">
-            <span>Explorar CRM</span>
+            <span class="t-en">Explore CRM</span>
+            <span class="t-es hidden">Explorar CRM</span>
             <span class="translate-x-0 group-hover:translate-x-1 transition-transform duration-300">→</span>
           </div>
         </button>
@@ -97,7 +116,8 @@ import Footer from '../components/Footer.astro';
 
           <!-- Selected badge -->
           <div class="card-badge absolute -top-3 left-6 bg-gradient-to-r from-secondary to-accent text-white text-[11px] font-bold px-3.5 py-0.5 rounded-full opacity-0 transition-opacity duration-300">
-            ✓ Seleccionado
+            <span class="t-en">✓ Selected</span>
+            <span class="t-es hidden">✓ Seleccionado</span>
           </div>
 
           <!-- Icon -->
@@ -112,24 +132,34 @@ import Footer from '../components/Footer.astro';
           </div>
 
           <h2 class="font-display text-[22px] sm:text-[26px] font-bold text-white mb-3 leading-tight">
-            ERP Empresarial<br/>
-            <span class="text-[#B088FF]">Inteligente</span>
+            <span class="t-en">Enterprise ERP<br/><span class="text-[#B088FF]">Intelligent</span></span>
+            <span class="t-es hidden">ERP Empresarial<br/><span class="text-[#B088FF]">Inteligente</span></span>
           </h2>
 
           <p class="text-[14px] text-text-muted leading-[1.75] mb-6">
-            Automatiza y centraliza la gestión de tu empresa: inventarios, finanzas, RRHH, compras y producción en un solo sistema. Decisiones basadas en datos en <strong class="text-text-base">tiempo real</strong> con IA integrada.
+            <span class="t-en">Automate and centralize your entire business: inventory, finance, HR, procurement and production in one system. Real-time data-driven decisions with <strong class="text-text-base">integrated AI</strong>.</span>
+            <span class="t-es hidden">Automatiza y centraliza la gestión de tu empresa: inventarios, finanzas, RRHH, compras y producción en un solo sistema. Decisiones basadas en datos en <strong class="text-text-base">tiempo real</strong> con IA integrada.</span>
           </p>
 
           <!-- Feature pills -->
           <ul class="flex flex-wrap gap-2 mb-7">
-            {['Inventario', 'Finanzas', 'RRHH', 'Compras', 'Producción'].map(f => (
-              <li class="text-[11px] font-mono text-[#B088FF] bg-[rgba(123,47,255,0.07)] border border-[rgba(123,47,255,0.2)] px-2.5 py-1 rounded-full">{f}</li>
+            {[
+              { en: 'Inventory',   es: 'Inventario' },
+              { en: 'Finance',     es: 'Finanzas' },
+              { en: 'HR',          es: 'RRHH' },
+              { en: 'Procurement', es: 'Compras' },
+              { en: 'Production',  es: 'Producción' },
+            ].map(f => (
+              <li class="text-[11px] font-mono text-[#B088FF] bg-[rgba(123,47,255,0.07)] border border-[rgba(123,47,255,0.2)] px-2.5 py-1 rounded-full">
+                <span class="t-en">{f.en}</span><span class="t-es hidden">{f.es}</span>
+              </li>
             ))}
           </ul>
 
           <!-- CTA -->
           <div class="card-cta flex items-center gap-2 text-[13px] font-semibold text-[#B088FF] transition-all duration-300">
-            <span>Explorar ERP</span>
+            <span class="t-en">Explore ERP</span>
+            <span class="t-es hidden">Explorar ERP</span>
             <span class="translate-x-0 group-hover:translate-x-1 transition-transform duration-300">→</span>
           </div>
         </button>
@@ -137,27 +167,38 @@ import Footer from '../components/Footer.astro';
       </div>
 
       <!-- Proceed button (hidden until selection) -->
-      <div id="proceed-wrapper" class="mt-10 opacity-0 translate-y-4 transition-all duration-500 pointer-events-none">
+      <div id="proceed-wrapper" class="mt-10 transition-all duration-500" style="opacity:0;transform:translateY(16px);pointer-events:none;">
         <a
           id="proceed-btn"
           href="#"
           class="btn-primary-glow inline-flex items-center gap-3 bg-gradient-to-br from-primary to-secondary text-white font-bold text-[15px] px-10 py-[15px] rounded-full border-none cursor-pointer no-underline shadow-glow-primary"
         >
-          <span id="proceed-label">Continuar →</span>
+          <span id="proceed-label-en" class="t-en">Continue →</span>
+          <span id="proceed-label-es" class="t-es hidden">Continuar →</span>
         </a>
-        <p class="text-center text-xs text-text-dim mt-3 font-mono">Puedes cambiar tu selección en cualquier momento</p>
+        <p class="text-center text-xs text-text-dim mt-3 font-mono">
+          <span class="t-en">You can change your selection at any time</span>
+          <span class="t-es hidden">Puedes cambiar tu selección en cualquier momento</span>
+        </p>
       </div>
 
       <!-- Divider + compare note -->
       <div class="flex items-center gap-4 mt-16 w-full max-w-[860px]">
         <div class="flex-1 h-px bg-[rgba(0,212,255,0.1)]"></div>
-        <span class="text-xs text-text-dim font-mono whitespace-nowrap">¿No sabes cuál elegir?</span>
+        <span class="text-xs text-text-dim font-mono whitespace-nowrap">
+          <span class="t-en">Not sure which to choose?</span>
+          <span class="t-es hidden">¿No sabes cuál elegir?</span>
+        </span>
         <div class="flex-1 h-px bg-[rgba(0,212,255,0.1)]"></div>
       </div>
 
       <p class="text-[13px] text-text-muted text-center mt-4 max-w-[480px]">
-        Habla con un especialista y te ayudamos a encontrar la solución ideal para tu industria.
-        <a href="/#demo" class="text-primary underline underline-offset-2 ml-1 hover:text-accent2 transition-colors">Solicitar asesoría gratis →</a>
+        <span class="t-en">Talk to a specialist and we'll help you find the ideal solution for your industry.</span>
+        <span class="t-es hidden">Habla con un especialista y te ayudamos a encontrar la solución ideal para tu industria.</span>
+        <a href="/#demo" class="text-primary underline underline-offset-2 ml-1 hover:text-accent2 transition-colors">
+          <span class="t-en">Get free advice →</span>
+          <span class="t-es hidden">Solicitar asesoría gratis →</span>
+        </a>
       </p>
 
     </main>
@@ -167,20 +208,62 @@ import Footer from '../components/Footer.astro';
 </BaseLayout>
 
 <script>
+  // ── Shared state (declared first to avoid TDZ in setLang) ─
+  let currentLang: 'en' | 'es' = 'en';
+  let selectedTarget: string | null = null;
+
+  // ── Language toggle ───────────────────────────────────────
+  const btnEn = document.getElementById('btn-en')!;
+  const btnEs = document.getElementById('btn-es')!;
+
+  function setLang(lang: 'en' | 'es') {
+    const show = lang === 'en' ? '.t-en' : '.t-es';
+    const hide = lang === 'en' ? '.t-es' : '.t-en';
+    document.querySelectorAll<HTMLElement>(show).forEach(el => el.classList.remove('hidden'));
+    document.querySelectorAll<HTMLElement>(hide).forEach(el => el.classList.add('hidden'));
+    const active = 'bg-[rgba(0,212,255,0.12)] border-primary text-primary';
+    const idle   = 'bg-transparent border-[rgba(0,212,255,0.2)] text-text-muted';
+    const base   = 'lang-btn font-mono text-[11px] tracking-[2px] uppercase px-4 py-1.5 rounded-full border transition-all';
+    if (lang === 'en') {
+      btnEn.className = `${base} ${active}`;
+      btnEs.className = `${base} ${idle}`;
+    } else {
+      btnEs.className = `${base} ${active}`;
+      btnEn.className = `${base} ${idle}`;
+    }
+    localStorage.setItem('nxLang', lang);
+    currentLang = lang;
+    if (selectedTarget) updateProceedLabel(selectedTarget);
+  }
+
+  btnEn.addEventListener('click', () => setLang('en'));
+  btnEs.addEventListener('click', () => setLang('es'));
+
+  const saved = localStorage.getItem('nxLang') as 'en' | 'es' | null;
+  setLang(saved === 'es' ? 'es' : 'en');
+
+  // ── Product card selection ────────────────────────────────
   const cards = document.querySelectorAll<HTMLButtonElement>('.product-card');
   const proceedWrapper = document.getElementById('proceed-wrapper')!;
   const proceedBtn = document.getElementById('proceed-btn') as HTMLAnchorElement;
-  const proceedLabel = document.getElementById('proceed-label')!;
+  const proceedLabelEn = document.getElementById('proceed-label-en')!;
+  const proceedLabelEs = document.getElementById('proceed-label-es')!;
 
-  let selectedCard: HTMLButtonElement | null = null;
-
-  const productNames: Record<string, string> = {
-    '/crm': 'CRM Multicanal',
-    '/erp': 'ERP Empresarial',
+  const productNames: Record<string, { en: string; es: string }> = {
+    '/crm': { en: 'Multichannel CRM', es: 'CRM Multicanal' },
+    '/erp': { en: 'Enterprise ERP',   es: 'ERP Empresarial' },
   };
+
+  function updateProceedLabel(target: string) {
+    const names = productNames[target];
+    proceedLabelEn.textContent = `Go to ${names.en} →`;
+    proceedLabelEs.textContent = `Ir a ${names.es} →`;
+  }
 
   cards.forEach((card) => {
     card.addEventListener('click', () => {
+      const target = card.dataset.target!;
+
       // Deselect all
       cards.forEach((c) => {
         c.setAttribute('aria-pressed', 'false');
@@ -189,21 +272,27 @@ import Footer from '../components/Footer.astro';
         c.classList.remove('scale-[1.02]');
       });
 
-      // Select clicked
+      // Select clicked card
       card.setAttribute('aria-pressed', 'true');
       card.querySelector<HTMLElement>('.card-ring')!.style.opacity = '1';
       card.querySelector<HTMLElement>('.card-badge')!.style.opacity = '1';
       card.classList.add('scale-[1.02]');
-      selectedCard = card;
 
-      // Update proceed button
-      const target = card.dataset.target!;
-      proceedBtn.href = target;
-      proceedLabel.textContent = `Ir a ${productNames[target]} →`;
+      // Update proceed button href + labels
+      selectedTarget = target;
+      proceedBtn.setAttribute('href', target);
+      updateProceedLabel(target);
 
-      // Show proceed button
-      proceedWrapper.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
-      proceedWrapper.classList.add('opacity-100', 'translate-y-0');
+      // Show proceed wrapper
+      proceedWrapper.style.opacity = '1';
+      proceedWrapper.style.transform = 'translateY(0)';
+      proceedWrapper.style.pointerEvents = 'auto';
     });
+  });
+
+  // Proceed button — always navigate via window.location to avoid href="#" fallback
+  proceedBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (selectedTarget) window.location.href = selectedTarget;
   });
 </script>
