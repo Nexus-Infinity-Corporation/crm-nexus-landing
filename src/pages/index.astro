@@ -1,22 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
-import Hero from '../components/Hero.astro';
-import ProblemSolution from '../components/ProblemSolution.astro';
-import CRM from '../components/CRM.astro';
-import MobileApp from '../components/MobileApp.astro';
-import AIAgent from '../components/AIAgent.astro';
-import VoIP from '../components/VoIP.astro';
-import Agents from '../components/Agents.astro';
-import Channels from '../components/Channels.astro';
-import Analytics from '../components/Analytics.astro';
-import Pricing from '../components/Pricing.astro';
-import CaseStudies from '../components/CaseStudies.astro';
-import Demo from '../components/Demo.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<BaseLayout>
+<BaseLayout title="Nexus Infinity — Elige tu Plataforma">
   <!-- Fixed Background Effects -->
   <div class="bg-grid-pattern fixed top-0 left-0 w-full h-full pointer-events-none z-0"></div>
   <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
@@ -25,49 +13,304 @@ import Footer from '../components/Footer.astro';
     <div class="absolute w-[300px] h-[300px] bg-accent rounded-full blur-[80px] opacity-[0.12] top-1/2 right-[20%] animate-float-3"></div>
   </div>
 
-  <!-- Content (z-10 relative to backgrounds) -->
   <div class="relative z-10">
-    <Navbar />
-    <main>
-      <Hero />
-      <ProblemSolution />
-      <CRM />
-      <MobileApp />
-      <AIAgent />
-      <VoIP />
-      <Agents />
-      <Channels />
-      <Analytics />
-      <Pricing />
-      <CaseStudies />
-      <Demo />
+    <!-- <Navbar /> -->
+      <div class="flex items-center pt-5 pl-5 md:pt-10 md:pl-10 gap-3 no-underline">
+        <div class="animate-float">
+          <svg width="36" height="36" viewBox="0 0 36 36">
+            <polygon points="18,2 34,10 34,26 18,34 2,26 2,10" fill="none" stroke="url(#lg1)" stroke-width="2"/>
+            <polygon points="18,8 28,13 28,23 18,28 8,23 8,13" fill="rgba(0,212,255,0.1)" stroke="url(#lg1)" stroke-width="1"/>
+            <circle cx="18" cy="18" r="4" fill="url(#lg1)"/>
+            <defs>
+              <linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00D4FF"/>
+                <stop offset="100%" stop-color="#7B2FFF"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div>
+          <span class="block font-display text-lg font-black text-primary tracking-[3px] leading-none">NEXUS</span>
+          <span class="block font-mono text-[8px] text-text-muted tracking-[2px] mt-0.5">INFINITY CORPORATION</span>
+        </div>
+      </div>
+    <main class="min-h-screen flex flex-col items-center justify-center pb-24 px-6">
+
+      <!-- Language toggle -->
+      <div class="flex items-center gap-2 mb-8">
+        <button id="btn-en" class="lang-btn font-mono text-[11px] tracking-[2px] uppercase px-4 py-1.5 rounded-full border transition-all bg-[rgba(0,212,255,0.12)] border-primary text-primary">EN</button>
+        <button id="btn-es" class="lang-btn font-mono text-[11px] tracking-[2px] uppercase px-4 py-1.5 rounded-full border transition-all bg-transparent border-[rgba(0,212,255,0.2)] text-text-muted">ES</button>
+      </div>
+
+      <!-- Hero label -->
+      <div class="inline-flex items-center gap-2.5 bg-[rgba(123,47,255,0.1)] border border-[rgba(123,47,255,0.3)] px-[18px] py-2 rounded-full mb-7 font-mono text-xs text-[#B088FF]">
+        <span class="w-2 h-2 bg-accent2 rounded-full animate-pulse-dot"></span>
+        <span class="t-en">Select your Nexus Infinity Platform</span>
+        <span class="t-es hidden">Selecciona tu Plataforma Nexus Infinity</span>
+      </div>
+
+      <!-- Heading -->
+      <h1 class="font-display text-[clamp(28px,4vw,56px)] font-black leading-[1.1] text-white text-center mb-4 tracking-[-1px]">
+        <span class="t-en">Which solution<br/><span class="gradient-text-brand">do you need today?</span></span>
+        <span class="t-es hidden">¿Qué solución<br/><span class="gradient-text-brand">necesitas hoy?</span></span>
+      </h1>
+      <p class="text-[15px] sm:text-[17px] text-text-muted leading-[1.75] text-center max-w-[540px] mb-14">
+        <span class="t-en">Choose the platform that best fits your business. Both powered by <strong class="text-primary">Artificial Intelligence</strong> and ready to scale.</span>
+        <span class="t-es hidden">Elige la plataforma que mejor se adapta a tu negocio. Ambas potenciadas con <strong class="text-primary">Inteligencia Artificial</strong> y listas para escalar.</span>
+      </p>
+
+      <!-- Selector Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-[860px]" id="product-selector">
+
+        <!-- CRM Card -->
+        <button
+          id="card-crm"
+          data-target="/crm"
+          class="product-card group relative text-left bg-bg-card border border-[rgba(0,212,255,0.15)] rounded-2xl p-8 cursor-pointer transition-all duration-300 hover:border-primary hover:shadow-[0_0_40px_rgba(0,212,255,0.18)] focus:outline-none"
+          aria-pressed="false"
+        >
+          <!-- Active ring overlay -->
+          <div class="card-ring absolute inset-0 rounded-2xl border-2 border-primary opacity-0 transition-opacity duration-300 pointer-events-none shadow-[0_0_30px_rgba(0,212,255,0.35)]"></div>
+
+          <!-- Selected badge -->
+          <div class="card-badge absolute -top-3 left-6 bg-gradient-to-r from-primary to-secondary text-black text-[11px] font-bold px-3.5 py-0.5 rounded-full opacity-0 transition-opacity duration-300">
+            <span class="t-en">✓ Selected</span>
+            <span class="t-es hidden">✓ Seleccionado</span>
+          </div>
+
+          <!-- Icon -->
+          <div class="w-14 h-14 rounded-2xl bg-[rgba(0,212,255,0.1)] border border-[rgba(0,212,255,0.25)] flex items-center justify-center text-2xl mb-5 transition-all duration-300 group-hover:bg-[rgba(0,212,255,0.18)] card-icon">
+            💬
+          </div>
+
+          <!-- Label -->
+          <div class="inline-flex items-center gap-1.5 font-mono text-[10px] tracking-[3px] text-primary uppercase bg-[rgba(0,212,255,0.08)] border border-[rgba(0,212,255,0.3)] px-3 py-1 rounded-full mb-3">
+            <span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse-dot"></span>
+            CRM
+          </div>
+
+          <h2 class="font-display text-[22px] sm:text-[26px] font-bold text-white mb-3 leading-tight">
+            <span class="t-en">Multichannel CRM<br/><span class="text-primary">with AI</span></span>
+            <span class="t-es hidden">CRM Multicanal<br/><span class="text-primary">con IA</span></span>
+          </h2>
+
+          <p class="text-[14px] text-text-muted leading-[1.75] mb-6">
+            <span class="t-en">Manage all your communication channels — Facebook, Instagram, TikTok, WhatsApp and more — from a unified dashboard. AI Agents that attend, qualify and convert <strong class="text-text-base">24/7</strong> without human intervention.</span>
+            <span class="t-es hidden">Gestiona todos tus canales de comunicación — Facebook, Instagram, TikTok, WhatsApp y más — desde un panel unificado. Agentes de IA que atienden, califican y convierten <strong class="text-text-base">24/7</strong> sin intervención humana.</span>
+          </p>
+
+          <!-- Feature pills -->
+          <ul class="flex flex-wrap gap-2 mb-7">
+            {[
+              { en: 'Omnichannel', es: 'Omnicanal' },
+              { en: 'AI Agents',   es: 'Agentes IA' },
+              { en: 'VoIP',        es: 'VoIP' },
+              { en: 'Mobile App',  es: 'App Móvil' },
+              { en: 'Automation',  es: 'Automatización' },
+            ].map(f => (
+              <li class="text-[11px] font-mono text-primary bg-[rgba(0,212,255,0.07)] border border-[rgba(0,212,255,0.2)] px-2.5 py-1 rounded-full">
+                <span class="t-en">{f.en}</span><span class="t-es hidden">{f.es}</span>
+              </li>
+            ))}
+          </ul>
+
+          <!-- CTA -->
+          <div class="card-cta flex items-center gap-2 text-[13px] font-semibold text-primary transition-all duration-300">
+            <span class="t-en">Explore CRM</span>
+            <span class="t-es hidden">Explorar CRM</span>
+            <span class="translate-x-0 group-hover:translate-x-1 transition-transform duration-300">→</span>
+          </div>
+        </button>
+
+        <!-- ERP Card -->
+        <button
+          id="card-erp"
+          data-target="/erp"
+          class="product-card group relative text-left bg-bg-card border border-[rgba(0,212,255,0.15)] rounded-2xl p-8 cursor-pointer transition-all duration-300 hover:border-secondary hover:shadow-[0_0_40px_rgba(123,47,255,0.18)] focus:outline-none"
+          aria-pressed="false"
+        >
+          <!-- Active ring overlay -->
+          <div class="card-ring absolute inset-0 rounded-2xl border-2 border-secondary opacity-0 transition-opacity duration-300 pointer-events-none shadow-[0_0_30px_rgba(123,47,255,0.35)]"></div>
+
+          <!-- Selected badge -->
+          <div class="card-badge absolute -top-3 left-6 bg-gradient-to-r from-secondary to-accent text-white text-[11px] font-bold px-3.5 py-0.5 rounded-full opacity-0 transition-opacity duration-300">
+            <span class="t-en">✓ Selected</span>
+            <span class="t-es hidden">✓ Seleccionado</span>
+          </div>
+
+          <!-- Icon -->
+          <div class="w-14 h-14 rounded-2xl bg-[rgba(123,47,255,0.1)] border border-[rgba(123,47,255,0.25)] flex items-center justify-center text-2xl mb-5 transition-all duration-300 group-hover:bg-[rgba(123,47,255,0.18)] card-icon">
+            ⚙️
+          </div>
+
+          <!-- Label -->
+          <div class="inline-flex items-center gap-1.5 font-mono text-[10px] tracking-[3px] text-[#B088FF] uppercase bg-[rgba(123,47,255,0.08)] border border-[rgba(123,47,255,0.3)] px-3 py-1 rounded-full mb-3">
+            <span class="w-1.5 h-1.5 bg-[#B088FF] rounded-full animate-pulse-dot"></span>
+            ERP
+          </div>
+
+          <h2 class="font-display text-[22px] sm:text-[26px] font-bold text-white mb-3 leading-tight">
+            <span class="t-en">Enterprise ERP<br/><span class="text-[#B088FF]">Intelligent</span></span>
+            <span class="t-es hidden">ERP Empresarial<br/><span class="text-[#B088FF]">Inteligente</span></span>
+          </h2>
+
+          <p class="text-[14px] text-text-muted leading-[1.75] mb-6">
+            <span class="t-en">Automate and centralize your entire business: inventory, finance, HR, procurement and production in one system. Real-time data-driven decisions with <strong class="text-text-base">integrated AI</strong>.</span>
+            <span class="t-es hidden">Automatiza y centraliza la gestión de tu empresa: inventarios, finanzas, RRHH, compras y producción en un solo sistema. Decisiones basadas en datos en <strong class="text-text-base">tiempo real</strong> con IA integrada.</span>
+          </p>
+
+          <!-- Feature pills -->
+          <ul class="flex flex-wrap gap-2 mb-7">
+            {[
+              { en: 'Inventory',   es: 'Inventario' },
+              { en: 'Finance',     es: 'Finanzas' },
+              { en: 'HR',          es: 'RRHH' },
+              { en: 'Procurement', es: 'Compras' },
+              { en: 'Production',  es: 'Producción' },
+            ].map(f => (
+              <li class="text-[11px] font-mono text-[#B088FF] bg-[rgba(123,47,255,0.07)] border border-[rgba(123,47,255,0.2)] px-2.5 py-1 rounded-full">
+                <span class="t-en">{f.en}</span><span class="t-es hidden">{f.es}</span>
+              </li>
+            ))}
+          </ul>
+
+          <!-- CTA -->
+          <div class="card-cta flex items-center gap-2 text-[13px] font-semibold text-[#B088FF] transition-all duration-300">
+            <span class="t-en">Explore ERP</span>
+            <span class="t-es hidden">Explorar ERP</span>
+            <span class="translate-x-0 group-hover:translate-x-1 transition-transform duration-300">→</span>
+          </div>
+        </button>
+
+      </div>
+
+      <!-- Proceed button (hidden until selection) -->
+      <div id="proceed-wrapper" class="mt-10 transition-all duration-500" style="opacity:0;transform:translateY(16px);pointer-events:none;">
+        <a
+          id="proceed-btn"
+          href="#"
+          class="btn-primary-glow inline-flex items-center gap-3 bg-gradient-to-br from-primary to-secondary text-white font-bold text-[15px] px-10 py-[15px] rounded-full border-none cursor-pointer no-underline shadow-glow-primary"
+        >
+          <span id="proceed-label-en" class="t-en">Continue →</span>
+          <span id="proceed-label-es" class="t-es hidden">Continuar →</span>
+        </a>
+        <p class="text-center text-xs text-text-dim mt-3 font-mono">
+          <span class="t-en">You can change your selection at any time</span>
+          <span class="t-es hidden">Puedes cambiar tu selección en cualquier momento</span>
+        </p>
+      </div>
+
+      <!-- Divider + compare note -->
+      <div class="flex items-center gap-4 mt-16 w-full max-w-[860px]">
+        <div class="flex-1 h-px bg-[rgba(0,212,255,0.1)]"></div>
+        <span class="text-xs text-text-dim font-mono whitespace-nowrap">
+          <span class="t-en">Not sure which to choose?</span>
+          <span class="t-es hidden">¿No sabes cuál elegir?</span>
+        </span>
+        <div class="flex-1 h-px bg-[rgba(0,212,255,0.1)]"></div>
+      </div>
+
+      <p class="text-[13px] text-text-muted text-center mt-4 max-w-[480px]">
+        <span class="t-en">Talk to a specialist and we'll help you find the ideal solution for your industry.</span>
+        <span class="t-es hidden">Habla con un especialista y te ayudamos a encontrar la solución ideal para tu industria.</span>
+        <a href="/#demo" class="text-primary underline underline-offset-2 ml-1 hover:text-accent2 transition-colors">
+          <span class="t-en">Get free advice →</span>
+          <span class="t-es hidden">Solicitar asesoría gratis →</span>
+        </a>
+      </p>
+
     </main>
+
     <Footer />
   </div>
 </BaseLayout>
 
 <script>
-  // Intersection Observer for scroll animations
-  const observerElements = document.querySelectorAll('.observe-anim');
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    },
-    { threshold: 0.1 }
-  );
-  observerElements.forEach((el) => observer.observe(el));
+  // ── Shared state (declared first to avoid TDZ in setLang) ─
+  let currentLang: 'en' | 'es' = 'en';
+  let selectedTarget: string | null = null;
 
-  // Live counter simulation for CRM sidebar badges
-  setInterval(() => {
-    document.querySelectorAll<HTMLElement>('.b-cnt').forEach((el) => {
-      if (Math.random() > 0.75) {
-        const current = parseInt(el.textContent || '0');
-        el.textContent = String(Math.max(1, current + (Math.random() > 0.5 ? 1 : -1)));
-      }
+  // ── Language toggle ───────────────────────────────────────
+  const btnEn = document.getElementById('btn-en')!;
+  const btnEs = document.getElementById('btn-es')!;
+
+  function setLang(lang: 'en' | 'es') {
+    const show = lang === 'en' ? '.t-en' : '.t-es';
+    const hide = lang === 'en' ? '.t-es' : '.t-en';
+    document.querySelectorAll<HTMLElement>(show).forEach(el => el.classList.remove('hidden'));
+    document.querySelectorAll<HTMLElement>(hide).forEach(el => el.classList.add('hidden'));
+    const active = 'bg-[rgba(0,212,255,0.12)] border-primary text-primary';
+    const idle   = 'bg-transparent border-[rgba(0,212,255,0.2)] text-text-muted';
+    const base   = 'lang-btn font-mono text-[11px] tracking-[2px] uppercase px-4 py-1.5 rounded-full border transition-all';
+    if (lang === 'en') {
+      btnEn.className = `${base} ${active}`;
+      btnEs.className = `${base} ${idle}`;
+    } else {
+      btnEs.className = `${base} ${active}`;
+      btnEn.className = `${base} ${idle}`;
+    }
+    localStorage.setItem('nxLang', lang);
+    currentLang = lang;
+    if (selectedTarget) updateProceedLabel(selectedTarget);
+  }
+
+  btnEn.addEventListener('click', () => setLang('en'));
+  btnEs.addEventListener('click', () => setLang('es'));
+
+  const saved = localStorage.getItem('nxLang') as 'en' | 'es' | null;
+  setLang(saved === 'es' ? 'es' : 'en');
+
+  // ── Product card selection ────────────────────────────────
+  const cards = document.querySelectorAll<HTMLButtonElement>('.product-card');
+  const proceedWrapper = document.getElementById('proceed-wrapper')!;
+  const proceedBtn = document.getElementById('proceed-btn') as HTMLAnchorElement;
+  const proceedLabelEn = document.getElementById('proceed-label-en')!;
+  const proceedLabelEs = document.getElementById('proceed-label-es')!;
+
+  const productNames: Record<string, { en: string; es: string }> = {
+    '/crm': { en: 'Multichannel CRM', es: 'CRM Multicanal' },
+    '/erp': { en: 'Enterprise ERP',   es: 'ERP Empresarial' },
+  };
+
+  function updateProceedLabel(target: string) {
+    const names = productNames[target];
+    proceedLabelEn.textContent = `Go to ${names.en} →`;
+    proceedLabelEs.textContent = `Ir a ${names.es} →`;
+  }
+
+  cards.forEach((card) => {
+    card.addEventListener('click', () => {
+      const target = card.dataset.target!;
+
+      // Deselect all
+      cards.forEach((c) => {
+        c.setAttribute('aria-pressed', 'false');
+        c.querySelector<HTMLElement>('.card-ring')!.style.opacity = '0';
+        c.querySelector<HTMLElement>('.card-badge')!.style.opacity = '0';
+        c.classList.remove('scale-[1.02]');
+      });
+
+      // Select clicked card
+      card.setAttribute('aria-pressed', 'true');
+      card.querySelector<HTMLElement>('.card-ring')!.style.opacity = '1';
+      card.querySelector<HTMLElement>('.card-badge')!.style.opacity = '1';
+      card.classList.add('scale-[1.02]');
+
+      // Update proceed button href + labels
+      selectedTarget = target;
+      proceedBtn.setAttribute('href', target);
+      updateProceedLabel(target);
+
+      // Show proceed wrapper
+      proceedWrapper.style.opacity = '1';
+      proceedWrapper.style.transform = 'translateY(0)';
+      proceedWrapper.style.pointerEvents = 'auto';
     });
-  }, 2500);
+  });
+
+  // Proceed button — always navigate via window.location to avoid href="#" fallback
+  proceedBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (selectedTarget) window.location.href = selectedTarget;
+  });
 </script>
