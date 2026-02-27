@@ -1,0 +1,118 @@
+---
+const channels = [
+  { icon: '📘', bg: '#1877F2',                                        name: 'Facebook',   items: ['Messenger', 'Comentarios', 'Lead Ads'] },
+  { icon: '📸', bg: 'linear-gradient(135deg,#833AB4,#E1306C,#F77737)', name: 'Instagram',  items: ['DMs', 'Comentarios', 'Story Replies'] },
+  { icon: '🎵', bg: '#010101',                                        name: 'TikTok',     items: ['Mensajes directos', 'Comentarios', 'LIVE'] },
+  { icon: '📱', bg: 'linear-gradient(135deg,#00D4FF,#7B2FFF)',        name: 'App Móvil',  items: ['Chat In-App', 'VoIP Calls', 'Push Notifs'] },
+  { icon: '💬', bg: '#25D366',                                        name: 'WhatsApp',   items: ['API Oficial', 'Broadcast', 'Templates'] },
+  { icon: '📧', bg: '#EA4335',                                        name: 'Email & SMS',items: ['Campañas', 'Transaccional', 'Automatización'] },
+];
+---
+
+<section class="py-16 sm:py-[100px] relative bg-[rgba(7,15,30,0.5)]" id="crm-channels">
+  <div class="max-w-[1280px] mx-auto px-6">
+
+    <div class="text-center mb-10 sm:mb-14">
+      <div class="inline-flex items-center gap-2 font-mono text-[11px] tracking-[3px] text-primary uppercase bg-[rgba(0,212,255,0.08)] border border-[rgba(0,212,255,0.4)] px-4 py-1.5 rounded-full mb-5">
+        <span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse-dot"></span>
+        Canales Integrados
+      </div>
+      <h2 class="font-display text-[clamp(32px,4vw,52px)] font-bold leading-[1.1] gradient-text mb-5">
+        Donde están tus clientes,<br/>Nexus está presente
+      </h2>
+      <p class="text-lg text-text-muted max-w-[560px] mx-auto leading-[1.7]">
+        Todos los canales responden desde una sola bandeja — sin cambiar de pestaña, sin perder contexto.
+      </p>
+    </div>
+
+    <!-- Channel grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-14">
+      {channels.map(ch => (
+        <div class="observe-anim bg-bg-card border border-[rgba(0,212,255,0.15)] rounded-2xl p-5 text-center transition-all hover:border-[rgba(0,212,255,0.4)] hover:-translate-y-1 hover:shadow-glow-primary">
+          <div class="w-[48px] h-[48px] rounded-xl flex items-center justify-center text-2xl mx-auto mb-3" style={`background:${ch.bg}`}>{ch.icon}</div>
+          <h4 class="font-display text-xs mb-2">{ch.name}</h4>
+          <ul class="list-none flex flex-col gap-0.5">
+            {ch.items.map(item => <li class="text-[10px] text-text-muted">{item}</li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <!-- Pipeline spotlight -->
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-10 lg:gap-[60px] items-center">
+      <!-- Left -->
+      <div>
+        <div class="inline-flex items-center gap-2 font-mono text-[11px] tracking-[3px] text-secondary uppercase bg-[rgba(123,47,255,0.08)] border border-[rgba(123,47,255,0.4)] px-4 py-1.5 rounded-full mb-5">
+          <span class="w-1.5 h-1.5 bg-secondary rounded-full animate-pulse-dot"></span>
+          Pipeline & Vista 360°
+        </div>
+        <h2 class="font-display text-[clamp(28px,3.5vw,46px)] font-bold leading-[1.1] text-white mb-5">
+          Gestiona leads y<br/><span class="gradient-text">clientes en un clic</span>
+        </h2>
+        <p class="text-lg text-text-muted leading-[1.7] max-w-[520px] mb-8">
+          Kanban visual, historial completo de interacciones en todos los canales y etiquetado automático por IA.
+        </p>
+        <div class="flex flex-col gap-4">
+          {[
+            { icon: '🎯', title: 'Pipeline Visual Kanban',    desc: 'Arrastra leads entre etapas personalizadas de venta' },
+            { icon: '👤', title: 'Vista 360° del Cliente',    desc: 'Historial completo de interacciones en todos los canales' },
+            { icon: '🏷️', title: 'Etiquetado Automático IA', desc: 'Clasificación por intención, urgencia y segmento en tiempo real' },
+            { icon: '⚡', title: 'Asignación Inteligente',    desc: 'IA asigna al agente correcto según skills y disponibilidad' },
+          ].map(f => (
+            <div class="flex gap-3.5 p-4 bg-bg-card border border-[rgba(123,47,255,0.12)] rounded-lg transition-all hover:border-[rgba(123,47,255,0.4)] hover:translate-x-1">
+              <span class="text-[22px] flex-shrink-0">{f.icon}</span>
+              <div>
+                <strong class="text-[13px] block mb-0.5 text-[#B088FF]">{f.title}</strong>
+                <p class="text-xs text-text-muted">{f.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right: Kanban mockup -->
+      <div class="bg-bg-card border border-[rgba(0,212,255,0.15)] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+        <div class="flex items-center gap-1.5 px-3.5 py-2.5 bg-bg-card2 border-b border-[rgba(0,212,255,0.15)]">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#FF5F57]"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-[#FEBC2E]"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-[#28C840]"></span>
+          <span class="ml-2 font-mono text-[10px] text-text-muted">CRM · Pipeline Kanban</span>
+        </div>
+        <div class="p-4 grid grid-cols-3 gap-3 min-h-[260px]">
+          {[
+            { stage: 'Nuevos', color: 'border-primary text-primary', leads: [
+              { name: 'Laura G.', src: '📘', val: '$1,200' },
+              { name: 'Pedro M.', src: '📸', val: '$850'  },
+              { name: 'Clara V.', src: '🎵', val: '$2,100' },
+            ]},
+            { stage: 'En proceso', color: 'border-[#FEBC2E] text-[#FEBC2E]', leads: [
+              { name: 'Sofía R.', src: '💬', val: '$3,400' },
+              { name: 'Carlos L.', src: '📧', val: '$750' },
+            ]},
+            { stage: 'Cerrados', color: 'border-accent2 text-accent2', leads: [
+              { name: 'David H.', src: '📱', val: '$5,200' },
+              { name: 'María A.', src: '📘', val: '$1,800' },
+              { name: 'José B.',  src: '💬', val: '$920'  },
+            ]},
+          ].map(col => (
+            <div>
+              <div class={`font-mono text-[9px] font-bold border-b pb-1.5 mb-2.5 ${col.color}`}>{col.stage} ({col.leads.length})</div>
+              <div class="flex flex-col gap-1.5">
+                {col.leads.map(l => (
+                  <div class="bg-bg-card2 rounded-lg p-2 border border-[rgba(0,212,255,0.08)]">
+                    <div class="flex items-center gap-1.5 mb-1">
+                      <span class="text-[11px]">{l.src}</span>
+                      <span class="text-[10px] font-semibold truncate">{l.name}</span>
+                    </div>
+                    <div class="font-mono text-[9px] text-accent2">{l.val}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

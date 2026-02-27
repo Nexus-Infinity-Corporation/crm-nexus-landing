@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import ERPHero from '../components/ERPHero.astro';
+import ERPModules from '../components/ERPModules.astro';
+import ERPFeatures from '../components/ERPFeatures.astro';
+import ERPDemo from '../components/ERPDemo.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="Nexus ERP — AI-Powered Enterprise Resource Planning">
+  <!-- Fixed Background Effects -->
+  <div class="bg-grid-pattern fixed top-0 left-0 w-full h-full pointer-events-none z-0"></div>
+  <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+    <div class="absolute w-[500px] h-[500px] bg-secondary rounded-full blur-[80px] opacity-[0.12] -top-[100px] -right-[100px] animate-float-slow"></div>
+    <div class="absolute w-[400px] h-[400px] bg-primary rounded-full blur-[80px] opacity-[0.12] bottom-[20%] -left-[100px] animate-float-2"></div>
+    <div class="absolute w-[300px] h-[300px] bg-accent rounded-full blur-[80px] opacity-[0.12] top-1/2 right-[20%] animate-float-3"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10">
+    <Navbar />
+    <main>
+      <ERPHero />
+      <ERPModules />
+      <ERPFeatures />
+      <ERPDemo />
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>
+
+<script>
+  // ── Language toggle ──────────────────────────────────────
+  const btnEn = document.getElementById('btn-en')!;
+  const btnEs = document.getElementById('btn-es')!;
+
+  function setLang(lang: 'en' | 'es') {
+    const show = lang === 'en' ? '.t-en' : '.t-es';
+    const hide = lang === 'en' ? '.t-es' : '.t-en';
+    document.querySelectorAll<HTMLElement>(show).forEach(el => el.classList.remove('hidden'));
+    document.querySelectorAll<HTMLElement>(hide).forEach(el => el.classList.add('hidden'));
+    const active = 'bg-[rgba(0,212,255,0.12)] border-primary text-primary';
+    const idle   = 'bg-transparent border-[rgba(0,212,255,0.2)] text-text-muted';
+    const base   = 'lang-btn font-mono text-[11px] tracking-[2px] uppercase px-4 py-1.5 rounded-full border transition-all';
+    if (lang === 'en') {
+      btnEn.className = `${base} ${active}`;
+      btnEs.className = `${base} ${idle}`;
+    } else {
+      btnEs.className = `${base} ${active}`;
+      btnEn.className = `${base} ${idle}`;
+    }
+    localStorage.setItem('nxLang', lang);
+  }
+
+  btnEn.addEventListener('click', () => setLang('en'));
+  btnEs.addEventListener('click', () => setLang('es'));
+
+  const saved = localStorage.getItem('nxLang') as 'en' | 'es' | null;
+  setLang(saved === 'es' ? 'es' : 'en');
+
+  // ── Scroll animations ────────────────────────────────────
+  const observer = new IntersectionObserver(
+    (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll('.observe-anim').forEach(el => observer.observe(el));
+</script>
