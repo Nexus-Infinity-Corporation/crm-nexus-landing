@@ -1,0 +1,163 @@
+---
+const bars = [
+  { label: '📘 Facebook',  width: '72%', color: '#1877F2',                                  val: '1,247' },
+  { label: '📸 Instagram', width: '58%', color: 'linear-gradient(90deg,#833AB4,#E1306C)',  val: '987'   },
+  { label: '🎵 TikTok',    width: '36%', color: '#69C9D0',                                  val: '612'   },
+  { label: '📱 App Móvil', width: '46%', color: '#00D4FF',                                  val: '783'   },
+  { label: '💬 WhatsApp',  width: '85%', color: '#25D366',                                  val: '1,456' },
+];
+
+const plans = [
+  {
+    name: 'Starter', price: { m: 99, a: 79 }, id: 'crm-starter',
+    desc: 'Para equipos pequeños que quieren empezar a automatizar',
+    features: ['✓ Hasta 3 canales','✓ 5,000 conversaciones/mes','✓ Agente IA Básico','✓ 2 usuarios','✓ App Móvil incluida'],
+    featured: false,
+  },
+  {
+    name: 'Growth',  price: { m: 299, a: 239 }, id: 'crm-growth',
+    desc: 'Para empresas en crecimiento que quieren escalar rápido',
+    features: ['✓ Canales ilimitados','✓ 50,000 conversaciones/mes','✓ Agente IA Avanzado + VoIP','✓ 15 usuarios','✓ Analítica avanzada','✓ Soporte 24/7'],
+    featured: true,
+  },
+  {
+    name: 'Enterprise', price: { m: 0, a: 0 }, id: 'crm-enterprise',
+    desc: 'Para operaciones grandes con necesidades personalizadas',
+    features: ['✓ Todo de Growth','✓ SLA dedicado','✓ Agentes IA ilimitados','✓ Usuarios ilimitados','✓ On-premise disponible'],
+    featured: false,
+  },
+];
+---
+
+<section class="py-16 sm:py-[100px] relative bg-[rgba(7,15,30,0.5)]" id="crm-analytics">
+  <div class="max-w-[1280px] mx-auto px-6">
+
+    <!-- Analytics row -->
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-10 lg:gap-[60px] items-center mb-16 sm:mb-[100px]">
+      <!-- Left -->
+      <div>
+        <div class="inline-flex items-center gap-2 font-mono text-[11px] tracking-[3px] text-primary uppercase bg-[rgba(0,212,255,0.08)] border border-[rgba(0,212,255,0.4)] px-4 py-1.5 rounded-full mb-5">
+          <span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse-dot"></span>
+          Analítica & Datos
+        </div>
+        <h2 class="font-display text-[clamp(32px,4vw,52px)] font-bold leading-[1.1] gradient-text mb-5">Decide con datos,<br/>no con intuición</h2>
+        <p class="text-lg text-text-muted leading-[1.7] max-w-[520px] mb-8">
+          Dashboard en tiempo real con todos los KPIs que importan. Reportes automáticos en tu inbox cada día.
+        </p>
+        <div class="grid grid-cols-2 gap-3">
+          {[
+            { em: '⚡', val: '2.1 min', label: 'Tiempo resp. promedio' },
+            { em: '🤖', val: '84%',     label: 'Resolución automática IA' },
+            { em: '💰', val: '340%',    label: 'Aumento conversiones' },
+            { em: '⭐', val: '4.9/5',   label: 'CSAT promedio' },
+          ].map(kpi => (
+            <div class="flex gap-2.5 p-3.5 bg-bg-card border border-[rgba(0,212,255,0.15)] rounded-lg">
+              <span class="text-xl">{kpi.em}</span>
+              <div>
+                <strong class="block font-display text-lg text-primary">{kpi.val}</strong>
+                <p class="text-[11px] text-text-muted mt-0.5">{kpi.label}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right: Chart mockup -->
+      <div class="bg-bg-card border border-[rgba(0,212,255,0.15)] rounded-2xl overflow-hidden">
+        <div class="flex items-center gap-1.5 px-3.5 py-2.5 bg-bg-card2 border-b border-[rgba(0,212,255,0.15)]">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#FF5F57]"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-[#FEBC2E]"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-[#28C840]"></span>
+          <span class="ml-2 font-mono text-[10px] text-text-muted">Analytics · Tiempo Real</span>
+        </div>
+        <div class="p-[18px]">
+          <div class="font-mono text-[10px] text-text-muted mb-3.5 tracking-[1px]">Conversaciones por canal — Hoy</div>
+          <div class="flex flex-col gap-2.5">
+            {bars.map(bar => (
+              <div class="flex items-center gap-2.5">
+                <span class="text-[11px] w-[80px] sm:w-[95px] flex-shrink-0 text-text-muted">{bar.label}</span>
+                <div class="flex-1 h-[7px] bg-bg-dark rounded-sm overflow-hidden">
+                  <div class="h-full rounded-sm" style={`width:${bar.width};background:${bar.color}`}></div>
+                </div>
+                <span class="font-mono text-[10px] text-text-muted w-[38px] text-right">{bar.val}</span>
+              </div>
+            ))}
+          </div>
+          <div class="flex gap-[18px] mt-[18px] pt-3.5 border-t border-[rgba(0,212,255,0.15)]">
+            {[
+              { val: '5,085', label: 'Total hoy',        color: 'text-accent2' },
+              { val: '4,271', label: 'Resueltas por IA', color: 'text-primary' },
+              { val: '814',   label: 'Escaladas',         color: 'text-secondary' },
+            ].map(s => (
+              <div class="flex-1 text-center">
+                <div class={`font-display text-xl font-bold ${s.color}`}>{s.val}</div>
+                <div class="font-mono text-[10px] text-text-dim mt-0.5">{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pricing -->
+    <div class="text-center mb-10 sm:mb-14">
+      <div class="inline-flex items-center gap-2 font-mono text-[11px] tracking-[3px] text-primary uppercase bg-[rgba(0,212,255,0.08)] border border-[rgba(0,212,255,0.4)] px-4 py-1.5 rounded-full mb-5">
+        <span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse-dot"></span>
+        Planes CRM
+      </div>
+      <h2 class="font-display text-[clamp(32px,4vw,52px)] font-bold leading-[1.1] gradient-text mb-5">Crece con Nexus CRM</h2>
+      <div class="flex items-center gap-3 justify-center text-[13px]">
+        <span>Mensual</span>
+        <label class="relative w-[42px] h-[22px] cursor-pointer">
+          <input type="checkbox" id="crm-btog" class="opacity-0 w-0 h-0" />
+          <span id="crm-toggle-slider" class="absolute inset-0 bg-bg-card border border-[rgba(0,212,255,0.15)] rounded-full transition-all cursor-pointer before:content-[''] before:absolute before:h-[14px] before:w-[14px] before:left-[3px] before:bottom-[3px] before:bg-primary before:rounded-full before:transition-all"></span>
+        </label>
+        <span>Anual <span class="bg-[rgba(0,255,179,0.15)] text-accent2 px-1.5 py-px rounded-full text-[10px] font-mono">20% OFF</span></span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 items-start">
+      {plans.map(plan => (
+        <div class={`relative bg-bg-card rounded-2xl p-7 transition-all ${plan.featured ? 'border border-primary shadow-glow-primary md:scale-[1.03] hover:border-[rgba(0,212,255,0.6)]' : 'border border-[rgba(0,212,255,0.15)] hover:border-[rgba(0,212,255,0.4)]'}`}>
+          {plan.featured && <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primary to-secondary text-black text-[11px] font-bold px-3.5 py-0.5 rounded-full whitespace-nowrap">⭐ Más Popular</div>}
+          <div class={`font-display text-xs font-bold tracking-[2px] uppercase mb-2.5 ${plan.featured ? 'text-primary' : 'text-text-muted'}`}>{plan.name}</div>
+          <div class="mb-1">
+            {plan.price.m === 0
+              ? <span class="font-display text-[36px] font-black">Custom</span>
+              : <>
+                  <span class="text-lg text-text-muted align-top mt-1.5 inline-block">$</span>
+                  <span id={plan.id} class="font-display text-[44px] font-black" data-m={plan.price.m} data-a={plan.price.a}>{plan.price.m}</span>
+                  <span class="text-[13px] text-text-muted">/mes</span>
+                </>
+            }
+          </div>
+          <p class="text-xs text-text-muted my-2.5 leading-[1.5]">{plan.desc}</p>
+          <ul class="list-none flex flex-col gap-2 mb-6">
+            {plan.features.map(f => (
+              <li class="text-[13px] text-text-muted py-1.5 border-b border-[rgba(0,212,255,0.15)]">{f}</li>
+            ))}
+          </ul>
+          <a href="#crm-demo" class={`flex items-center justify-center gap-2.5 font-bold text-[15px] px-8 py-[13px] rounded-full no-underline transition-all hover:-translate-y-0.5 ${plan.featured ? 'btn-primary-glow bg-gradient-to-br from-primary to-secondary text-white border-none shadow-glow-primary' : 'bg-transparent text-primary border border-[rgba(0,212,255,0.4)] hover:bg-[rgba(0,212,255,0.08)]'}`}>
+            {plan.price.m === 0 ? 'Contactar Ventas' : plan.featured ? 'Comenzar Ahora' : 'Empezar Gratis'}
+          </a>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const tog = document.getElementById('crm-btog') as HTMLInputElement;
+  if (tog) {
+    tog.addEventListener('change', () => {
+      const annual = tog.checked;
+      document.querySelectorAll<HTMLElement>('[data-m]').forEach(el => {
+        const val = annual ? el.dataset.a! : el.dataset.m!;
+        el.textContent = val;
+      });
+      const slider = document.getElementById('crm-toggle-slider');
+      if (slider) slider.style.setProperty('--tw-translate-x', annual ? '20px' : '0');
+    });
+  }
+</script>

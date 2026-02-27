@@ -1,9 +1,9 @@
 ---
 ---
 
-<section class="py-[100px] relative bg-[rgba(7,15,30,0.5)]" id="crm">
+<section class="py-16 sm:py-[100px] relative bg-[rgba(7,15,30,0.5)]" id="crm">
   <div class="max-w-[1280px] mx-auto px-6">
-    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-[60px] items-center">
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-10 lg:gap-[60px] items-center">
       <!-- Left -->
       <div>
         <div class="inline-flex items-center gap-2 font-mono text-[11px] tracking-[3px] text-primary uppercase bg-[rgba(0,212,255,0.08)] border border-[rgba(0,212,255,0.4)] px-4 py-1.5 rounded-full mb-5">
@@ -43,7 +43,7 @@
         <!-- Body -->
         <div class="flex h-[340px]">
           <!-- Sidebar -->
-          <div class="w-[125px] p-2.5 border-r border-[rgba(0,212,255,0.15)] flex-shrink-0">
+          <div class="w-[90px] sm:w-[125px] p-2 sm:p-2.5 border-r border-[rgba(0,212,255,0.15)] flex-shrink-0">
             {[
               { icon: '💬', label: 'Todos', count: 47, active: true },
               { icon: '📘', label: 'Facebook', count: 12 },
@@ -52,7 +52,7 @@
               { icon: '📱', label: 'App Móvil', count: 5 },
               { icon: '📧', label: 'Email', count: 3 },
             ].map(item => (
-              <div class={`flex items-center gap-1.5 text-[11px] px-2 py-[7px] rounded-md cursor-pointer mb-0.5 transition-all ${item.active ? 'bg-[rgba(0,212,255,0.08)] text-primary' : 'text-text-muted hover:bg-[rgba(0,212,255,0.08)] hover:text-primary'}`}>
+              <div class={`flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-[11px] px-1.5 sm:px-2 py-[7px] rounded-md cursor-pointer mb-0.5 transition-all ${item.active ? 'bg-[rgba(0,212,255,0.08)] text-primary' : 'text-text-muted hover:bg-[rgba(0,212,255,0.08)] hover:text-primary'}`}>
                 <span>{item.icon}</span> {item.label}
                 <span class="ml-auto bg-primary text-black text-[9px] font-bold px-[5px] py-px rounded-full">{item.count}</span>
               </div>

@@ -1,0 +1,66 @@
+---
+---
+
+<section class="py-16 sm:py-[100px] relative bg-[rgba(7,15,30,0.5)]" id="erp-modules">
+  <div class="max-w-[1280px] mx-auto px-6">
+
+    <div class="text-center mb-10 sm:mb-14">
+      <div class="inline-flex items-center gap-2 font-mono text-[11px] tracking-[3px] text-primary uppercase bg-[rgba(0,212,255,0.08)] border border-[rgba(0,212,255,0.4)] px-4 py-1.5 rounded-full mb-5">
+        <span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse-dot"></span>
+        <span class="t-en">ERP Modules</span><span class="t-es hidden">Módulos ERP</span>
+      </div>
+      <h2 class="font-display text-[clamp(32px,4vw,52px)] font-bold leading-[1.1] gradient-text mb-5">
+        <span class="t-en">Everything your business needs</span>
+        <span class="t-es hidden">Todo lo que tu empresa necesita</span>
+      </h2>
+      <p class="text-lg text-text-muted max-w-[580px] mx-auto leading-[1.7]">
+        <span class="t-en">Six integrated modules on a single data layer — no silos, no manual reconciliation.</span>
+        <span class="t-es hidden">Seis módulos integrados en una sola capa de datos — sin silos ni conciliaciones manuales.</span>
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {[
+        {
+          icon: '💰', color: 'text-accent2', border: 'hover:border-[rgba(0,255,179,0.4)]',
+          en: { title: 'Finance & Accounting',    desc: 'Automate invoicing, AP/AR, multi-currency ledgers and real-time P&L reporting.' },
+          es: { title: 'Finanzas y Contabilidad',  desc: 'Automatiza facturación, cuentas por cobrar/pagar, libros multi-divisa y reportes P&G en tiempo real.' },
+        },
+        {
+          icon: '👥', color: 'text-[#B088FF]', border: 'hover:border-[rgba(123,47,255,0.4)]',
+          en: { title: 'Human Resources',          desc: 'Payroll, attendance, onboarding workflows and AI-driven performance reviews.' },
+          es: { title: 'Recursos Humanos',          desc: 'Nómina, asistencia, flujos de incorporación y evaluaciones de desempeño con IA.' },
+        },
+        {
+          icon: '📦', color: 'text-primary',    border: 'hover:border-[rgba(0,212,255,0.4)]',
+          en: { title: 'Inventory & Warehouse',    desc: 'Real-time stock levels, automated reordering, barcodes and multi-warehouse tracking.' },
+          es: { title: 'Inventario y Almacén',      desc: 'Stock en tiempo real, reorden automático, códigos de barras y seguimiento multi-almacén.' },
+        },
+        {
+          icon: '🛒', color: 'text-accent',     border: 'hover:border-[rgba(255,45,120,0.4)]',
+          en: { title: 'Procurement',              desc: 'Manage RFQs, purchase orders, vendor scorecards and full spend analytics.' },
+          es: { title: 'Compras',                   desc: 'Gestiona cotizaciones, órdenes de compra, evaluación de proveedores y análisis de gasto.' },
+        },
+        {
+          icon: '🏭', color: 'text-[#FEBC2E]',  border: 'hover:border-[rgba(254,188,46,0.4)]',
+          en: { title: 'Manufacturing & MRP',      desc: 'BOM, work orders, shop-floor control and AI demand forecasting for capacity planning.' },
+          es: { title: 'Manufactura y MRP',         desc: 'Listas de materiales, órdenes de trabajo, control de piso y planeación de capacidad con IA.' },
+        },
+        {
+          icon: '📊', color: 'text-primary',    border: 'hover:border-[rgba(0,212,255,0.4)]',
+          en: { title: 'Projects & Timesheets',    desc: 'Gantt charts, resource allocation, budget tracking and automated milestone billing.' },
+          es: { title: 'Proyectos y Tiempos',       desc: 'Diagramas Gantt, asignación de recursos, presupuestos y facturación automática por hito.' },
+        },
+      ].map(mod => (
+        <div class={`flex flex-col gap-3 p-6 bg-bg-card border border-[rgba(0,212,255,0.15)] rounded-2xl transition-all ${mod.border} hover:translate-y-[-3px]`}>
+          <span class="text-[36px]">{mod.icon}</span>
+          <strong class={`font-display text-[14px] font-bold ${mod.color} t-en`}>{mod.en.title}</strong>
+          <strong class={`font-display text-[14px] font-bold ${mod.color} t-es hidden`}>{mod.es.title}</strong>
+          <p class="text-[13px] text-text-muted leading-[1.65] t-en">{mod.en.desc}</p>
+          <p class="text-[13px] text-text-muted leading-[1.65] t-es hidden">{mod.es.desc}</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

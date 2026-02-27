@@ -1,0 +1,99 @@
+---
+---
+
+<section class="py-16 sm:py-[100px] relative" id="erp-features">
+  <div class="max-w-[1280px] mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-10 lg:gap-[60px] items-center">
+
+      <!-- Left -->
+      <div>
+        <div class="inline-flex items-center gap-2 font-mono text-[11px] tracking-[3px] text-secondary uppercase bg-[rgba(123,47,255,0.08)] border border-[rgba(123,47,255,0.4)] px-4 py-1.5 rounded-full mb-5">
+          <span class="w-1.5 h-1.5 bg-secondary rounded-full animate-pulse-dot"></span>
+          <span class="t-en">AI-Native ERP</span><span class="t-es hidden">ERP Nativo con IA</span>
+        </div>
+        <h2 class="font-display text-[clamp(32px,4vw,52px)] font-bold leading-[1.1] gradient-text mb-5">
+          <span class="t-en">Decide with data,<br/>not intuition</span>
+          <span class="t-es hidden">Decide con datos,<br/>no con intuición</span>
+        </h2>
+        <p class="text-lg text-text-muted leading-[1.7] max-w-[520px] mb-8">
+          <span class="t-en">Every module is powered by a shared AI layer that learns from your operations and acts autonomously.</span>
+          <span class="t-es hidden">Cada módulo está impulsado por una capa de IA compartida que aprende de tus operaciones y actúa de forma autónoma.</span>
+        </p>
+        <div class="grid grid-cols-2 gap-3">
+          {[
+            { em: '🤖', en: { val: '84%', label: 'Tasks automated by AI' },      es: { val: '84%',  label: 'Tareas automatizadas' } },
+            { em: '⚡', en: { val: '4×',  label: 'Faster monthly close'  },      es: { val: '4×',   label: 'Cierre mensual más ágil' } },
+            { em: '💰', en: { val: '30%', label: 'Average cost reduction' },     es: { val: '30%',  label: 'Reducción de costos' } },
+            { em: '⭐', en: { val: '4.9', label: 'User satisfaction score' },    es: { val: '4.9',  label: 'Satisfacción de usuarios' } },
+          ].map(kpi => (
+            <div class="flex gap-2.5 p-3.5 bg-bg-card border border-[rgba(0,212,255,0.15)] rounded-lg">
+              <span class="text-xl">{kpi.em}</span>
+              <div>
+                <strong class="block font-display text-lg text-primary t-en">{kpi.en.val}</strong>
+                <strong class="block font-display text-lg text-primary t-es hidden">{kpi.es.val}</strong>
+                <p class="text-[11px] text-text-muted mt-0.5 t-en">{kpi.en.label}</p>
+                <p class="text-[11px] text-text-muted mt-0.5 t-es hidden">{kpi.es.label}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right: P&L mockup -->
+      <div class="bg-bg-card border border-[rgba(0,212,255,0.15)] rounded-2xl overflow-hidden">
+        <div class="flex items-center gap-1.5 px-3.5 py-2.5 bg-bg-card2 border-b border-[rgba(0,212,255,0.15)]">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#FF5F57]"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-[#FEBC2E]"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-[#28C840]"></span>
+          <span class="ml-2 font-mono text-[10px] text-text-muted t-en">Finance · P&L Overview — Q4 2025</span>
+          <span class="ml-2 font-mono text-[10px] text-text-muted t-es hidden">Finanzas · P&G — T4 2025</span>
+        </div>
+        <div class="p-5">
+          <div class="flex flex-col gap-3">
+            {[
+              { en: 'Revenue',           es: 'Ingresos',         val: '$4,820,000', pct: null,   bar: '100%', col: 'text-white',    barCol: 'bg-accent2' },
+              { en: 'Cost of Goods',     es: 'Costo de Ventas',  val: '$2,115,000', pct: '43.9%',bar: '44%',  col: 'text-accent',   barCol: 'bg-accent' },
+              { en: 'Gross Profit',      es: 'Utilidad Bruta',   val: '$2,705,000', pct: '56.1%',bar: '56%',  col: 'text-accent2',  barCol: 'bg-accent2' },
+              { en: 'Operating Expenses',es: 'Gastos Operativos',val: '$1,240,000', pct: '25.7%',bar: '26%',  col: 'text-[#FEBC2E]',barCol: 'bg-[#FEBC2E]' },
+              { en: 'Net Income',        es: 'Utilidad Neta',    val: '$1,465,000', pct: '30.4%',bar: '30%',  col: 'text-primary',  barCol: 'bg-primary' },
+            ].map(row => (
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <span class={`font-mono text-[11px] ${row.col} t-en`}>{row.en}</span>
+                  <span class={`font-mono text-[11px] ${row.col} t-es hidden`}>{row.es}</span>
+                  <div class="flex items-center gap-2">
+                    {row.pct && <span class="font-mono text-[9px] text-text-dim">{row.pct}</span>}
+                    <span class={`font-mono text-[11px] font-bold ${row.col}`}>{row.val}</span>
+                  </div>
+                </div>
+                <div class="h-[5px] bg-bg-dark rounded-sm overflow-hidden">
+                  <div class={`h-full rounded-sm ${row.barCol}`} style={`width:${row.bar}`}></div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <!-- AI Agents row -->
+          <div class="mt-5 pt-4 border-t border-[rgba(0,212,255,0.15)]">
+            <div class="font-mono text-[9px] text-text-dim mb-2.5 tracking-[1px] uppercase t-en">Active AI Agents</div>
+            <div class="font-mono text-[9px] text-text-dim mb-2.5 tracking-[1px] uppercase t-es hidden">Agentes IA Activos</div>
+            <div class="flex flex-wrap gap-2">
+              {[
+                { label: '🤖 Bank Recon', label_es: '🤖 Conciliación', col: 'bg-[rgba(0,255,179,0.1)] text-accent2' },
+                { label: '📡 Demand Forecast', label_es: '📡 Pronóstico', col: 'bg-[rgba(0,212,255,0.1)] text-primary' },
+                { label: '🛡️ Fraud Detect', label_es: '🛡️ Anti-Fraude', col: 'bg-[rgba(123,47,255,0.1)] text-[#B088FF]' },
+                { label: '💬 BI Assistant', label_es: '💬 Asistente BI', col: 'bg-[rgba(255,45,120,0.1)] text-accent' },
+              ].map(a => (
+                <>
+                  <span class={`font-mono text-[9px] px-2 py-1 rounded-full ${a.col} t-en`}>{a.label}</span>
+                  <span class={`font-mono text-[9px] px-2 py-1 rounded-full ${a.col} t-es hidden`}>{a.label_es}</span>
+                </>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

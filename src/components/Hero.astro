@@ -3,7 +3,7 @@
 
 <section class="hero min-h-screen pt-[120px] flex flex-col relative overflow-hidden" id="home">
   <div class="max-w-[1280px] mx-auto px-6 w-full">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-[60px] items-center py-[60px]">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-[60px] items-center py-8 sm:py-[60px]">
       <!-- Left Content -->
       <div>
         <div class="inline-flex items-center gap-2.5 bg-[rgba(123,47,255,0.1)] border border-[rgba(123,47,255,0.3)] px-[18px] py-2 rounded-full mb-7 font-mono text-xs text-[#B088FF]">
@@ -15,10 +15,10 @@
           <span class="gradient-text-brand">y Domina</span><br/>
           todos tus canales
         </h1>
-        <p class="text-[17px] text-text-muted leading-[1.75] mb-9 max-w-[520px]">
+        <p class="text-[15px] sm:text-[17px] text-text-muted leading-[1.75] mb-7 sm:mb-9 max-w-[520px]">
           CRM Multicanal potenciado con Inteligencia Artificial. Gestiona Facebook, Instagram, TikTok, App Móvil y más desde una sola plataforma. Agentes IA que trabajan <strong class="text-primary">24/7</strong> sin descanso.
         </p>
-        <div class="flex gap-4 flex-wrap mb-12">
+        <div class="flex gap-3 flex-wrap mb-8 sm:mb-12">
           <a href="#demo" class="btn-primary-glow inline-flex items-center gap-2.5 bg-gradient-to-br from-primary to-secondary text-white font-bold text-[15px] px-8 py-[14px] rounded-full border-none cursor-pointer no-underline shadow-glow-primary">
             <span class="relative z-10">🚀 Solicitar Demo Gratis</span>
           </a>
@@ -27,7 +27,7 @@
           </a>
         </div>
         <!-- Stats -->
-        <div id="hero-stats" class="flex items-center gap-6 flex-wrap">
+        <div id="hero-stats" class="flex items-center gap-4 sm:gap-6 flex-wrap">
           <div class="text-center">
             <div class="flex items-baseline">
               <span class="font-display text-[28px] font-bold text-primary leading-none stat-num" data-target="500">0</span>
@@ -35,7 +35,7 @@
             </div>
             <span class="block text-xs text-text-dim mt-1 font-mono">Empresas</span>
           </div>
-          <div class="w-px h-10 bg-[rgba(0,212,255,0.15)]"></div>
+          <div class="hidden sm:block w-px h-10 bg-[rgba(0,212,255,0.15)]"></div>
           <div class="text-center">
             <div class="flex items-baseline">
               <span class="font-display text-[28px] font-bold text-primary leading-none stat-num" data-target="10">0</span>
@@ -43,7 +43,7 @@
             </div>
             <span class="block text-xs text-text-dim mt-1 font-mono">Mensajes/mes</span>
           </div>
-          <div class="w-px h-10 bg-[rgba(0,212,255,0.15)]"></div>
+          <div class="hidden sm:block w-px h-10 bg-[rgba(0,212,255,0.15)]"></div>
           <div class="text-center">
             <div class="flex items-baseline">
               <span class="font-display text-[28px] font-bold text-primary leading-none stat-num" data-target="99">0</span>
@@ -51,7 +51,7 @@
             </div>
             <span class="block text-xs text-text-dim mt-1 font-mono">Uptime</span>
           </div>
-          <div class="w-px h-10 bg-[rgba(0,212,255,0.15)]"></div>
+          <div class="hidden sm:block w-px h-10 bg-[rgba(0,212,255,0.15)]"></div>
           <div class="text-center">
             <div class="flex items-baseline">
               <span class="font-display text-[28px] font-bold text-primary leading-none stat-num" data-target="4">0</span>
@@ -63,10 +63,10 @@
       </div>
 
       <!-- Right Visual -->
-      <div class="relative flex justify-center items-center h-[580px]">
+      <div class="relative flex justify-center items-center h-[360px] sm:h-[480px] lg:h-[580px]">
         <!-- Phone Frame -->
         <div class="relative z-10">
-          <div class="animate-float w-64 h-[510px] bg-bg-card2 border-2 border-[rgba(0,212,255,0.3)] rounded-[36px] p-3.5 shadow-[0_40px_80px_rgba(0,0,0,0.6),0_0_30px_rgba(0,212,255,0.4)]">
+          <div class="animate-float w-48 h-[380px] sm:w-60 sm:h-[460px] lg:w-64 lg:h-[510px] bg-bg-card2 border-2 border-[rgba(0,212,255,0.3)] rounded-[36px] p-3 sm:p-3.5 shadow-[0_40px_80px_rgba(0,0,0,0.6),0_0_30px_rgba(0,212,255,0.4)]">
             <div class="w-20 h-[22px] bg-bg-dark rounded-b-2xl mx-auto mb-2.5"></div>
             <div class="bg-bg-dark rounded-3xl h-[calc(100%-40px)] overflow-hidden flex flex-col">
               <div class="flex items-center gap-1.5 px-3.5 py-2.5 bg-bg-card border-b border-[rgba(0,212,255,0.15)] text-xs font-semibold">
@@ -105,7 +105,7 @@
         <!-- Glow -->
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[radial-gradient(circle,rgba(0,212,255,0.15)_0%,transparent_70%)] rounded-full z-[1]"></div>
         <!-- Floating Cards -->
-        <div class="animate-float absolute top-[30px] right-[-10px] z-[3] flex items-center gap-2.5 bg-[rgba(7,15,30,0.95)] border border-[rgba(0,212,255,0.4)] rounded-xl px-4 py-3 backdrop-blur-lg shadow-[0_8px_32px_rgba(0,0,0,0.4)] whitespace-nowrap">
+        <div class="animate-float absolute top-2 sm:top-[30px] right-0 sm:right-[-10px] z-[3] flex items-center gap-2 sm:gap-2.5 bg-[rgba(7,15,30,0.95)] border border-[rgba(0,212,255,0.4)] rounded-xl px-3 sm:px-4 py-2 sm:py-3 backdrop-blur-lg shadow-[0_8px_32px_rgba(0,0,0,0.4)] whitespace-nowrap">
           <span class="text-xl">🤖</span>
           <div>
             <div class="text-[11px] text-text-muted font-mono">Agente IA Activo</div>
@@ -119,7 +119,7 @@
             <div class="text-[13px] font-bold text-primary mt-0.5">84% automático</div>
           </div>
         </div>
-        <div class="animate-float-3 absolute bottom-[130px] right-[-20px] z-[3] flex items-center gap-2.5 bg-[rgba(7,15,30,0.95)] border border-[rgba(0,212,255,0.4)] rounded-xl px-4 py-3 backdrop-blur-lg shadow-[0_8px_32px_rgba(0,0,0,0.4)] whitespace-nowrap">
+        <div class="animate-float-3 absolute bottom-[100px] sm:bottom-[130px] right-0 sm:right-[-20px] z-[3] flex items-center gap-2 sm:gap-2.5 bg-[rgba(7,15,30,0.95)] border border-[rgba(0,212,255,0.4)] rounded-xl px-3 sm:px-4 py-2 sm:py-3 backdrop-blur-lg shadow-[0_8px_32px_rgba(0,0,0,0.4)] whitespace-nowrap">
           <span class="text-xl">📞</span>
           <div>
             <div class="text-[11px] text-text-muted font-mono">VoIP Activo</div>

@@ -1,0 +1,117 @@
+---
+---
+
+<section class="min-h-screen pt-[120px] pb-16 flex flex-col justify-center relative overflow-hidden" id="erp-home">
+  <div class="max-w-[1280px] mx-auto px-6 w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-[60px] items-center py-8 sm:py-[60px]">
+
+      <!-- Left -->
+      <div>
+        <!-- Language toggle -->
+        <div class="flex items-center gap-2 mb-8">
+          <button id="btn-en" class="lang-btn font-mono text-[11px] tracking-[2px] uppercase px-4 py-1.5 rounded-full border transition-all bg-[rgba(0,212,255,0.12)] border-primary text-primary">EN</button>
+          <button id="btn-es" class="lang-btn font-mono text-[11px] tracking-[2px] uppercase px-4 py-1.5 rounded-full border transition-all bg-transparent border-[rgba(0,212,255,0.2)] text-text-muted">ES</button>
+        </div>
+
+        <div class="inline-flex items-center gap-2.5 bg-[rgba(0,255,179,0.08)] border border-[rgba(0,255,179,0.3)] px-[18px] py-2 rounded-full mb-7 font-mono text-xs text-accent2">
+          <span class="w-2 h-2 bg-accent2 rounded-full animate-pulse-dot"></span>
+          <span class="t-en">Nexus ERP · AI-Powered Enterprise 2025</span>
+          <span class="t-es hidden">Nexus ERP · Empresa Impulsada por IA 2025</span>
+        </div>
+
+        <h1 class="font-display text-[clamp(32px,4vw,60px)] font-black leading-[1.08] text-white mb-6 tracking-[-1px]">
+          <span class="t-en">Run your entire<br/><span class="gradient-text">enterprise.</span><br/>One platform.</span>
+          <span class="t-es hidden">Gestiona toda tu<br/><span class="gradient-text">empresa.</span><br/>Una sola plataforma.</span>
+        </h1>
+
+        <p class="text-[15px] sm:text-[17px] text-text-muted leading-[1.75] mb-9 max-w-[520px]">
+          <span class="t-en">Finance, HR, Inventory, Procurement, Manufacturing & Projects — unified and automated with <strong class="text-primary">AI intelligence</strong>.</span>
+          <span class="t-es hidden">Finanzas, RRHH, Inventario, Compras, Manufactura y Proyectos — unificados y automatizados con <strong class="text-primary">inteligencia artificial</strong>.</span>
+        </p>
+
+        <div class="flex gap-3 flex-wrap mb-10">
+          <a href="#erp-demo" class="btn-primary-glow inline-flex items-center gap-2.5 bg-gradient-to-br from-primary to-secondary text-white font-bold text-[15px] px-8 py-[14px] rounded-full border-none cursor-pointer no-underline shadow-glow-primary">
+            <span class="relative z-10 t-en">🚀 Request Free Demo</span>
+            <span class="relative z-10 t-es hidden">🚀 Solicitar Demo Gratis</span>
+          </a>
+          <a href="#erp-modules" class="inline-flex items-center gap-2.5 bg-transparent text-primary font-semibold text-[15px] px-8 py-[13px] rounded-full border border-[rgba(0,212,255,0.4)] cursor-pointer no-underline transition-all hover:bg-[rgba(0,212,255,0.08)] hover:translate-y-[-2px]">
+            <span class="t-en">▶ See Modules</span>
+            <span class="t-es hidden">▶ Ver Módulos</span>
+          </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="flex items-center gap-4 sm:gap-6 flex-wrap">
+          {[
+            { num: '30', suf: '%', en: 'Cost Reduction', es: 'Reducción de Costos' },
+            { num: '4×', suf: '', en: 'Faster Closing', es: 'Cierre más Rápido' },
+            { num: '99.9', suf: '%', en: 'Uptime SLA', es: 'SLA de Uptime' },
+            { num: '500', suf: '+', en: 'Companies', es: 'Empresas' },
+          ].map((s, i) => (
+            <>
+              {i > 0 && <div class="hidden sm:block w-px h-10 bg-[rgba(0,212,255,0.15)]"></div>}
+              <div class="text-center">
+                <div class="flex items-baseline">
+                  <span class="font-display text-[28px] font-bold text-primary leading-none">{s.num}</span>
+                  <span class="font-display text-lg text-text-muted">{s.suf}</span>
+                </div>
+                <span class="block text-xs text-text-dim mt-1 font-mono t-en">{s.en}</span>
+                <span class="block text-xs text-text-dim mt-1 font-mono t-es hidden">{s.es}</span>
+              </div>
+            </>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right: ERP Dashboard mockup -->
+      <div class="bg-bg-card border border-[rgba(0,212,255,0.15)] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+        <div class="flex items-center gap-1.5 px-3.5 py-2.5 bg-bg-card2 border-b border-[rgba(0,212,255,0.15)]">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#FF5F57]"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-[#FEBC2E]"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-[#28C840]"></span>
+          <span class="ml-2.5 font-mono text-[11px] text-text-muted t-en">Nexus ERP · Executive Dashboard</span>
+          <span class="ml-2.5 font-mono text-[11px] text-text-muted t-es hidden">Nexus ERP · Panel Ejecutivo</span>
+          <span class="ml-auto font-mono text-[10px] text-accent2 animate-pulse-dot">● LIVE</span>
+        </div>
+        <!-- KPI grid -->
+        <div class="p-4 grid grid-cols-2 gap-3">
+          {[
+            { icon: '💰', en: 'Monthly Revenue', es: 'Ingresos del Mes', val: '$2.4M', delta: '+12%', col: 'text-accent2' },
+            { icon: '📦', en: 'Open POs',         es: 'OC Abiertas',     val: '148',   delta: '-3',   col: 'text-primary' },
+            { icon: '👥', en: 'Headcount',         es: 'Empleados',       val: '1,230', delta: '+18',  col: 'text-[#B088FF]' },
+            { icon: '🏭', en: 'Production Rate',   es: 'Tasa Producción', val: '97.4%', delta: '+2%',  col: 'text-[#FEBC2E]' },
+          ].map(k => (
+            <div class="bg-bg-card2 border border-[rgba(0,212,255,0.1)] rounded-xl p-3.5">
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-lg">{k.icon}</span>
+                <span class={`font-mono text-[9px] font-bold ${k.col}`}>{k.delta}</span>
+              </div>
+              <div class={`font-display text-xl font-bold ${k.col}`}>{k.val}</div>
+              <div class={`font-mono text-[9px] text-text-dim mt-0.5 t-en`}>{k.en}</div>
+              <div class={`font-mono text-[9px] text-text-dim mt-0.5 t-es hidden`}>{k.es}</div>
+            </div>
+          ))}
+        </div>
+        <!-- Activity -->
+        <div class="px-4 pb-4">
+          <div class="font-mono text-[9px] text-text-dim mb-2 tracking-[1px] uppercase t-en">Recent Activity</div>
+          <div class="font-mono text-[9px] text-text-dim mb-2 tracking-[1px] uppercase t-es hidden">Actividad Reciente</div>
+          {[
+            { dot: 'bg-accent2', en: 'PO #4821 approved — $34,500',   es: 'OC #4821 aprobada — $34,500',  time: '2m' },
+            { dot: 'bg-primary', en: 'Payroll run completed for Nov',  es: 'Nómina de Nov procesada',      time: '18m' },
+            { dot: 'bg-[#B088FF]', en: 'Low stock alert: SKU-0094',   es: 'Stock bajo: SKU-0094',          time: '1h' },
+            { dot: 'bg-accent',  en: 'Invoice INV-2891 overdue',       es: 'Factura INV-2891 vencida',      time: '3h' },
+          ].map(e => (
+            <div class="flex items-center gap-2.5 py-1.5 border-b border-[rgba(0,212,255,0.08)] last:border-0">
+              <span class={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${e.dot}`}></span>
+              <span class="font-mono text-[10px] text-text-muted flex-1 t-en">{e.en}</span>
+              <span class="font-mono text-[10px] text-text-muted flex-1 t-es hidden">{e.es}</span>
+              <span class="font-mono text-[9px] text-text-dim">{e.time}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

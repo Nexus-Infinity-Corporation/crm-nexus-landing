@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import CRMHero from '../components/CRMHero.astro';
+import CRMChannels from '../components/CRMChannels.astro';
+import CRMAutomation from '../components/CRMAutomation.astro';
+import CRMAnalyticsPricing from '../components/CRMAnalyticsPricing.astro';
+import Demo from '../components/Demo.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="Nexus CRM — CRM Multicanal con IA">
+  <!-- Fixed Background Effects -->
+  <div class="bg-grid-pattern fixed top-0 left-0 w-full h-full pointer-events-none z-0"></div>
+  <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+    <div class="absolute w-[500px] h-[500px] bg-secondary rounded-full blur-[80px] opacity-[0.12] -top-[100px] -right-[100px] animate-float-slow"></div>
+    <div class="absolute w-[400px] h-[400px] bg-primary rounded-full blur-[80px] opacity-[0.12] bottom-[20%] -left-[100px] animate-float-2"></div>
+    <div class="absolute w-[300px] h-[300px] bg-accent rounded-full blur-[80px] opacity-[0.12] top-1/2 right-[20%] animate-float-3"></div>
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10">
+    <Navbar />
+    <main>
+      <CRMHero />
+      <CRMChannels />
+      <CRMAutomation />
+      <CRMAnalyticsPricing />
+      <Demo />
+    </main>
+    <Footer />
+  </div>
+</BaseLayout>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll('.observe-anim').forEach(el => observer.observe(el));
+
+  setInterval(() => {
+    document.querySelectorAll<HTMLElement>('.b-cnt').forEach(el => {
+      if (Math.random() > 0.75) {
+        const current = parseInt(el.textContent || '0');
+        el.textContent = String(Math.max(1, current + (Math.random() > 0.5 ? 1 : -1)));
+      }
+    });
+  }, 2500);
+</script>
+

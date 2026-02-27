@@ -1,11 +1,18 @@
 ---
 ---
 
+<!--
+  Peer checkbox: placed BEFORE <nav> and the mobile menu <div> so that
+  both can respond to peer-checked via the CSS ~ sibling combinator.
+  The <label for="nav-cb"> inside the nav toggles it on tap/click.
+-->
+<input type="checkbox" id="nav-cb" class="peer/nav hidden" />
+
 <nav id="navbar" class="fixed top-0 left-0 right-0 z-[1000] py-4 bg-[rgba(3,8,16,0.85)] backdrop-blur-xl border-b border-[rgba(0,212,255,0.15)] transition-all duration-300">
   <div class="max-w-[1280px] mx-auto px-6">
     <div class="flex items-center gap-10">
       <!-- Logo -->
-      <a href="#" class="flex items-center gap-3 no-underline">
+      <a href="/" class="flex items-center gap-3 no-underline">
         <div class="animate-float">
           <svg width="36" height="36" viewBox="0 0 36 36">
             <polygon points="18,2 34,10 34,26 18,34 2,26 2,10" fill="none" stroke="url(#lg1)" stroke-width="2"/>
@@ -25,7 +32,7 @@
         </div>
       </a>
 
-      <!-- Nav Links -->
+      <!-- Nav Links (desktop only) -->
       <ul class="hidden lg:flex list-none gap-2 ml-auto">
         <li><a href="#platform" class="flex items-center gap-1 text-text-muted no-underline text-sm px-3.5 py-2 rounded-lg transition-all hover:text-primary hover:bg-[rgba(0,212,255,0.06)]">Plataforma</a></li>
         <li class="relative has-dropdown">
@@ -43,49 +50,77 @@
         <li><a href="#pricing" class="flex items-center gap-1 text-text-muted no-underline text-sm px-3.5 py-2 rounded-lg transition-all hover:text-primary hover:bg-[rgba(0,212,255,0.06)]">Precios</a></li>
       </ul>
 
-      <!-- CTA Buttons -->
-      <div class="flex items-center gap-2.5">
+      <!-- CTA Buttons + Hamburger -->
+      <div class="flex items-center gap-2.5 ml-auto lg:ml-0">
         <a href="#demo" class="hidden sm:inline-flex items-center gap-2.5 bg-transparent text-primary font-semibold text-[13px] px-5 py-2.5 rounded-full border border-[rgba(0,212,255,0.4)] cursor-pointer no-underline transition-all hover:bg-[rgba(0,212,255,0.08)] hover:translate-y-[-2px] hover:shadow-glow-primary">Ver Demo</a>
         <a href="#demo" class="btn-primary-glow inline-flex items-center gap-2.5 bg-gradient-to-br from-primary to-secondary text-white font-bold text-[13px] px-5 py-2.5 rounded-full border-none cursor-pointer no-underline shadow-glow-primary">
           <span class="relative z-10">Empezar Gratis</span>
         </a>
-        <!-- Mobile toggle -->
-        <button id="nav-toggle" class="lg:hidden flex flex-col gap-[5px] bg-transparent border-none cursor-pointer p-1">
-          <span class="block w-6 h-0.5 bg-primary"></span>
-          <span class="block w-6 h-0.5 bg-primary"></span>
-          <span class="block w-6 h-0.5 bg-primary"></span>
-        </button>
+        <!--
+          Hamburger <label> — clicking this toggles #nav-cb.
+          The three bars animate to an ✕ via the <style> block below
+          (CSS ~ + descendant combinators reach these spans from #nav-cb).
+        -->
+        <label for="nav-cb" class="lg:hidden flex flex-col justify-center gap-[5px] cursor-pointer p-1 w-8 h-8" aria-label="Toggle menu">
+          <span data-bar="1" class="block w-6 h-0.5 bg-primary rounded-full transition-all duration-300 origin-center"></span>
+          <span data-bar="2" class="block w-6 h-0.5 bg-primary rounded-full transition-all duration-300"></span>
+          <span data-bar="3" class="block w-6 h-0.5 bg-primary rounded-full transition-all duration-300 origin-center"></span>
+        </label>
       </div>
     </div>
   </div>
 </nav>
 
-<!-- Mobile menu -->
-<div id="mobile-menu" class="hidden fixed top-[73px] left-0 right-0 z-[999] bg-[rgba(3,8,16,0.98)] border-b border-[rgba(0,212,255,0.15)] backdrop-blur-xl p-6 flex flex-col gap-2">
-  <a href="#platform" class="text-text-muted py-3 border-b border-[rgba(0,212,255,0.1)] hover:text-primary transition-colors">Plataforma</a>
-  <a href="#channels" class="text-text-muted py-3 border-b border-[rgba(0,212,255,0.1)] hover:text-primary transition-colors">Canales</a>
-  <a href="#mobile" class="text-text-muted py-3 border-b border-[rgba(0,212,255,0.1)] hover:text-primary transition-colors">App Móvil</a>
-  <a href="#ai-agent" class="text-text-muted py-3 border-b border-[rgba(0,212,255,0.1)] hover:text-primary transition-colors">IA 24/7</a>
-  <a href="#analytics" class="text-text-muted py-3 border-b border-[rgba(0,212,255,0.1)] hover:text-primary transition-colors">Analítica</a>
-  <a href="#pricing" class="text-text-muted py-3 hover:text-primary transition-colors">Precios</a>
+<!--
+  Mobile menu.
+  - "hidden"             → display:none by default.
+  - "peer-checked/nav:flex" → display:flex when #nav-cb is checked.
+  - "lg:hidden"          → never shows on large screens even if somehow checked.
+  This works because <input#nav-cb class="peer/nav"> is a preceding sibling of this div.
+-->
+<div class="hidden peer-checked/nav:flex lg:hidden fixed top-[73px] left-0 right-0 z-[999] bg-[rgba(3,8,16,0.98)] border-b border-[rgba(0,212,255,0.15)] backdrop-blur-xl px-6 py-4 flex-col gap-1">
+  <a href="#platform" class="mobile-nav-link text-text-muted py-3 border-b border-[rgba(0,212,255,0.1)] hover:text-primary transition-colors">Plataforma</a>
+  <a href="#channels" class="mobile-nav-link text-text-muted py-3 border-b border-[rgba(0,212,255,0.1)] hover:text-primary transition-colors">Canales</a>
+  <a href="#mobile"   class="mobile-nav-link text-text-muted py-3 border-b border-[rgba(0,212,255,0.1)] hover:text-primary transition-colors">App Móvil</a>
+  <a href="#ai-agent" class="mobile-nav-link text-text-muted py-3 border-b border-[rgba(0,212,255,0.1)] hover:text-primary transition-colors">IA 24/7</a>
+  <a href="#analytics" class="mobile-nav-link text-text-muted py-3 border-b border-[rgba(0,212,255,0.1)] hover:text-primary transition-colors">Analítica</a>
+  <a href="#pricing"  class="mobile-nav-link text-text-muted py-3 border-b border-[rgba(0,212,255,0.1)] hover:text-primary transition-colors">Precios</a>
+  <a href="#demo" class="mobile-nav-link mt-3 btn-primary-glow flex items-center justify-center bg-gradient-to-br from-primary to-secondary text-white font-bold text-[13px] px-5 py-3 rounded-full no-underline shadow-glow-primary">🚀 Solicitar Demo</a>
 </div>
 
+<!--
+  Hamburger → ✕ animation.
+  Uses "#nav-cb:checked ~ nav [data-bar]" because the spans are NESTED inside
+  <nav> (not direct siblings of #nav-cb), so Tailwind peer-checked can't reach them.
+  The CSS ~ sibling combinator selects <nav>, then the space selector drills into it.
+-->
+<style>
+  #nav-cb:checked ~ nav [data-bar="1"] {
+    transform: translateY(6.5px) rotate(45deg);
+  }
+  #nav-cb:checked ~ nav [data-bar="2"] {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  #nav-cb:checked ~ nav [data-bar="3"] {
+    transform: translateY(-6.5px) rotate(-45deg);
+  }
+</style>
+
 <script>
-  // Navbar scroll
+  // Darken navbar on scroll
   window.addEventListener('scroll', () => {
     const navbar = document.getElementById('navbar');
     if (navbar) {
-      if (window.scrollY > 50) {
-        navbar.classList.add('bg-[rgba(3,8,16,0.97)]', 'shadow-[0_4px_30px_rgba(0,0,0,0.5)]');
-      } else {
-        navbar.classList.remove('bg-[rgba(3,8,16,0.97)]', 'shadow-[0_4px_30px_rgba(0,0,0,0.5)]');
-      }
+      navbar.classList.toggle('bg-[rgba(3,8,16,0.97)]', window.scrollY > 50);
+      navbar.classList.toggle('shadow-[0_4px_30px_rgba(0,0,0,0.5)]', window.scrollY > 50);
     }
   });
 
-  // Mobile toggle
-  document.getElementById('nav-toggle')?.addEventListener('click', () => {
-    const menu = document.getElementById('mobile-menu');
-    menu?.classList.toggle('hidden');
+  // Close mobile menu (uncheck the peer checkbox) when a nav link is tapped
+  document.querySelectorAll<HTMLAnchorElement>('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      (document.getElementById('nav-cb') as HTMLInputElement).checked = false;
+    });
   });
 </script>
