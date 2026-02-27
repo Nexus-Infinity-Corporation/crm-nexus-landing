@@ -14,27 +14,9 @@ import Footer from '../components/Footer.astro';
   </div>
 
   <div class="relative z-10">
-    <!-- <Navbar /> -->
-      <div class="flex items-center pt-5 pl-5 md:pt-10 md:pl-10 gap-3 no-underline">
-        <div class="animate-float">
-          <svg width="36" height="36" viewBox="0 0 36 36">
-            <polygon points="18,2 34,10 34,26 18,34 2,26 2,10" fill="none" stroke="url(#lg1)" stroke-width="2"/>
-            <polygon points="18,8 28,13 28,23 18,28 8,23 8,13" fill="rgba(0,212,255,0.1)" stroke="url(#lg1)" stroke-width="1"/>
-            <circle cx="18" cy="18" r="4" fill="url(#lg1)"/>
-            <defs>
-              <linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#00D4FF"/>
-                <stop offset="100%" stop-color="#7B2FFF"/>
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
-        <div>
-          <span class="block font-display text-lg font-black text-primary tracking-[3px] leading-none">NEXUS</span>
-          <span class="block font-mono text-[8px] text-text-muted tracking-[2px] mt-0.5">INFINITY CORPORATION</span>
-        </div>
-      </div>
-    <main class="min-h-screen flex flex-col items-center justify-center pb-24 px-6">
+    <Navbar />
+
+    <main class="min-h-screen flex flex-col items-center justify-center pt-[100px] pb-24 px-6">
 
       <!-- Language toggle -->
       <div class="flex items-center gap-2 mb-8">
@@ -183,8 +165,9 @@ import Footer from '../components/Footer.astro';
         </button>
 
       </div>
-      <!-- Proceed button (hidden until selection, desktop) -->
-      <div id="proceed-wrapper" class="mt-10 transition-all duration-500 hidden md:block" style="opacity:0;transform:translateY(16px);pointer-events:none;">
+
+      <!-- Proceed button (hidden until selection) -->
+      <div id="proceed-wrapper" class="mt-10 transition-all duration-500" style="opacity:0;transform:translateY(16px);pointer-events:none;">
         <a
           id="proceed-btn"
           href="#"
@@ -225,10 +208,6 @@ import Footer from '../components/Footer.astro';
 </BaseLayout>
 
 <script>
-  // ── Shared state (declared first to avoid TDZ in setLang) ─
-  let currentLang: 'en' | 'es' = 'en';
-  let selectedTarget: string | null = null;
-
   // ── Language toggle ───────────────────────────────────────
   const btnEn = document.getElementById('btn-en')!;
   const btnEs = document.getElementById('btn-es')!;
@@ -250,6 +229,7 @@ import Footer from '../components/Footer.astro';
     }
     localStorage.setItem('nxLang', lang);
     currentLang = lang;
+    // Refresh proceed label if a card is already selected
     if (selectedTarget) updateProceedLabel(selectedTarget);
   }
 
@@ -257,7 +237,8 @@ import Footer from '../components/Footer.astro';
   btnEs.addEventListener('click', () => setLang('es'));
 
   const saved = localStorage.getItem('nxLang') as 'en' | 'es' | null;
-  setLang(saved === 'es' ? 'es' : 'en');
+  let currentLang: 'en' | 'es' = saved === 'es' ? 'es' : 'en';
+  setLang(currentLang);
 
   // ── Product card selection ────────────────────────────────
   const cards = document.querySelectorAll<HTMLButtonElement>('.product-card');
@@ -266,27 +247,22 @@ import Footer from '../components/Footer.astro';
   const proceedLabelEn = document.getElementById('proceed-label-en')!;
   const proceedLabelEs = document.getElementById('proceed-label-es')!;
 
+  let selectedTarget: string | null = null;
+
   const productNames: Record<string, { en: string; es: string }> = {
-    '/crm': { en: 'Go to Multichannel CRM', es: 'Ir a CRM Multicanal' },
-    '/erp': { en: 'Go to Enterprise ERP',   es: 'Ir a ERP Empresarial' },
+    '/crm': { en: 'Multichannel CRM', es: 'CRM Multicanal' },
+    '/erp': { en: 'Enterprise ERP',   es: 'ERP Empresarial' },
   };
 
   function updateProceedLabel(target: string) {
     const names = productNames[target];
-    // Desktop proceed button
-    proceedLabelEn.textContent = `${names.en} →`;
-    proceedLabelEs.textContent = `${names.es} →`;
+    proceedLabelEn.textContent = `Go to ${names.en} →`;
+    proceedLabelEs.textContent = `Ir a ${names.es} →`;
   }
 
   cards.forEach((card) => {
     card.addEventListener('click', () => {
       const target = card.dataset.target!;
-
-      // On mobile (proceed button hidden) → navigate immediately
-      if (window.innerWidth < 768) {
-        window.location.href = target;
-        return;
-      }
 
       // Deselect all
       cards.forEach((c) => {
@@ -302,19 +278,19 @@ import Footer from '../components/Footer.astro';
       card.querySelector<HTMLElement>('.card-badge')!.style.opacity = '1';
       card.classList.add('scale-[1.02]');
 
-      // Update labels + hrefs
+      // Update proceed button href + labels
       selectedTarget = target;
       proceedBtn.setAttribute('href', target);
       updateProceedLabel(target);
 
-      // Show desktop proceed wrapper
+      // Show proceed wrapper
       proceedWrapper.style.opacity = '1';
       proceedWrapper.style.transform = 'translateY(0)';
       proceedWrapper.style.pointerEvents = 'auto';
     });
   });
 
-  // Navigation handlers
+  // Proceed button — always navigate via window.location to avoid href="#" fallback
   proceedBtn.addEventListener('click', (e) => {
     e.preventDefault();
     if (selectedTarget) window.location.href = selectedTarget;
