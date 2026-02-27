@@ -1,4 +1,5 @@
 ---
+import DemoForm from './DemoForm';
 ---
 
 <section class="py-[100px] relative" id="demo">
@@ -29,38 +30,7 @@
       <!-- Right: Form -->
       <div class="bg-bg-card border border-[rgba(0,212,255,0.4)] rounded-2xl p-8 shadow-glow-primary">
         <div class="font-display text-[17px] font-bold mb-5 text-center text-primary">Agenda tu Demo Gratis</div>
-        <div class="mb-3.5">
-          <label class="block text-[11px] text-text-muted mb-1.5 font-mono">Nombre completo</label>
-          <input type="text" placeholder="Juan García" class="w-full bg-bg-dark border border-[rgba(0,212,255,0.15)] rounded-lg px-3.5 py-2.5 text-text-base font-body text-[13px] transition-all focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_rgba(0,212,255,0.1)] placeholder:text-text-dim" />
-        </div>
-        <div class="mb-3.5">
-          <label class="block text-[11px] text-text-muted mb-1.5 font-mono">Empresa</label>
-          <input type="text" placeholder="Mi Empresa SA" class="w-full bg-bg-dark border border-[rgba(0,212,255,0.15)] rounded-lg px-3.5 py-2.5 text-text-base font-body text-[13px] transition-all focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_rgba(0,212,255,0.1)] placeholder:text-text-dim" />
-        </div>
-        <div class="mb-3.5">
-          <label class="block text-[11px] text-text-muted mb-1.5 font-mono">Email corporativo</label>
-          <input type="email" placeholder="juan@empresa.com" class="w-full bg-bg-dark border border-[rgba(0,212,255,0.15)] rounded-lg px-3.5 py-2.5 text-text-base font-body text-[13px] transition-all focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_rgba(0,212,255,0.1)] placeholder:text-text-dim" />
-        </div>
-        <div class="mb-3.5">
-          <label class="block text-[11px] text-text-muted mb-1.5 font-mono">Teléfono</label>
-          <input type="tel" placeholder="+1 555 0000" class="w-full bg-bg-dark border border-[rgba(0,212,255,0.15)] rounded-lg px-3.5 py-2.5 text-text-base font-body text-[13px] transition-all focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_rgba(0,212,255,0.1)] placeholder:text-text-dim" />
-        </div>
-        <div class="mb-5">
-          <label class="block text-[11px] text-text-muted mb-1.5 font-mono">¿Cuántos agentes tiene tu equipo?</label>
-          <select class="w-full bg-bg-dark border border-[rgba(0,212,255,0.15)] rounded-lg px-3.5 py-2.5 text-text-base font-body text-[13px] transition-all focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_rgba(0,212,255,0.1)]">
-            <option>1-5 agentes</option>
-            <option>6-20 agentes</option>
-            <option>21-50 agentes</option>
-            <option>50+ agentes</option>
-          </select>
-        </div>
-        <button
-          class="btn-primary-glow w-full flex items-center justify-center gap-2.5 bg-gradient-to-br from-primary to-secondary text-white font-bold text-[15px] px-8 py-[15px] rounded-full border-none cursor-pointer shadow-glow-primary"
-          onclick="alert('¡Gracias! Nos pondremos en contacto en menos de 2 horas. 🚀')"
-        >
-          <span class="relative z-10">🚀 Solicitar Demo Gratuita</span>
-        </button>
-        <p class="text-center text-[11px] text-text-dim mt-2.5">Sin spam. Aceptas nuestra Política de Privacidad.</p>
+        <DemoForm client:load />
       </div>
     </div>
   </div>
