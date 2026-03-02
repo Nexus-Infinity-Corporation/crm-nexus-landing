@@ -1,0 +1,133 @@
+---
+---
+
+<section class="min-h-screen pt-[120px] pb-16 flex flex-col justify-center relative overflow-hidden" id="crm-home">
+  <div class="max-w-[1280px] mx-auto px-6 w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-[60px] items-center py-8 sm:py-[60px]">
+
+      <!-- Left -->
+      <div>
+        <div class="inline-flex items-center gap-2.5 bg-[rgba(0,212,255,0.08)] border border-[rgba(0,212,255,0.3)] px-[18px] py-2 rounded-full mb-7 font-mono text-xs text-primary">
+          <span class="w-2 h-2 bg-primary rounded-full animate-pulse-dot"></span>
+          <span class="t-en">Multichannel CRM · Generative AI 2025</span>
+          <span class="t-es hidden">CRM Multicanal · IA Generativa 2025</span>
+        </div>
+
+        <h1 class="font-display text-[clamp(32px,4vw,60px)] font-black leading-[1.08] text-white mb-6 tracking-[-1px]">
+          <span class="t-en">All your channels,<br/><span class="gradient-text">one unified inbox.</span><br/>Powered by AI.</span>
+          <span class="t-es hidden">Todos tus canales,<br/><span class="gradient-text">una sola bandeja.</span><br/>Automatizado con IA.</span>
+        </h1>
+
+        <p class="text-[15px] sm:text-[17px] text-text-muted leading-[1.75] mb-9 max-w-[520px]">
+          <span class="t-en">Facebook, Instagram, TikTok, WhatsApp, Mobile App, Email & SMS — unified with a <strong class="text-primary">360°</strong> view of every customer and AI agents working <strong class="text-primary">24/7</strong>.</span>
+          <span class="t-es hidden">Facebook, Instagram, TikTok, WhatsApp, App Móvil, Email y SMS — unificados con vista <strong class="text-primary">360°</strong> de cada cliente y agentes IA que trabajan <strong class="text-primary">24/7</strong>.</span>
+        </p>
+
+        <div class="flex gap-3 flex-wrap mb-10">
+          <a href="#crm-demo" class="btn-primary-glow inline-flex items-center gap-2.5 bg-gradient-to-br from-primary to-secondary text-white font-bold text-[15px] px-8 py-[14px] rounded-full border-none cursor-pointer no-underline shadow-glow-primary">
+            <span class="relative z-10 t-en">🚀 Request Free Demo</span>
+            <span class="relative z-10 t-es hidden">🚀 Solicitar Demo Gratis</span>
+          </a>
+          <a href="#crm-channels" class="inline-flex items-center gap-2.5 bg-transparent text-primary font-semibold text-[15px] px-8 py-[13px] rounded-full border border-[rgba(0,212,255,0.4)] cursor-pointer no-underline transition-all hover:bg-[rgba(0,212,255,0.08)] hover:translate-y-[-2px]">
+            <span class="t-en">▶ View Channels</span>
+            <span class="t-es hidden">▶ Ver Canales</span>
+          </a>
+          <a href="#pricing" class="inline-flex items-center gap-2 bg-transparent text-text-muted font-semibold text-[15px] px-8 py-[13px] rounded-full border border-[rgba(255,255,255,0.12)] cursor-pointer no-underline transition-all hover:text-primary hover:border-[rgba(0,212,255,0.4)] hover:translate-y-[-2px]">
+            <span class="t-en">💳 View Pricing</span>
+            <span class="t-es hidden">💳 Ver Precios</span>
+          </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="flex items-center gap-4 sm:gap-6 flex-wrap">
+          {[
+            { num: '500',  suf: '+',   en: 'Companies',   es: 'Empresas' },
+            { num: '10',   suf: 'M+',  en: 'Messages/mo', es: 'Mensajes/mes' },
+            { num: '99',   suf: '%',   en: 'Uptime',      es: 'Uptime' },
+            { num: '4',    suf: '.9★', en: 'Rating',      es: 'Rating' },
+          ].map((s, i) => (
+            <>
+              {i > 0 && <div class="hidden sm:block w-px h-10 bg-[rgba(0,212,255,0.15)]"></div>}
+              <div class="text-center">
+                <div class="flex items-baseline">
+                  <span class="font-display text-[28px] font-bold text-primary leading-none">{s.num}</span>
+                  <span class="font-display text-lg text-text-muted">{s.suf}</span>
+                </div>
+                <span class="block text-xs text-text-dim mt-1 font-mono t-en">{s.en}</span>
+                <span class="block text-xs text-text-dim mt-1 font-mono t-es hidden">{s.es}</span>
+              </div>
+            </>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right: Unified Inbox mockup -->
+      <div class="bg-bg-card border border-[rgba(0,212,255,0.15)] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+        <!-- Window bar -->
+        <div class="flex items-center gap-1.5 px-3.5 py-2.5 bg-bg-card2 border-b border-[rgba(0,212,255,0.15)]">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#FF5F57]"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-[#FEBC2E]"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-[#28C840]"></span>
+          <span class="ml-2.5 font-mono text-[11px] text-text-muted">
+            <span class="t-en">Nexus CRM · Unified Inbox</span>
+            <span class="t-es hidden">Nexus CRM · Bandeja Unificada</span>
+          </span>
+          <span class="ml-auto font-mono text-[10px] text-accent2 animate-pulse-dot">● LIVE</span>
+        </div>
+        <!-- Body -->
+        <div class="flex h-[340px]">
+          <!-- Sidebar -->
+          <div class="w-[90px] sm:w-[120px] p-2 border-r border-[rgba(0,212,255,0.15)] flex-shrink-0">
+            {[
+              { icon: '💬', en: 'All',       es: 'Todos',     count: 47, active: true },
+              { icon: '📘', en: 'Facebook',  es: 'Facebook',  count: 12 },
+              { icon: '📸', en: 'Instagram', es: 'Instagram', count: 19 },
+              { icon: '🎵', en: 'TikTok',    es: 'TikTok',    count: 8  },
+              { icon: '📱', en: 'Mobile',    es: 'App Móvil', count: 5  },
+              { icon: '📧', en: 'Email',     es: 'Email',     count: 3  },
+            ].map(item => (
+              <div class={`flex items-center gap-1.5 text-[10px] sm:text-[11px] px-1.5 sm:px-2 py-[7px] rounded-md cursor-pointer mb-0.5 transition-all ${item.active ? 'bg-[rgba(0,212,255,0.08)] text-primary' : 'text-text-muted hover:bg-[rgba(0,212,255,0.08)] hover:text-primary'}`}>
+                <span>{item.icon}</span>
+                <span class="t-en">{item.en}</span>
+                <span class="t-es hidden">{item.es}</span>
+                <span class="ml-auto bg-primary text-black text-[9px] font-bold px-[5px] py-px rounded-full b-cnt">{item.count}</span>
+              </div>
+            ))}
+          </div>
+          <!-- Conversations -->
+          <div class="flex-1 overflow-y-auto">
+            {[
+              { ini: 'JM', grad: 'from-[#1877F2] to-[#0a5ec0]', name: 'Juan Martínez', ch: 'FB',  chCl: 'text-[#1877F2] bg-[rgba(24,119,242,0.2)]',  en: 'Need info on the enterprise plan...', es: 'Necesito info del plan empresarial...', time: '2m',    badge: '3', active: true },
+              { ini: 'AM', grad: 'from-[#E1306C] to-[#833AB4]', name: 'Ana M.',         ch: 'IG',  chCl: 'text-[#E1306C] bg-[rgba(225,48,108,0.2)]',  en: 'Do you have Shopify integration?',    es: '¿Tienen integración con Shopify?',    time: '5m',    tag: '🔥 Hot', tagCl: 'bg-[rgba(255,45,120,0.15)] text-accent' },
+              { ini: 'CR', grad: 'from-[#010101] to-[#69C9D0]', name: 'Carlos R.',      ch: 'TT',  chCl: 'text-[#69C9D0] bg-[rgba(105,201,208,0.2)]', en: 'Saw your video, want more info...',    es: 'Vi tu video y quiero más info...',    time: '12m' },
+              { ini: 'SL', grad: 'from-primary to-secondary',   name: 'Sofia L.',       ch: 'APP', chCl: 'text-primary bg-[rgba(0,212,255,0.2)]',      en: 'Call on hold · 00:42',                es: 'Llamada en espera · 00:42',           time_en: 'Now', time_es: 'Ahora', tag: '📞', tagCl: 'bg-[rgba(0,255,179,0.15)] text-accent2' },
+              { ini: 'MP', grad: 'from-[#25D366] to-[#128C7E]', name: 'Miguel P.',      ch: 'WA',  chCl: 'text-[#25D366] bg-[rgba(37,211,102,0.2)]',  en: 'Perfect, proceeding with payment ✓',  es: 'Perfecto, procedo con el pago ✓',    time: '1h',    tag: '✓',       tagCl: 'bg-[rgba(0,255,179,0.1)] text-accent2' },
+            ].map(conv => (
+              <div class={`flex items-center gap-2 px-3 py-2.5 border-b border-[rgba(0,212,255,0.08)] cursor-pointer transition-all hover:bg-[rgba(0,212,255,0.05)] ${conv.active ? 'bg-[rgba(0,212,255,0.05)]' : ''}`}>
+                <div class={`w-[34px] h-[34px] rounded-full flex items-center justify-center text-[11px] font-bold flex-shrink-0 bg-gradient-to-br ${conv.grad}`}>{conv.ini}</div>
+                <div class="flex-1 min-w-0">
+                  <div class="text-xs font-semibold flex items-center gap-1.5">
+                    {conv.name}
+                    <span class={`font-mono text-[9px] font-bold px-1 py-px rounded-sm ${conv.chCl}`}>{conv.ch}</span>
+                  </div>
+                  <div class="text-[10px] text-text-dim mt-0.5 truncate t-en">{conv.en}</div>
+                  <div class="text-[10px] text-text-dim mt-0.5 truncate t-es hidden">{conv.es}</div>
+                </div>
+                <div class="flex flex-col items-end gap-0.5 flex-shrink-0">
+                  <span class="text-[10px] text-text-dim">
+                    {conv.time_en
+                      ? <><span class="t-en">{conv.time_en}</span><span class="t-es hidden">{conv.time_es}</span></>
+                      : conv.time}
+                  </span>
+                  {conv.badge && <span class="w-4 h-4 bg-primary text-black text-[9px] font-bold rounded-full flex items-center justify-center b-cnt">{conv.badge}</span>}
+                  {conv.tag && <span class={`font-mono text-[8px] px-1 py-px rounded-full ${conv.tagCl}`}>{conv.tag}</span>}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

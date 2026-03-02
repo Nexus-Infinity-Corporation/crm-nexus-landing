@@ -1,15 +1,17 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Navbar from '../components/Navbar.astro';
-import CRMHero from '../components/CRMHero.astro';
-import CRMChannels from '../components/CRMChannels.astro';
-import CRMAutomation from '../components/CRMAutomation.astro';
-import CRMAnalyticsPricing from '../components/CRMAnalyticsPricing.astro';
-import Demo from '../components/Demo.astro';
-import Footer from '../components/Footer.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Navbar from '@/components/Navbar.astro';
+import CRMHero from '@/components/crm/CRMHero.astro';
+import CRMChannels from '@/components/crm/CRMChannels.astro';
+import CRMPricing from '@/components/crm/CRMPricing.astro';
+import Demo from '@/components/Demo.astro';
+import Footer from '@/components/Footer.astro';
 ---
 
-<BaseLayout title="Nexus CRM — CRM Multicanal con IA">
+<BaseLayout
+  title="Nexus CRM — CRM Multicanal con Inteligencia Artificial"
+  description="Nexus CRM: gestiona Facebook, Instagram, TikTok, WhatsApp y más desde un panel unificado. Agentes de IA que atienden y convierten clientes 24/7 sin intervención humana."
+>
   <!-- Fixed Background Effects -->
   <div class="bg-grid-pattern fixed top-0 left-0 w-full h-full pointer-events-none z-0"></div>
   <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
@@ -24,8 +26,9 @@ import Footer from '../components/Footer.astro';
     <main>
       <CRMHero />
       <CRMChannels />
-      <CRMAutomation />
-      <CRMAnalyticsPricing />
+      <!-- <CRMAutomation /> -->
+      <!-- <CRMAnalyticsPricing /> -->
+      <CRMPricing />
       <Demo />
     </main>
     <Footer />
@@ -33,6 +36,34 @@ import Footer from '../components/Footer.astro';
 </BaseLayout>
 
 <script>
+  // ── Language toggle (same pattern as index.astro) ────────────────
+  const btnEn = document.getElementById('btn-en')!;
+  const btnEs = document.getElementById('btn-es')!;
+
+  function setLang(lang: 'en' | 'es') {
+    const show = lang === 'en' ? '.t-en' : '.t-es';
+    const hide = lang === 'en' ? '.t-es' : '.t-en';
+    document.querySelectorAll<HTMLElement>(show).forEach(el => el.classList.remove('hidden'));
+    document.querySelectorAll<HTMLElement>(hide).forEach(el => el.classList.add('hidden'));
+    const active = 'lang-btn font-mono text-[11px] tracking-[2px] uppercase px-3 py-1 rounded-full border transition-all bg-[rgba(0,212,255,0.12)] border-primary text-primary';
+    const idle   = 'lang-btn font-mono text-[11px] tracking-[2px] uppercase px-3 py-1 rounded-full border transition-all bg-transparent border-[rgba(0,212,255,0.2)] text-text-muted';
+    if (btnEn && btnEs) {
+      btnEn.className = lang === 'en' ? active : idle;
+      btnEs.className = lang === 'es' ? active : idle;
+    }
+    localStorage.setItem('nxLang', lang);
+  }
+
+  if (btnEn) btnEn.addEventListener('click', () => setLang('en'));
+  if (btnEs) btnEs.addEventListener('click', () => setLang('es'));
+
+  // Show lang toggle in navbar (hidden by default)
+  const langToggle = document.getElementById('lang-toggle');
+  if (langToggle) langToggle.classList.replace('hidden', 'flex');
+
+  const saved = localStorage.getItem('nxLang') as 'en' | 'es' | null;
+  setLang(saved === 'es' ? 'es' : 'en');
+
   const observer = new IntersectionObserver(
     (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
     { threshold: 0.1 }

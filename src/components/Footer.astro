@@ -22,7 +22,10 @@
             <span class="block font-mono text-[8px] text-text-muted tracking-[2px] mt-0.5">INFINITY CORPORATION</span>
           </div>
         </a>
-        <p class="text-[13px] text-text-muted leading-[1.7] mb-[18px] max-w-[260px]">La plataforma CRM+IA multicanal más avanzada para empresas que quieren crecer sin límites.</p>
+        <p class="text-[13px] text-text-muted leading-[1.7] mb-[18px] max-w-[260px]">
+          <span class="t-en">The most advanced Enterprise ERP &amp; Multichannel CRM+AI platform for companies that want to grow without limits.</span>
+          <span class="t-es hidden">La plataforma de ERP Empresarial, CRM+IA multicanal más avanzada para empresas que quieren crecer sin límites.</span>
+        </p>
         <div class="flex gap-2.5">
           {['📘','📸','🎵','💼'].map(icon => (
             <a href="#" class="w-9 h-9 rounded-lg bg-bg-dark border border-[rgba(0,212,255,0.15)] flex items-center justify-center text-[15px] no-underline transition-all hover:border-[rgba(0,212,255,0.4)] hover:-translate-y-0.5">{icon}</a>
@@ -33,29 +36,70 @@
       <!-- Links Grid -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-[26px]">
         {[
-          { title: 'Plataforma', links: ['CRM Multicanal','App Móvil','Agente IA 24/7','Llamadas VoIP','Analítica'] },
-          { title: 'Canales', links: ['Facebook','Instagram','TikTok','WhatsApp API','Email & SMS'] },
-          { title: 'Empresa', links: ['Sobre Nosotros','Casos de Éxito','Blog','Carreras','Partners'] },
-          { title: 'Soporte', links: ['Documentación','API Reference','Status Sistema','Centro de Ayuda','Contacto'] },
+          { title_en: 'Platform',  title_es: 'Plataforma', links_en: ['Multichannel CRM','Mobile App','AI Agent 24/7','VoIP Calls','Analytics'],        links_es: ['CRM Multicanal','App Móvil','Agente IA 24/7','Llamadas VoIP','Analítica'] },
+          { title_en: 'Channels',  title_es: 'Canales',    links_en: ['Facebook','Instagram','TikTok','WhatsApp API','Email & SMS'],                     links_es: ['Facebook','Instagram','TikTok','WhatsApp API','Email & SMS'] },
+          { title_en: 'Company',   title_es: 'Empresa',    links_en: ['About Us','Case Studies','Blog','Careers','Partners'],                            links_es: ['Sobre Nosotros','Casos de Éxito','Blog','Carreras','Partners'] },
+          { title_en: 'Support',   title_es: 'Soporte',    links_en: ['Documentation','API Reference','System Status','Help Center','Contact'],          links_es: ['Documentación','API Reference','Status Sistema','Centro de Ayuda','Contacto'] },
         ].map(col => (
           <div>
-            <h5 class="font-display text-[10px] tracking-[2px] text-primary mb-3.5">{col.title}</h5>
-            {col.links.map(link => (
-              <a href="#" class="block text-xs text-text-muted no-underline mb-1.5 transition-colors hover:text-primary">{link}</a>
+            <h5 class="font-display text-[10px] tracking-[2px] text-primary mb-3.5">
+              <span class="t-en">{col.title_en}</span>
+              <span class="t-es hidden">{col.title_es}</span>
+            </h5>
+            {col.links_en.map((link, idx) => (
+              <a href="#" class="block text-xs text-text-muted no-underline mb-1.5 transition-colors hover:text-primary">
+                <span class="t-en">{link}</span>
+                <span class="t-es hidden">{col.links_es[idx]}</span>
+              </a>
             ))}
           </div>
         ))}
       </div>
     </div>
 
+    <!-- Global Presence -->
+    <div class="mb-8 pb-8 border-b border-[rgba(0,212,255,0.15)]">
+      <h5 class="font-display text-[10px] tracking-[2px] text-primary mb-4 text-center">
+        <span class="t-en">GLOBAL PRESENCE</span>
+        <span class="t-es hidden">PRESENCIA GLOBAL</span>
+      </h5>
+      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[12px] text-text-muted">
+        <a href="#" class="t-en">🌎 North America</a>
+        <a href="#" class="t-es hidden">🌎 América del Norte</a>
+        <a class="opacity-30">•</a>
+        <a href="#" class="t-en">🌎 Central America</a>
+        <a href="#" class="t-es hidden">🌎 América Central</a>
+        <a class="opacity-30">•</a>
+        <a href="#" class="t-en">🌎 The Caribbean</a>
+        <a href="#" class="t-es hidden">🌎 El Caribe</a>
+        <span class="opacity-30">•</span>
+        <a href="#" class="t-en">🌎 South America</a>
+        <a href="#" class="t-es hidden">🌎 América del Sur</a>
+        <span class="opacity-30">•</span>
+        <a href="#" class="t-en">🌍 European Countries</a>
+        <a href="#" class="t-es hidden">🌍 Países de Europa</a>
+      </div>
+    </div>
+
     <!-- Bottom -->
     <div class="flex flex-col md:flex-row items-center justify-between pt-5 border-t border-[rgba(0,212,255,0.15)] gap-3.5 flex-wrap">
       <div class="flex gap-[18px]">
-        {['Privacidad','Términos','GDPR','Cookies'].map(l => (
-          <a href="#" class="text-[11px] text-text-dim no-underline transition-colors hover:text-primary">{l}</a>
+        {[
+          { en: 'Privacy',  es: 'Privacidad' },
+          { en: 'Terms',    es: 'Términos' },
+          { en: 'GDPR',     es: 'GDPR' },
+          { en: 'Cookies',  es: 'Cookies' },
+        ].map(l => (
+          <a href="#" class="text-[11px] text-text-dim no-underline transition-colors hover:text-primary">
+            <span class="t-en">{l.en}</span>
+            <span class="t-es hidden">{l.es}</span>
+          </a>
         ))}
       </div>
-      <p class="text-[11px] text-text-dim">© 2025 Nexus Infinity Corporation. Todos los derechos reservados.</p>
+      <p class="text-[11px] text-text-dim">
+        <span class="t-en">© 2026 Nexus Infinity Corporation. All rights reserved.</span>
+        <span class="t-es hidden">© 2026 Nexus Infinity Corporation. Todos los derechos reservados.</span>
+      </p>
       <div class="flex items-center gap-2.5">
         <span class="font-mono text-[9px] text-text-dim bg-bg-dark border border-[rgba(0,212,255,0.15)] px-1.5 py-0.5 rounded">🔒 SSL</span>
         <span class="font-mono text-[9px] text-text-dim bg-bg-dark border border-[rgba(0,212,255,0.15)] px-1.5 py-0.5 rounded">✓ SOC2</span>
