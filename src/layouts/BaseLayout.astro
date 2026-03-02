@@ -3,9 +3,17 @@ import '../styles/global.css';
 
 export interface Props {
   title?: string;
+  description?: string;
+  canonicalUrl?: string;
 }
 
-const { title = 'Nexus Infinity Corporation — CRM + IA Multicanal' } = Astro.props;
+const {
+  title = 'Nexus Infinity Corporation — CRM + IA Multicanal',
+  description = 'Nexus Infinity Corporation — Plataforma CRM + ERP con Inteligencia Artificial. Gestiona clientes, canales, inventario y finanzas desde un solo lugar.',
+  canonicalUrl,
+} = Astro.props;
+
+const canonical = canonicalUrl ?? Astro.url.href;
 ---
 
 <!DOCTYPE html>
@@ -13,7 +21,22 @@ const { title = 'Nexus Infinity Corporation — CRM + IA Multicanal' } = Astro.p
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="content-language" content="es" />
     <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Canonical & hreflang -->
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="es" href={canonical} />
+    <link rel="alternate" hreflang="x-default" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap"

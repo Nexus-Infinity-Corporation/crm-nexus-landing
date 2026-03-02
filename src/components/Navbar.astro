@@ -34,27 +34,47 @@
 
       <!-- Nav Links (desktop only) -->
       <ul class="hidden lg:flex list-none gap-2 ml-auto">
-        <li><a href="#platform" class="flex items-center gap-1 text-text-muted no-underline text-sm px-3.5 py-2 rounded-lg transition-all hover:text-primary hover:bg-[rgba(0,212,255,0.06)]">Plataforma</a></li>
+        <li><a href="#platform" class="flex items-center gap-1 text-text-muted no-underline text-sm px-3.5 py-2 rounded-lg transition-all hover:text-primary hover:bg-[rgba(0,212,255,0.06)]">
+          <span class="t-en">Platform</span><span class="t-es hidden">Plataforma</span>
+        </a></li>
         <li class="relative has-dropdown">
-          <a href="#channels" class="flex items-center gap-1 text-text-muted no-underline text-sm px-3.5 py-2 rounded-lg transition-all hover:text-primary hover:bg-[rgba(0,212,255,0.06)]">Canales ▾</a>
+          <a href="#channels" class="flex items-center gap-1 text-text-muted no-underline text-sm px-3.5 py-2 rounded-lg transition-all hover:text-primary hover:bg-[rgba(0,212,255,0.06)]">
+            <span class="t-en">Channels ▾</span><span class="t-es hidden">Canales ▾</span>
+          </a>
           <div class="dropdown-menu absolute top-[calc(100%+10px)] left-1/2 bg-bg-card2 border border-[rgba(0,212,255,0.15)] rounded-lg p-2 min-w-[200px] shadow-[0_20px_40px_rgba(0,0,0,0.5)]">
             <a href="#channels" class="flex items-center gap-2.5 px-3.5 py-2.5 rounded-md text-sm text-text-muted hover:text-primary hover:bg-[rgba(0,212,255,0.06)] transition-all"><span>📘</span> Facebook & Instagram</a>
             <a href="#channels" class="flex items-center gap-2.5 px-3.5 py-2.5 rounded-md text-sm text-text-muted hover:text-primary hover:bg-[rgba(0,212,255,0.06)] transition-all"><span>🎵</span> TikTok</a>
-            <a href="#mobile" class="flex items-center gap-2.5 px-3.5 py-2.5 rounded-md text-sm text-text-muted hover:text-primary hover:bg-[rgba(0,212,255,0.06)] transition-all"><span>📱</span> App Móvil</a>
+            <a href="#mobile" class="flex items-center gap-2.5 px-3.5 py-2.5 rounded-md text-sm text-text-muted hover:text-primary hover:bg-[rgba(0,212,255,0.06)] transition-all"><span>📱</span> <span class="t-en">Mobile App</span><span class="t-es hidden">App Móvil</span></a>
             <a href="#channels" class="flex items-center gap-2.5 px-3.5 py-2.5 rounded-md text-sm text-text-muted hover:text-primary hover:bg-[rgba(0,212,255,0.06)] transition-all"><span>💬</span> WhatsApp</a>
           </div>
         </li>
-        <li><a href="#mobile" class="flex items-center gap-1 text-text-muted no-underline text-sm px-3.5 py-2 rounded-lg transition-all hover:text-primary hover:bg-[rgba(0,212,255,0.06)]">App Móvil</a></li>
-        <li><a href="#ai-agent" class="flex items-center gap-1 text-text-muted no-underline text-sm px-3.5 py-2 rounded-lg transition-all hover:text-primary hover:bg-[rgba(0,212,255,0.06)]">IA 24/7</a></li>
-        <li><a href="#analytics" class="flex items-center gap-1 text-text-muted no-underline text-sm px-3.5 py-2 rounded-lg transition-all hover:text-primary hover:bg-[rgba(0,212,255,0.06)]">Analítica</a></li>
-        <li><a href="#pricing" class="flex items-center gap-1 text-text-muted no-underline text-sm px-3.5 py-2 rounded-lg transition-all hover:text-primary hover:bg-[rgba(0,212,255,0.06)]">Precios</a></li>
+        <li><a href="#mobile" class="flex items-center gap-1 text-text-muted no-underline text-sm px-3.5 py-2 rounded-lg transition-all hover:text-primary hover:bg-[rgba(0,212,255,0.06)]">
+          <span class="t-en">Mobile App</span><span class="t-es hidden">App Móvil</span>
+        </a></li>
+        <li><a href="#ai-agent" class="flex items-center gap-1 text-text-muted no-underline text-sm px-3.5 py-2 rounded-lg transition-all hover:text-primary hover:bg-[rgba(0,212,255,0.06)]">
+          <span class="t-en">AI 24/7</span><span class="t-es hidden">IA 24/7</span>
+        </a></li>
+        <li><a href="#analytics" class="flex items-center gap-1 text-text-muted no-underline text-sm px-3.5 py-2 rounded-lg transition-all hover:text-primary hover:bg-[rgba(0,212,255,0.06)]">
+          <span class="t-en">Analytics</span><span class="t-es hidden">Analítica</span>
+        </a></li>
+        <li><a href="#pricing" class="flex items-center gap-1 text-text-muted no-underline text-sm px-3.5 py-2 rounded-lg transition-all hover:text-primary hover:bg-[rgba(0,212,255,0.06)]">
+          <span class="t-en">Pricing</span><span class="t-es hidden">Precios</span>
+        </a></li>
       </ul>
 
       <!-- CTA Buttons + Hamburger -->
       <div class="flex items-center gap-2.5 ml-auto lg:ml-0">
-        <a href="#demo" class="hidden sm:inline-flex items-center gap-2.5 bg-transparent text-primary font-semibold text-[13px] px-5 py-2.5 rounded-full border border-[rgba(0,212,255,0.4)] cursor-pointer no-underline transition-all hover:bg-[rgba(0,212,255,0.08)] hover:translate-y-[-2px] hover:shadow-glow-primary">Ver Demo</a>
+        <!-- Language toggle (only shown on CRM/ERP pages) -->
+        <div id="lang-toggle" class="hidden items-center gap-1.5">
+          <button id="btn-en" class="lang-btn font-mono text-[11px] tracking-[2px] uppercase px-3 py-1 rounded-full border transition-all bg-[rgba(0,212,255,0.12)] border-primary text-primary">EN</button>
+          <button id="btn-es" class="lang-btn font-mono text-[11px] tracking-[2px] uppercase px-3 py-1 rounded-full border transition-all bg-transparent border-[rgba(0,212,255,0.2)] text-text-muted">ES</button>
+        </div>
+        <a href="#demo" class="hidden sm:inline-flex items-center gap-2.5 bg-transparent text-primary font-semibold text-[13px] px-5 py-2.5 rounded-full border border-[rgba(0,212,255,0.4)] cursor-pointer no-underline transition-all hover:bg-[rgba(0,212,255,0.08)] hover:translate-y-[-2px] hover:shadow-glow-primary">
+          <span class="t-en">View Demo</span><span class="t-es hidden">Ver Demo</span>
+        </a>
         <a href="#demo" class="btn-primary-glow inline-flex items-center gap-2.5 bg-gradient-to-br from-primary to-secondary text-white font-bold text-[13px] px-5 py-2.5 rounded-full border-none cursor-pointer no-underline shadow-glow-primary">
-          <span class="relative z-10">Empezar Gratis</span>
+          <span class="relative z-10 t-en">Start Free</span>
+          <span class="relative z-10 t-es hidden">Empezar Gratis</span>
         </a>
         <!--
           Hamburger <label> — clicking this toggles #nav-cb.
@@ -79,13 +99,28 @@
   This works because <input#nav-cb class="peer/nav"> is a preceding sibling of this div.
 -->
 <div class="hidden peer-checked/nav:flex lg:hidden fixed top-[73px] left-0 right-0 z-[999] bg-[rgba(3,8,16,0.98)] border-b border-[rgba(0,212,255,0.15)] backdrop-blur-xl px-6 py-4 flex-col gap-1">
-  <a href="#platform" class="mobile-nav-link text-text-muted py-3 border-b border-[rgba(0,212,255,0.1)] hover:text-primary transition-colors">Plataforma</a>
-  <a href="#channels" class="mobile-nav-link text-text-muted py-3 border-b border-[rgba(0,212,255,0.1)] hover:text-primary transition-colors">Canales</a>
-  <a href="#mobile"   class="mobile-nav-link text-text-muted py-3 border-b border-[rgba(0,212,255,0.1)] hover:text-primary transition-colors">App Móvil</a>
-  <a href="#ai-agent" class="mobile-nav-link text-text-muted py-3 border-b border-[rgba(0,212,255,0.1)] hover:text-primary transition-colors">IA 24/7</a>
-  <a href="#analytics" class="mobile-nav-link text-text-muted py-3 border-b border-[rgba(0,212,255,0.1)] hover:text-primary transition-colors">Analítica</a>
-  <a href="#pricing"  class="mobile-nav-link text-text-muted py-3 border-b border-[rgba(0,212,255,0.1)] hover:text-primary transition-colors">Precios</a>
-  <a href="#demo" class="mobile-nav-link mt-3 btn-primary-glow flex items-center justify-center bg-gradient-to-br from-primary to-secondary text-white font-bold text-[13px] px-5 py-3 rounded-full no-underline shadow-glow-primary">🚀 Solicitar Demo</a>
+  <a href="#platform" class="mobile-nav-link text-text-muted py-3 border-b border-[rgba(0,212,255,0.1)] hover:text-primary transition-colors">
+    <span class="t-en">Platform</span><span class="t-es hidden">Plataforma</span>
+  </a>
+  <a href="#channels" class="mobile-nav-link text-text-muted py-3 border-b border-[rgba(0,212,255,0.1)] hover:text-primary transition-colors">
+    <span class="t-en">Channels</span><span class="t-es hidden">Canales</span>
+  </a>
+  <a href="#mobile"   class="mobile-nav-link text-text-muted py-3 border-b border-[rgba(0,212,255,0.1)] hover:text-primary transition-colors">
+    <span class="t-en">Mobile App</span><span class="t-es hidden">App Móvil</span>
+  </a>
+  <a href="#ai-agent" class="mobile-nav-link text-text-muted py-3 border-b border-[rgba(0,212,255,0.1)] hover:text-primary transition-colors">
+    <span class="t-en">AI 24/7</span><span class="t-es hidden">IA 24/7</span>
+  </a>
+  <a href="#analytics" class="mobile-nav-link text-text-muted py-3 border-b border-[rgba(0,212,255,0.1)] hover:text-primary transition-colors">
+    <span class="t-en">Analytics</span><span class="t-es hidden">Analítica</span>
+  </a>
+  <a href="#pricing"  class="mobile-nav-link text-text-muted py-3 border-b border-[rgba(0,212,255,0.1)] hover:text-primary transition-colors">
+    <span class="t-en">Pricing</span><span class="t-es hidden">Precios</span>
+  </a>
+  <a href="#demo" class="mobile-nav-link mt-3 btn-primary-glow flex items-center justify-center bg-gradient-to-br from-primary to-secondary text-white font-bold text-[13px] px-5 py-3 rounded-full no-underline shadow-glow-primary">
+    <span class="t-en">🚀 Request Demo</span>
+    <span class="t-es hidden">🚀 Solicitar Demo</span>
+  </a>
 </div>
 
 <!--
