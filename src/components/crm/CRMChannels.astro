@@ -1,11 +1,11 @@
 ---
 const channels = [
-  { icon: '📘', bg: '#1877F2',                                        name: 'Facebook',   items: ['Messenger', 'Comentarios', 'Lead Ads'] },
-  { icon: '📸', bg: 'linear-gradient(135deg,#833AB4,#E1306C,#F77737)', name: 'Instagram',  items: ['DMs', 'Comentarios', 'Story Replies'] },
-  { icon: '🎵', bg: '#010101',                                        name: 'TikTok',     items: ['Mensajes directos', 'Comentarios', 'LIVE'] },
-  { icon: '📱', bg: 'linear-gradient(135deg,#00D4FF,#7B2FFF)',        name: 'App Móvil',  items: ['Chat In-App', 'VoIP Calls', 'Push Notifs'] },
-  { icon: '💬', bg: '#25D366',                                        name: 'WhatsApp',   items: ['API Oficial', 'Broadcast', 'Templates'] },
-  { icon: '📧', bg: '#EA4335',                                        name: 'Email & SMS',items: ['Campañas', 'Transaccional', 'Automatización'] },
+  { icon: '📘', bg: '#1877F2',                                        name: 'Facebook',   items_en: ['Messenger', 'Comments', 'Lead Ads'],          items_es: ['Messenger', 'Comentarios', 'Lead Ads'] },
+  { icon: '📸', bg: 'linear-gradient(135deg,#833AB4,#E1306C,#F77737)', name: 'Instagram',  items_en: ['DMs', 'Comments', 'Story Replies'],            items_es: ['DMs', 'Comentarios', 'Story Replies'] },
+  { icon: '🎵', bg: '#010101',                                        name: 'TikTok',     items_en: ['Direct Messages', 'Comments', 'LIVE'],         items_es: ['Mensajes directos', 'Comentarios', 'LIVE'] },
+  { icon: '📱', bg: 'linear-gradient(135deg,#00D4FF,#7B2FFF)',        name_en: 'Mobile App', name_es: 'App Móvil', items_en: ['In-App Chat', 'VoIP Calls', 'Push Notifs'], items_es: ['Chat In-App', 'VoIP Calls', 'Push Notifs'] },
+  { icon: '💬', bg: '#25D366',                                        name: 'WhatsApp',   items_en: ['Official API', 'Broadcast', 'Templates'],      items_es: ['API Oficial', 'Broadcast', 'Templates'] },
+  { icon: '📧', bg: '#EA4335',                                        name: 'Email & SMS',items_en: ['Campaigns', 'Transactional', 'Automation'],    items_es: ['Campañas', 'Transaccional', 'Automatización'] },
 ];
 ---
 
@@ -15,13 +15,16 @@ const channels = [
     <div class="text-center mb-10 sm:mb-14">
       <div class="inline-flex items-center gap-2 font-mono text-[11px] tracking-[3px] text-primary uppercase bg-[rgba(0,212,255,0.08)] border border-[rgba(0,212,255,0.4)] px-4 py-1.5 rounded-full mb-5">
         <span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse-dot"></span>
-        Canales Integrados
+        <span class="t-en">Integrated Channels</span>
+        <span class="t-es hidden">Canales Integrados</span>
       </div>
       <h2 class="font-display text-[clamp(32px,4vw,52px)] font-bold leading-[1.1] gradient-text mb-5">
-        Donde están tus clientes,<br/>Nexus está presente
+        <span class="t-en">Where your customers are,<br/>Nexus is there</span>
+        <span class="t-es hidden">Donde están tus clientes,<br/>Nexus está presente</span>
       </h2>
       <p class="text-lg text-text-muted max-w-[560px] mx-auto leading-[1.7]">
-        Todos los canales responden desde una sola bandeja — sin cambiar de pestaña, sin perder contexto.
+        <span class="t-en">All channels respond from one inbox — no tab switching, no lost context.</span>
+        <span class="t-es hidden">Todos los canales responden desde una sola bandeja — sin cambiar de pestaña, sin perder contexto.</span>
       </p>
     </div>
 
@@ -30,9 +33,16 @@ const channels = [
       {channels.map(ch => (
         <div class="observe-anim bg-bg-card border border-[rgba(0,212,255,0.15)] rounded-2xl p-5 text-center transition-all hover:border-[rgba(0,212,255,0.4)] hover:-translate-y-1 hover:shadow-glow-primary">
           <div class="w-[48px] h-[48px] rounded-xl flex items-center justify-center text-2xl mx-auto mb-3" style={`background:${ch.bg}`}>{ch.icon}</div>
-          <h4 class="font-display text-xs mb-2">{ch.name}</h4>
+          <h4 class="font-display text-xs mb-2">
+            {ch.name_en ? <><span class="t-en">{ch.name_en}</span><span class="t-es hidden">{ch.name_es}</span></> : ch.name}
+          </h4>
           <ul class="list-none flex flex-col gap-0.5">
-            {ch.items.map(item => <li class="text-[10px] text-text-muted">{item}</li>)}
+            {(ch.items_en ?? []).map((itemEn, idx) => (
+              <li class="text-[10px] text-text-muted">
+                <span class="t-en">{itemEn}</span>
+                <span class="t-es hidden">{(ch.items_es ?? [])[idx]}</span>
+              </li>
+            ))}
           </ul>
         </div>
       ))}
@@ -44,26 +54,35 @@ const channels = [
       <div>
         <div class="inline-flex items-center gap-2 font-mono text-[11px] tracking-[3px] text-secondary uppercase bg-[rgba(123,47,255,0.08)] border border-[rgba(123,47,255,0.4)] px-4 py-1.5 rounded-full mb-5">
           <span class="w-1.5 h-1.5 bg-secondary rounded-full animate-pulse-dot"></span>
-          Pipeline & Vista 360°
+          <span class="t-en">Pipeline & 360° View</span>
+          <span class="t-es hidden">Pipeline & Vista 360°</span>
         </div>
         <h2 class="font-display text-[clamp(28px,3.5vw,46px)] font-bold leading-[1.1] text-white mb-5">
-          Gestiona leads y<br/><span class="gradient-text">clientes en un clic</span>
+          <span class="t-en">Manage leads &<br/><span class="gradient-text">customers in one click</span></span>
+          <span class="t-es hidden">Gestiona leads y<br/><span class="gradient-text">clientes en un clic</span></span>
         </h2>
         <p class="text-lg text-text-muted leading-[1.7] max-w-[520px] mb-8">
-          Kanban visual, historial completo de interacciones en todos los canales y etiquetado automático por IA.
+          <span class="t-en">Visual Kanban, full interaction history across all channels, and AI-powered auto-tagging.</span>
+          <span class="t-es hidden">Kanban visual, historial completo de interacciones en todos los canales y etiquetado automático por IA.</span>
         </p>
         <div class="flex flex-col gap-4">
           {[
-            { icon: '🎯', title: 'Pipeline Visual Kanban',    desc: 'Arrastra leads entre etapas personalizadas de venta' },
-            { icon: '👤', title: 'Vista 360° del Cliente',    desc: 'Historial completo de interacciones en todos los canales' },
-            { icon: '🏷️', title: 'Etiquetado Automático IA', desc: 'Clasificación por intención, urgencia y segmento en tiempo real' },
-            { icon: '⚡', title: 'Asignación Inteligente',    desc: 'IA asigna al agente correcto según skills y disponibilidad' },
+            { icon: '🎯', title_en: 'Visual Kanban Pipeline',   title_es: 'Pipeline Visual Kanban',    desc_en: 'Drag leads between custom sales stages',                      desc_es: 'Arrastra leads entre etapas personalizadas de venta' },
+            { icon: '👤', title_en: '360° Customer View',       title_es: 'Vista 360° del Cliente',    desc_en: 'Full interaction history across all channels',                 desc_es: 'Historial completo de interacciones en todos los canales' },
+            { icon: '🏷️', title_en: 'AI Auto-Tagging',           title_es: 'Etiquetado Automático IA', desc_en: 'Real-time classification by intent, urgency and segment',       desc_es: 'Clasificación por intención, urgencia y segmento en tiempo real' },
+            { icon: '⚡', title_en: 'Smart Assignment',          title_es: 'Asignación Inteligente',    desc_en: 'AI routes to the right agent based on skills & availability',  desc_es: 'IA asigna al agente correcto según skills y disponibilidad' },
           ].map(f => (
             <div class="flex gap-3.5 p-4 bg-bg-card border border-[rgba(123,47,255,0.12)] rounded-lg transition-all hover:border-[rgba(123,47,255,0.4)] hover:translate-x-1">
               <span class="text-[22px] flex-shrink-0">{f.icon}</span>
               <div>
-                <strong class="text-[13px] block mb-0.5 text-[#B088FF]">{f.title}</strong>
-                <p class="text-xs text-text-muted">{f.desc}</p>
+                <strong class="text-[13px] block mb-0.5 text-[#B088FF]">
+                  <span class="t-en">{f.title_en}</span>
+                  <span class="t-es hidden">{f.title_es}</span>
+                </strong>
+                <p class="text-xs text-text-muted">
+                  <span class="t-en">{f.desc_en}</span>
+                  <span class="t-es hidden">{f.desc_es}</span>
+                </p>
               </div>
             </div>
           ))}
@@ -80,23 +99,27 @@ const channels = [
         </div>
         <div class="p-4 grid grid-cols-3 gap-3 min-h-[260px]">
           {[
-            { stage: 'Nuevos', color: 'border-primary text-primary', leads: [
+            { stage_en: 'New',        stage_es: 'Nuevos',     color: 'border-primary text-primary',           leads: [
               { name: 'Laura G.', src: '📘', val: '$1,200' },
               { name: 'Pedro M.', src: '📸', val: '$850'  },
               { name: 'Clara V.', src: '🎵', val: '$2,100' },
             ]},
-            { stage: 'En proceso', color: 'border-[#FEBC2E] text-[#FEBC2E]', leads: [
-              { name: 'Sofía R.', src: '💬', val: '$3,400' },
+            { stage_en: 'In Progress', stage_es: 'En proceso', color: 'border-[#FEBC2E] text-[#FEBC2E]',         leads: [
+              { name: 'Sofía R.',  src: '💬', val: '$3,400' },
               { name: 'Carlos L.', src: '📧', val: '$750' },
             ]},
-            { stage: 'Cerrados', color: 'border-accent2 text-accent2', leads: [
+            { stage_en: 'Closed',    stage_es: 'Cerrados',   color: 'border-accent2 text-accent2',            leads: [
               { name: 'David H.', src: '📱', val: '$5,200' },
               { name: 'María A.', src: '📘', val: '$1,800' },
               { name: 'José B.',  src: '💬', val: '$920'  },
             ]},
           ].map(col => (
             <div>
-              <div class={`font-mono text-[9px] font-bold border-b pb-1.5 mb-2.5 ${col.color}`}>{col.stage} ({col.leads.length})</div>
+              <div class={`font-mono text-[9px] font-bold border-b pb-1.5 mb-2.5 ${col.color}`}>
+                <span class="t-en">{col.stage_en}</span>
+                <span class="t-es hidden">{col.stage_es}</span>
+                {` (${col.leads.length})`}
+              </div>
               <div class="flex flex-col gap-1.5">
                 {col.leads.map(l => (
                   <div class="bg-bg-card2 rounded-lg p-2 border border-[rgba(0,212,255,0.08)]">
