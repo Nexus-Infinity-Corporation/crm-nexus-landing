@@ -9,7 +9,8 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
     description="Request a personalized demo of Nexus CRM. Experience how our AI-powered multichannel CRM can transform your customer interactions and boost your sales. Schedule your free demo today!"
 >
 <!-- Simple Navbar -->
-    <a href="/" class="flex items-center pt-5 pl-5 md:pt-10 md:pl-10 gap-3 no-underline">
+    <div class="flex items-center justify-between px-5 pt-5 md:px-10 md:pt-10">
+    <a href="/" class="flex items-center gap-3 no-underline">
         <div class="animate-float">
           <svg width="36" height="36" viewBox="0 0 36 36">
             <polygon points="18,2 34,10 34,26 18,34 2,26 2,10" fill="none" stroke="url(#lg1)" stroke-width="2"/>
@@ -28,11 +29,17 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           <span class="block font-mono text-[8px] text-text-muted tracking-[2px] mt-0.5">INFINITY CORPORATION</span>
         </div>
     </a>
+    </div>
 <section class="py-5 relative" id="demo">
   <div class="max-w-[1280px] mx-auto px-6">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-[70px] items-center">
       <!-- Left -->
       <div>
+        <!-- Language toggle -->
+    <div class="flex items-center pb-5 gap-2">
+      <button id="btn-en" class="lang-btn font-mono text-[11px] tracking-[2px] uppercase px-4 py-1.5 rounded-full border transition-all bg-[rgba(0,212,255,0.12)] border-primary text-primary">EN</button>
+      <button id="btn-es" class="lang-btn font-mono text-[11px] tracking-[2px] uppercase px-4 py-1.5 rounded-full border transition-all bg-transparent border-[rgba(0,212,255,0.2)] text-text-muted">ES</button>
+    </div>
         <div class="inline-flex items-center gap-2 font-mono text-[11px] tracking-[3px] text-primary uppercase bg-[rgba(0,212,255,0.08)] border border-[rgba(0,212,255,0.4)] px-4 py-1.5 rounded-full mb-5">
           <span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse-dot"></span>
           <span class="t-en">Ready to get started?</span>
@@ -124,3 +131,32 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
   </div>
 </section>
 </BaseLayout>
+
+<script>
+  const btnEn = document.getElementById('btn-en')!;
+  const btnEs = document.getElementById('btn-es')!;
+
+  function setLang(lang: 'en' | 'es') {
+    const show = lang === 'en' ? '.t-en' : '.t-es';
+    const hide = lang === 'en' ? '.t-es' : '.t-en';
+    document.querySelectorAll<HTMLElement>(show).forEach(el => el.classList.remove('hidden'));
+    document.querySelectorAll<HTMLElement>(hide).forEach(el => el.classList.add('hidden'));
+    const active = 'bg-[rgba(0,212,255,0.12)] border-primary text-primary';
+    const idle   = 'bg-transparent border-[rgba(0,212,255,0.2)] text-text-muted';
+    const base   = 'lang-btn font-mono text-[11px] tracking-[2px] uppercase px-4 py-1.5 rounded-full border transition-all';
+    if (lang === 'en') {
+      btnEn.className = `${base} ${active}`;
+      btnEs.className = `${base} ${idle}`;
+    } else {
+      btnEs.className = `${base} ${active}`;
+      btnEn.className = `${base} ${idle}`;
+    }
+    localStorage.setItem('nxLang', lang);
+  }
+
+  btnEn.addEventListener('click', () => setLang('en'));
+  btnEs.addEventListener('click', () => setLang('es'));
+
+  const saved = localStorage.getItem('nxLang') as 'en' | 'es' | null;
+  setLang(saved === 'es' ? 'es' : 'en');
+</script>
