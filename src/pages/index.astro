@@ -431,9 +431,24 @@ const regions = [
     card.addEventListener('click', () => {
       const target = card.dataset.target!;
 
-      // On mobile (proceed button hidden) → navigate immediately
+      // On mobile (proceed button hidden) → show feedback then navigate
       if (window.innerWidth < 768) {
-        navigate(target);
+        // Brief visual feedback on the tapped card
+        cards.forEach((c) => {
+          c.querySelector<HTMLElement>('.card-ring')!.style.opacity = '0';
+          c.querySelector<HTMLElement>('.card-badge')!.style.opacity = '0';
+        });
+        card.querySelector<HTMLElement>('.card-ring')!.style.opacity = '1';
+        card.querySelector<HTMLElement>('.card-badge')!.style.opacity = '1';
+        card.classList.add('scale-[1.02]');
+        // Small delay so the selection flash is visible, then navigate
+        setTimeout(() => {
+          try {
+            navigate(target);
+          } catch {
+            window.location.href = target;
+          }
+        }, 180);
         return;
       }
 
