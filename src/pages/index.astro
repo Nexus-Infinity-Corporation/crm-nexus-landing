@@ -393,11 +393,11 @@ const regions = [
       const idle   = 'bg-transparent border-[rgba(0,212,255,0.2)] text-text-muted';
       const base   = 'lang-btn font-mono text-[11px] tracking-[2px] uppercase px-4 py-1.5 rounded-full border transition-all';
       if (lang === 'en') {
-        btnEn.className = `${base} ${active}`;
-        btnEs.className = `${base} ${idle}`;
+        btnEn!.className = `${base} ${active}`;
+        btnEs!.className = `${base} ${idle}`;
       } else {
-        btnEs.className = `${base} ${active}`;
-        btnEn.className = `${base} ${idle}`;
+        btnEs!.className = `${base} ${active}`;
+        btnEn!.className = `${base} ${idle}`;
       }
       localStorage.setItem('nxLang', lang);
       currentLang = lang;
