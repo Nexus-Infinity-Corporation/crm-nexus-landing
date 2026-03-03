@@ -374,166 +374,164 @@ const regions = [
 <script>
   import { navigate } from 'astro:transitions/client';
 
-  // ── Shared state (declared first to avoid TDZ in setLang) ─
-  let currentLang: 'en' | 'es' = 'en';
-  let selectedTarget: string | null = null;
+  function initIndexPage() {
+    // ── Shared state ─────────────────────────────────────────
+    let currentLang: 'en' | 'es' = 'en';
+    let selectedTarget: string | null = null;
 
-  // ── Language toggle ───────────────────────────────────────
-  const btnEn = document.getElementById('btn-en')!;
-  const btnEs = document.getElementById('btn-es')!;
+    // ── Language toggle ───────────────────────────────────────
+    const btnEn = document.getElementById('btn-en');
+    const btnEs = document.getElementById('btn-es');
+    if (!btnEn || !btnEs) return;
 
-  function setLang(lang: 'en' | 'es') {
-    const show = lang === 'en' ? '.t-en' : '.t-es';
-    const hide = lang === 'en' ? '.t-es' : '.t-en';
-    document.querySelectorAll<HTMLElement>(show).forEach(el => el.classList.remove('hidden'));
-    document.querySelectorAll<HTMLElement>(hide).forEach(el => el.classList.add('hidden'));
-    const active = 'bg-[rgba(0,212,255,0.12)] border-primary text-primary';
-    const idle   = 'bg-transparent border-[rgba(0,212,255,0.2)] text-text-muted';
-    const base   = 'lang-btn font-mono text-[11px] tracking-[2px] uppercase px-4 py-1.5 rounded-full border transition-all';
-    if (lang === 'en') {
-      btnEn.className = `${base} ${active}`;
-      btnEs.className = `${base} ${idle}`;
-    } else {
-      btnEs.className = `${base} ${active}`;
-      btnEn.className = `${base} ${idle}`;
+    function setLang(lang: 'en' | 'es') {
+      const show = lang === 'en' ? '.t-en' : '.t-es';
+      const hide = lang === 'en' ? '.t-es' : '.t-en';
+      document.querySelectorAll<HTMLElement>(show).forEach(el => el.classList.remove('hidden'));
+      document.querySelectorAll<HTMLElement>(hide).forEach(el => el.classList.add('hidden'));
+      const active = 'bg-[rgba(0,212,255,0.12)] border-primary text-primary';
+      const idle   = 'bg-transparent border-[rgba(0,212,255,0.2)] text-text-muted';
+      const base   = 'lang-btn font-mono text-[11px] tracking-[2px] uppercase px-4 py-1.5 rounded-full border transition-all';
+      if (lang === 'en') {
+        btnEn.className = `${base} ${active}`;
+        btnEs.className = `${base} ${idle}`;
+      } else {
+        btnEs.className = `${base} ${active}`;
+        btnEn.className = `${base} ${idle}`;
+      }
+      localStorage.setItem('nxLang', lang);
+      currentLang = lang;
+      if (selectedTarget) updateProceedLabel(selectedTarget);
     }
-    localStorage.setItem('nxLang', lang);
-    currentLang = lang;
-    if (selectedTarget) updateProceedLabel(selectedTarget);
-  }
 
-  btnEn.addEventListener('click', () => setLang('en'));
-  btnEs.addEventListener('click', () => setLang('es'));
+    btnEn.addEventListener('click', () => setLang('en'));
+    btnEs.addEventListener('click', () => setLang('es'));
 
-  const saved = localStorage.getItem('nxLang') as 'en' | 'es' | null;
-  setLang(saved === 'es' ? 'es' : 'en');
+    const saved = localStorage.getItem('nxLang') as 'en' | 'es' | null;
+    setLang(saved === 'es' ? 'es' : 'en');
 
-  // ── Product card selection ────────────────────────────────
-  const cards = document.querySelectorAll<HTMLButtonElement>('.product-card');
-  const proceedWrapper = document.getElementById('proceed-wrapper')!;
-  const proceedBtn = document.getElementById('proceed-btn') as HTMLAnchorElement;
-  const proceedLabelEn = document.getElementById('proceed-label-en')!;
-  const proceedLabelEs = document.getElementById('proceed-label-es')!;
+    // ── Product card selection ────────────────────────────────
+    const cards = document.querySelectorAll<HTMLButtonElement>('.product-card');
+    const proceedWrapper = document.getElementById('proceed-wrapper')!;
+    const proceedBtn = document.getElementById('proceed-btn') as HTMLAnchorElement;
+    const proceedLabelEn = document.getElementById('proceed-label-en')!;
+    const proceedLabelEs = document.getElementById('proceed-label-es')!;
 
-  const productNames: Record<string, { en: string; es: string }> = {
-    '/crm': { en: 'Go to Multichannel CRM', es: 'Ir a CRM Multicanal' },
-    '/erp': { en: 'Go to Enterprise ERP',   es: 'Ir a ERP Empresarial' },
-  };
+    const productNames: Record<string, { en: string; es: string }> = {
+      '/crm': { en: 'Go to Multichannel CRM', es: 'Ir a CRM Multicanal' },
+      '/erp': { en: 'Go to Enterprise ERP',   es: 'Ir a ERP Empresarial' },
+    };
 
-  function updateProceedLabel(target: string) {
-    const names = productNames[target];
-    // Desktop proceed button
-    proceedLabelEn.textContent = `${names.en} →`;
-    proceedLabelEs.textContent = `${names.es} →`;
-  }
+    function updateProceedLabel(target: string) {
+      const names = productNames[target];
+      proceedLabelEn.textContent = `${names.en} →`;
+      proceedLabelEs.textContent = `${names.es} →`;
+    }
 
-  cards.forEach((card) => {
-    card.addEventListener('click', () => {
-      const target = card.dataset.target!;
+    cards.forEach((card) => {
+      card.addEventListener('click', () => {
+        const target = card.dataset.target!;
 
-      // On mobile (proceed button hidden) → show feedback then navigate
-      if (window.innerWidth < 768) {
-        // Brief visual feedback on the tapped card
+        // On mobile (proceed button hidden) → show feedback then navigate
+        if (window.innerWidth < 768) {
+          cards.forEach((c) => {
+            c.querySelector<HTMLElement>('.card-ring')!.style.opacity = '0';
+            c.querySelector<HTMLElement>('.card-badge')!.style.opacity = '0';
+          });
+          card.querySelector<HTMLElement>('.card-ring')!.style.opacity = '1';
+          card.querySelector<HTMLElement>('.card-badge')!.style.opacity = '1';
+          card.classList.add('scale-[1.02]');
+          setTimeout(() => {
+            try {
+              navigate(target);
+            } catch {
+              window.location.href = target;
+            }
+          }, 180);
+          return;
+        }
+
+        // Deselect all
         cards.forEach((c) => {
+          c.setAttribute('aria-pressed', 'false');
           c.querySelector<HTMLElement>('.card-ring')!.style.opacity = '0';
           c.querySelector<HTMLElement>('.card-badge')!.style.opacity = '0';
+          c.classList.remove('scale-[1.02]');
         });
+
+        // Select clicked card
+        card.setAttribute('aria-pressed', 'true');
         card.querySelector<HTMLElement>('.card-ring')!.style.opacity = '1';
         card.querySelector<HTMLElement>('.card-badge')!.style.opacity = '1';
         card.classList.add('scale-[1.02]');
-        // Small delay so the selection flash is visible, then navigate
-        setTimeout(() => {
-          try {
-            navigate(target);
-          } catch {
-            window.location.href = target;
-          }
-        }, 180);
-        return;
-      }
 
-      // Deselect all
-      cards.forEach((c) => {
-        c.setAttribute('aria-pressed', 'false');
-        c.querySelector<HTMLElement>('.card-ring')!.style.opacity = '0';
-        c.querySelector<HTMLElement>('.card-badge')!.style.opacity = '0';
-        c.classList.remove('scale-[1.02]');
+        // Update labels + hrefs
+        selectedTarget = target;
+        proceedBtn.setAttribute('href', target);
+        updateProceedLabel(target);
+
+        // Show desktop proceed wrapper
+        proceedWrapper.style.opacity = '1';
+        proceedWrapper.style.transform = 'translateY(0)';
+        proceedWrapper.style.pointerEvents = 'auto';
       });
-
-      // Select clicked card
-      card.setAttribute('aria-pressed', 'true');
-      card.querySelector<HTMLElement>('.card-ring')!.style.opacity = '1';
-      card.querySelector<HTMLElement>('.card-badge')!.style.opacity = '1';
-      card.classList.add('scale-[1.02]');
-
-      // Update labels + hrefs
-      selectedTarget = target;
-      proceedBtn.setAttribute('href', target);
-      updateProceedLabel(target);
-
-      // Show desktop proceed wrapper
-      proceedWrapper.style.opacity = '1';
-      proceedWrapper.style.transform = 'translateY(0)';
-      proceedWrapper.style.pointerEvents = 'auto';
     });
-  });
 
-  // Navigation handlers
-  proceedBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    if (selectedTarget) navigate(selectedTarget);
-  });
-
-  // ── Region selector ──────────────────────────────────────
-  const regionTabs = document.querySelectorAll<HTMLButtonElement>('.region-tab');
-  const regionPanel = document.getElementById('region-panel')!;
-  const regionCountries = document.querySelectorAll<HTMLElement>('.region-countries');
-  let openRegion: string | null = null;
-
-  const TAB_ACTIVE = ['bg-[rgba(0,212,255,0.12)]', 'border-primary', 'text-primary'];
-  const TAB_IDLE   = ['border-[rgba(0,212,255,0.2)]', 'text-text-muted', 'bg-transparent'];
-
-  regionTabs.forEach((tab) => {
-    tab.addEventListener('click', () => {
-      const idx = tab.dataset.region!;
-
-      if (openRegion === idx) {
-        // Toggle closed
-        openRegion = null;
-        regionPanel.style.maxHeight = '0';
-        regionPanel.style.opacity = '0';
-        regionPanel.style.marginTop = '0';
-        regionCountries.forEach(el => el.classList.add('hidden'));
-        regionTabs.forEach(t => {
-          t.classList.remove(...TAB_ACTIVE);
-          t.classList.add(...TAB_IDLE);
-          t.querySelector<HTMLElement>('.region-chevron')!.style.transform = 'rotate(0deg)';
-        });
-      } else {
-        openRegion = idx;
-        // Reset all tabs
-        regionTabs.forEach(t => {
-          t.classList.remove(...TAB_ACTIVE);
-          t.classList.add(...TAB_IDLE);
-          t.querySelector<HTMLElement>('.region-chevron')!.style.transform = 'rotate(0deg)';
-        });
-        // Activate clicked tab
-        tab.classList.remove(...TAB_IDLE);
-        tab.classList.add(...TAB_ACTIVE);
-        tab.querySelector<HTMLElement>('.region-chevron')!.style.transform = 'rotate(180deg)';
-        // Show matching countries, hide others
-        regionCountries.forEach(el => {
-          if (el.dataset.region === idx) {
-            el.classList.remove('hidden');
-          } else {
-            el.classList.add('hidden');
-          }
-        });
-        // Expand panel
-        regionPanel.style.maxHeight = '500px';
-        regionPanel.style.opacity = '1';
-        regionPanel.style.marginTop = '8px';
-      }
+    // Navigation handlers
+    proceedBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (selectedTarget) navigate(selectedTarget);
     });
-  });
+
+    // ── Region selector ──────────────────────────────────────
+    const regionTabs = document.querySelectorAll<HTMLButtonElement>('.region-tab');
+    const regionPanel = document.getElementById('region-panel')!;
+    const regionCountries = document.querySelectorAll<HTMLElement>('.region-countries');
+    let openRegion: string | null = null;
+
+    const TAB_ACTIVE = ['bg-[rgba(0,212,255,0.12)]', 'border-primary', 'text-primary'];
+    const TAB_IDLE   = ['border-[rgba(0,212,255,0.2)]', 'text-text-muted', 'bg-transparent'];
+
+    regionTabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const idx = tab.dataset.region!;
+
+        if (openRegion === idx) {
+          openRegion = null;
+          regionPanel.style.maxHeight = '0';
+          regionPanel.style.opacity = '0';
+          regionPanel.style.marginTop = '0';
+          regionCountries.forEach(el => el.classList.add('hidden'));
+          regionTabs.forEach(t => {
+            t.classList.remove(...TAB_ACTIVE);
+            t.classList.add(...TAB_IDLE);
+            t.querySelector<HTMLElement>('.region-chevron')!.style.transform = 'rotate(0deg)';
+          });
+        } else {
+          openRegion = idx;
+          regionTabs.forEach(t => {
+            t.classList.remove(...TAB_ACTIVE);
+            t.classList.add(...TAB_IDLE);
+            t.querySelector<HTMLElement>('.region-chevron')!.style.transform = 'rotate(0deg)';
+          });
+          tab.classList.remove(...TAB_IDLE);
+          tab.classList.add(...TAB_ACTIVE);
+          tab.querySelector<HTMLElement>('.region-chevron')!.style.transform = 'rotate(180deg)';
+          regionCountries.forEach(el => {
+            if (el.dataset.region === idx) {
+              el.classList.remove('hidden');
+            } else {
+              el.classList.add('hidden');
+            }
+          });
+          regionPanel.style.maxHeight = '500px';
+          regionPanel.style.opacity = '1';
+          regionPanel.style.marginTop = '8px';
+        }
+      });
+    });
+  }
+
+  // Run on initial load and after every View Transition navigation
+  document.addEventListener('astro:page-load', initIndexPage);
 </script>
