@@ -1,0 +1,161 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+---
+
+<BaseLayout
+    title="Nexus Demo — Schedule Your Personalized CRM Demo"
+    description="Request a personalized demo of Nexus CRM. Experience how our AI-powered multichannel CRM can transform your customer interactions and boost your sales. Schedule your free demo today!"
+>
+<!-- Simple Navbar -->
+    <div class="flex items-center justify-between px-5 pt-5 md:px-10 md:pt-10">
+    <a href="/" class="flex items-center gap-3 no-underline">
+        <div class="animate-float">
+          <svg width="36" height="36" viewBox="0 0 36 36">
+            <polygon points="18,2 34,10 34,26 18,34 2,26 2,10" fill="none" stroke="url(#lg1)" stroke-width="2"/>
+            <polygon points="18,8 28,13 28,23 18,28 8,23 8,13" fill="rgba(0,212,255,0.1)" stroke="url(#lg1)" stroke-width="1"/>
+            <circle cx="18" cy="18" r="4" fill="url(#lg1)"/>
+            <defs>
+              <linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#00D4FF"/>
+                <stop offset="100%" stop-color="#7B2FFF"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div>
+          <span class="block font-display text-lg font-black text-primary tracking-[3px] leading-none">NEXUS</span>
+          <span class="block font-mono text-[8px] text-text-muted tracking-[2px] mt-0.5">INFINITY CORPORATION</span>
+        </div>
+    </a>
+    </div>
+<section class="py-5 relative" id="demo">
+  <div class="max-w-[1280px] mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-[70px] items-center">
+      <!-- Left -->
+      <div>
+        <!-- Language toggle -->
+    <div class="flex items-center pb-5 gap-2">
+      <button id="btn-en" class="lang-btn font-mono text-[11px] tracking-[2px] uppercase px-4 py-1.5 rounded-full border transition-all bg-[rgba(0,212,255,0.12)] border-primary text-primary">EN</button>
+      <button id="btn-es" class="lang-btn font-mono text-[11px] tracking-[2px] uppercase px-4 py-1.5 rounded-full border transition-all bg-transparent border-[rgba(0,212,255,0.2)] text-text-muted">ES</button>
+    </div>
+        <div class="inline-flex items-center gap-2 font-mono text-[11px] tracking-[3px] text-primary uppercase bg-[rgba(0,212,255,0.08)] border border-[rgba(0,212,255,0.4)] px-4 py-1.5 rounded-full mb-5">
+          <span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse-dot"></span>
+          <span class="t-en">Ready to get started?</span>
+          <span class="t-es hidden">¿Listo para empezar?</span>
+        </div>
+        <h2 class="font-display text-[clamp(32px,4vw,52px)] font-bold leading-[1.1] gradient-text mb-5">
+          <span class="t-en">Request your<br/>Personalized Demo</span>
+          <span class="t-es hidden">Solicita tu Demo<br/>Personalizada</span>
+        </h2>
+        <p class="text-lg text-text-muted leading-[1.7] max-w-[600px]">
+          <span class="t-en">Schedule a 30-minute session. We’ll show you the platform configured for your specific industry.</span>
+          <span class="t-es hidden">Agenda una sesión de 30 minutos. Te mostramos la plataforma configurada para tu industria específica.</span>
+        </p>
+        <div class="flex flex-col gap-2.5 mt-7">
+          {[
+            { en: 'No credit card required',          es: 'Sin tarjeta de crédito requerida' },
+            { en: '14-day free trial',                 es: 'Prueba gratuita de 14 días' },
+            { en: 'Free onboarding included',          es: 'Onboarding incluido sin costo' },
+            { en: 'Setup in less than 2 hours',        es: 'Configuración en menos de 2 horas' },
+          ].map(b => (
+            <div class="flex items-center gap-2.5 text-sm text-text-muted">
+              <span class="text-accent2 font-bold">✓</span>
+              <span class="t-en">{b.en}</span>
+              <span class="t-es hidden">{b.es}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="bg-bg-card border border-[rgba(0,212,255,0.4)] rounded-2xl p-5 sm:p-8 shadow-glow-primary">
+        <div class="font-display text-[17px] font-bold mb-5 text-center text-primary">
+          <span class="t-en">Schedule your Free Demo</span>
+          <span class="t-es hidden">Agenda tu Demo Gratis</span>
+        </div>
+        <div class="mb-3.5">
+          <label class="block text-[11px] text-text-muted mb-1.5 font-mono">
+            <span class="t-en">Full name</span>
+            <span class="t-es hidden">Nombre completo</span>
+          </label>
+          <input type="text" placeholder="Juan García" class="w-full bg-bg-dark border border-[rgba(0,212,255,0.15)] rounded-lg px-3.5 py-2.5 text-text-base font-body text-[13px] transition-all focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_rgba(0,212,255,0.1)] placeholder:text-text-dim" />
+        </div>
+        <div class="mb-3.5">
+          <label class="block text-[11px] text-text-muted mb-1.5 font-mono">
+            <span class="t-en">Company</span>
+            <span class="t-es hidden">Empresa</span>
+          </label>
+          <input type="text" placeholder="My Company Inc" class="w-full bg-bg-dark border border-[rgba(0,212,255,0.15)] rounded-lg px-3.5 py-2.5 text-text-base font-body text-[13px] transition-all focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_rgba(0,212,255,0.1)] placeholder:text-text-dim" />
+        </div>
+        <div class="mb-3.5">
+          <label class="block text-[11px] text-text-muted mb-1.5 font-mono">
+            <span class="t-en">Corporate email</span>
+            <span class="t-es hidden">Email corporativo</span>
+          </label>
+          <input type="email" placeholder="juan@empresa.com" class="w-full bg-bg-dark border border-[rgba(0,212,255,0.15)] rounded-lg px-3.5 py-2.5 text-text-base font-body text-[13px] transition-all focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_rgba(0,212,255,0.1)] placeholder:text-text-dim" />
+        </div>
+        <div class="mb-3.5">
+          <label class="block text-[11px] text-text-muted mb-1.5 font-mono">
+            <span class="t-en">Phone</span>
+            <span class="t-es hidden">Teléfono</span>
+          </label>
+          <input type="tel" placeholder="+1 555 0000" class="w-full bg-bg-dark border border-[rgba(0,212,255,0.15)] rounded-lg px-3.5 py-2.5 text-text-base font-body text-[13px] transition-all focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_rgba(0,212,255,0.1)] placeholder:text-text-dim" />
+        </div>
+        <div class="mb-5">
+          <label class="block text-[11px] text-text-muted mb-1.5 font-mono">
+            <span class="t-en">How many agents does your team have?</span>
+            <span class="t-es hidden">¿Cuántos agentes tiene tu equipo?</span>
+          </label>
+          <select class="w-full bg-bg-dark border border-[rgba(0,212,255,0.15)] rounded-lg px-3.5 py-2.5 text-text-base font-body text-[13px] transition-all focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_rgba(0,212,255,0.1)]">
+            <option>1-5</option>
+            <option>6-20</option>
+            <option>21-50</option>
+            <option>50+</option>
+          </select>
+        </div>
+        <button
+          class="btn-primary-glow w-full flex items-center justify-center gap-2.5 bg-gradient-to-br from-primary to-secondary text-white font-bold text-[15px] px-8 py-[15px] rounded-full border-none cursor-pointer shadow-glow-primary"
+          onclick="alert('\u00a1Gracias! / Thank you! We\'ll be in touch within 2 hours. \ud83d\ude80')"
+        >
+          <span class="relative z-10 t-en">🚀 Request Free Demo</span>
+          <span class="relative z-10 t-es hidden">🚀 Solicitar Demo Gratuita</span>
+        </button>
+        <p class="text-center text-[11px] text-text-dim mt-2.5">
+          <span class="t-en">No spam. You agree to our Privacy Policy.</span>
+          <span class="t-es hidden">Sin spam. Aceptas nuestra Política de Privacidad.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+</BaseLayout>
+
+<script>
+  const btnEn = document.getElementById('btn-en')!;
+  const btnEs = document.getElementById('btn-es')!;
+
+  function setLang(lang: 'en' | 'es') {
+    const show = lang === 'en' ? '.t-en' : '.t-es';
+    const hide = lang === 'en' ? '.t-es' : '.t-en';
+    document.querySelectorAll<HTMLElement>(show).forEach(el => el.classList.remove('hidden'));
+    document.querySelectorAll<HTMLElement>(hide).forEach(el => el.classList.add('hidden'));
+    const active = 'bg-[rgba(0,212,255,0.12)] border-primary text-primary';
+    const idle   = 'bg-transparent border-[rgba(0,212,255,0.2)] text-text-muted';
+    const base   = 'lang-btn font-mono text-[11px] tracking-[2px] uppercase px-4 py-1.5 rounded-full border transition-all';
+    if (lang === 'en') {
+      btnEn.className = `${base} ${active}`;
+      btnEs.className = `${base} ${idle}`;
+    } else {
+      btnEs.className = `${base} ${active}`;
+      btnEn.className = `${base} ${idle}`;
+    }
+    localStorage.setItem('nxLang', lang);
+  }
+
+  btnEn.addEventListener('click', () => setLang('en'));
+  btnEs.addEventListener('click', () => setLang('es'));
+
+  const saved = localStorage.getItem('nxLang') as 'en' | 'es' | null;
+  setLang(saved === 'es' ? 'es' : 'en');
+</script>
