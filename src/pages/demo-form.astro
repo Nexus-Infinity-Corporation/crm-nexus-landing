@@ -74,40 +74,58 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           <span class="t-en">Schedule your Free Demo</span>
           <span class="t-es hidden">Agenda tu Demo Gratis</span>
         </div>
+        <!-- Success message (hidden by default) -->
+        <div id="form-success" class="hidden text-center py-6">
+          <div class="text-4xl mb-3">🎉</div>
+          <p class="font-display text-lg font-bold text-primary mb-1">
+            <span class="t-en">Request sent!</span>
+            <span class="t-es hidden">¡Solicitud enviada!</span>
+          </p>
+          <p class="text-sm text-text-muted">
+            <span class="t-en">We'll be in touch within 2 hours.</span>
+            <span class="t-es hidden">Te contactaremos en las próximas 2 horas.</span>
+          </p>
+        </div>
+        <!-- Error message (hidden by default) -->
+        <div id="form-error" class="hidden mb-4 px-4 py-3 rounded-lg bg-[rgba(255,60,60,0.1)] border border-[rgba(255,60,60,0.4)] text-sm text-red-400 text-center"></div>
+
+        <div id="form-fields">
+
         <div class="mb-3.5">
           <label class="block text-[11px] text-text-muted mb-1.5 font-mono">
             <span class="t-en">Full name</span>
             <span class="t-es hidden">Nombre completo</span>
           </label>
-          <input type="text" placeholder="Juan García" class="w-full bg-bg-dark border border-[rgba(0,212,255,0.15)] rounded-lg px-3.5 py-2.5 text-text-base font-body text-[13px] transition-all focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_rgba(0,212,255,0.1)] placeholder:text-text-dim" />
+          <input id="field-name" type="text" placeholder="Juan García" required class="w-full bg-bg-dark border border-[rgba(0,212,255,0.15)] rounded-lg px-3.5 py-2.5 text-text-base font-body text-[13px] transition-all focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_rgba(0,212,255,0.1)] placeholder:text-text-dim" />
         </div>
         <div class="mb-3.5">
           <label class="block text-[11px] text-text-muted mb-1.5 font-mono">
             <span class="t-en">Company</span>
             <span class="t-es hidden">Empresa</span>
           </label>
-          <input type="text" placeholder="My Company Inc" class="w-full bg-bg-dark border border-[rgba(0,212,255,0.15)] rounded-lg px-3.5 py-2.5 text-text-base font-body text-[13px] transition-all focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_rgba(0,212,255,0.1)] placeholder:text-text-dim" />
+          <input id="field-company" type="text" placeholder="My Company Inc" class="w-full bg-bg-dark border border-[rgba(0,212,255,0.15)] rounded-lg px-3.5 py-2.5 text-text-base font-body text-[13px] transition-all focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_rgba(0,212,255,0.1)] placeholder:text-text-dim" />
         </div>
         <div class="mb-3.5">
           <label class="block text-[11px] text-text-muted mb-1.5 font-mono">
             <span class="t-en">Corporate email</span>
             <span class="t-es hidden">Email corporativo</span>
           </label>
-          <input type="email" placeholder="juan@empresa.com" class="w-full bg-bg-dark border border-[rgba(0,212,255,0.15)] rounded-lg px-3.5 py-2.5 text-text-base font-body text-[13px] transition-all focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_rgba(0,212,255,0.1)] placeholder:text-text-dim" />
+          <input id="field-email" type="email" placeholder="juan@empresa.com" required class="w-full bg-bg-dark border border-[rgba(0,212,255,0.15)] rounded-lg px-3.5 py-2.5 text-text-base font-body text-[13px] transition-all focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_rgba(0,212,255,0.1)] placeholder:text-text-dim" />
+
         </div>
         <div class="mb-3.5">
           <label class="block text-[11px] text-text-muted mb-1.5 font-mono">
             <span class="t-en">Phone</span>
             <span class="t-es hidden">Teléfono</span>
           </label>
-          <input type="tel" placeholder="+1 555 0000" class="w-full bg-bg-dark border border-[rgba(0,212,255,0.15)] rounded-lg px-3.5 py-2.5 text-text-base font-body text-[13px] transition-all focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_rgba(0,212,255,0.1)] placeholder:text-text-dim" />
+          <input id="field-phone" type="tel" placeholder="+1 555 0000" class="w-full bg-bg-dark border border-[rgba(0,212,255,0.15)] rounded-lg px-3.5 py-2.5 text-text-base font-body text-[13px] transition-all focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_rgba(0,212,255,0.1)] placeholder:text-text-dim" />
         </div>
         <div class="mb-5">
           <label class="block text-[11px] text-text-muted mb-1.5 font-mono">
             <span class="t-en">How many agents does your team have?</span>
             <span class="t-es hidden">¿Cuántos agentes tiene tu equipo?</span>
           </label>
-          <select class="w-full bg-bg-dark border border-[rgba(0,212,255,0.15)] rounded-lg px-3.5 py-2.5 text-text-base font-body text-[13px] transition-all focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_rgba(0,212,255,0.1)]">
+          <select id="field-agents" class="w-full bg-bg-dark border border-[rgba(0,212,255,0.15)] rounded-lg px-3.5 py-2.5 text-text-base font-body text-[13px] transition-all focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_rgba(0,212,255,0.1)]">
             <option>1-5</option>
             <option>6-20</option>
             <option>21-50</option>
@@ -115,16 +133,18 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
           </select>
         </div>
         <button
-          class="btn-primary-glow w-full flex items-center justify-center gap-2.5 bg-gradient-to-br from-primary to-secondary text-white font-bold text-[15px] px-8 py-[15px] rounded-full border-none cursor-pointer shadow-glow-primary"
-          onclick="alert('\u00a1Gracias! / Thank you! We\'ll be in touch within 2 hours. \ud83d\ude80')"
+          id="submit-btn"
+          type="button"
+          class="btn-primary-glow w-full flex items-center justify-center gap-2.5 bg-gradient-to-br from-primary to-secondary text-white font-bold text-[15px] px-8 py-[15px] rounded-full border-none cursor-pointer shadow-glow-primary disabled:opacity-60 disabled:cursor-not-allowed"
         >
-          <span class="relative z-10 t-en">🚀 Request Free Demo</span>
-          <span class="relative z-10 t-es hidden">🚀 Solicitar Demo Gratuita</span>
+          <span id="btn-label-en" class="relative z-10 t-en">🚀 Request Free Demo</span>
+          <span id="btn-label-es" class="relative z-10 t-es hidden">🚀 Solicitar Demo Gratuita</span>
         </button>
         <p class="text-center text-[11px] text-text-dim mt-2.5">
           <span class="t-en">No spam. You agree to our Privacy Policy.</span>
           <span class="t-es hidden">Sin spam. Aceptas nuestra Política de Privacidad.</span>
         </p>
+        </div>
       </div>
     </div>
   </div>
@@ -132,10 +152,14 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 </BaseLayout>
 
 <script>
-  const btnEn = document.getElementById('btn-en')!;
-  const btnEs = document.getElementById('btn-es')!;
+  import { sendDemoEmail } from '@/scripts/send-email';
+
+  const btnEn    = document.getElementById('btn-en')!;
+  const btnEs    = document.getElementById('btn-es')!;
+  let currentLang: 'en' | 'es' = 'en';
 
   function setLang(lang: 'en' | 'es') {
+    currentLang = lang;
     const show = lang === 'en' ? '.t-en' : '.t-es';
     const hide = lang === 'en' ? '.t-es' : '.t-en';
     document.querySelectorAll<HTMLElement>(show).forEach(el => el.classList.remove('hidden'));
@@ -158,4 +182,58 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 
   const saved = localStorage.getItem('nxLang') as 'en' | 'es' | null;
   setLang(saved === 'es' ? 'es' : 'en');
+
+  // ── Form submission ──────────────────────────────────────────────────────────
+  const submitBtn   = document.getElementById('submit-btn') as HTMLButtonElement;
+  const formFields  = document.getElementById('form-fields')!;
+  const formSuccess = document.getElementById('form-success')!;
+  const formError   = document.getElementById('form-error')!;
+
+  const fieldName    = document.getElementById('field-name')    as HTMLInputElement;
+  const fieldCompany = document.getElementById('field-company') as HTMLInputElement;
+  const fieldEmail   = document.getElementById('field-email')   as HTMLInputElement;
+  const fieldPhone   = document.getElementById('field-phone')   as HTMLInputElement;
+  const fieldAgents  = document.getElementById('field-agents')  as HTMLSelectElement;
+
+  submitBtn.addEventListener('click', async () => {
+    // Basic client-side validation
+    if (!fieldName.value.trim() || !fieldEmail.value.trim()) {
+      formError.textContent = currentLang === 'es'
+        ? 'Por favor completa los campos requeridos (nombre y email).'
+        : 'Please fill in the required fields (name and email).';
+      formError.classList.remove('hidden');
+      return;
+    }
+
+    formError.classList.add('hidden');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = currentLang === 'es'
+      ? '<span class="relative z-10">⏳ Enviando...</span>'
+      : '<span class="relative z-10">⏳ Sending...</span>';
+
+    const result = await sendDemoEmail({
+      name:    fieldName.value.trim(),
+      company: fieldCompany.value.trim(),
+      email:   fieldEmail.value.trim(),
+      phone:   fieldPhone.value.trim(),
+      agents:  fieldAgents.value,
+      lang:    currentLang,
+    });
+
+    if (result.success) {
+      formFields.classList.add('hidden');
+      formSuccess.classList.remove('hidden');
+      // Re-show language-specific success text
+      setLang(currentLang);
+    } else {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = currentLang === 'es'
+        ? '<span class="relative z-10">🚀 Solicitar Demo Gratuita</span>'
+        : '<span class="relative z-10">🚀 Request Free Demo</span>';
+      formError.textContent = result.error ?? (currentLang === 'es'
+        ? 'Algo salió mal. Intenta de nuevo.'
+        : 'Something went wrong. Please try again.');
+      formError.classList.remove('hidden');
+    }
+  });
 </script>
