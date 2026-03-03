@@ -359,7 +359,7 @@ const regions = [
       <p class="text-[13px] text-text-muted text-center mt-4 max-w-[480px]">
         <span class="t-en">Talk to a specialist and we'll help you find the ideal solution for your industry.</span>
         <span class="t-es hidden">Habla con un especialista y te ayudamos a encontrar la solución ideal para tu industria.</span>
-        <a href="/#demo" class="text-primary underline underline-offset-2 ml-1 hover:text-accent2 transition-colors">
+        <a href="/demo-form" class="text-primary underline underline-offset-2 ml-1 hover:text-accent2 transition-colors">
           <span class="t-en">Get free advice →</span>
           <span class="t-es hidden">Solicitar asesoría gratis →</span>
         </a>
@@ -372,6 +372,8 @@ const regions = [
 </BaseLayout>
 
 <script>
+  import { navigate } from 'astro:transitions/client';
+
   // ── Shared state (declared first to avoid TDZ in setLang) ─
   let currentLang: 'en' | 'es' = 'en';
   let selectedTarget: string | null = null;
@@ -431,7 +433,7 @@ const regions = [
 
       // On mobile (proceed button hidden) → navigate immediately
       if (window.innerWidth < 768) {
-        window.location.href = target;
+        navigate(target);
         return;
       }
 
@@ -464,7 +466,7 @@ const regions = [
   // Navigation handlers
   proceedBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    if (selectedTarget) window.location.href = selectedTarget;
+    if (selectedTarget) navigate(selectedTarget);
   });
 
   // ── Region selector ──────────────────────────────────────
