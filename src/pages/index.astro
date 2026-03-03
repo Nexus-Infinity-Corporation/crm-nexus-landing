@@ -2,6 +2,90 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+
+const regions = [
+  {
+    glob: '🌎',
+    labelEn: 'North America',
+    labelEs: 'América del Norte',
+    countries: [
+      { flag: '🇺🇸', nameEn: 'United States',   nameEs: 'Estados Unidos' },
+      { flag: '🇨🇦', nameEn: 'Canada',           nameEs: 'Canadá' },
+      { flag: '🇲🇽', nameEn: 'Mexico',           nameEs: 'México' },
+    ],
+  },
+  {
+    glob: '🌎',
+    labelEn: 'Central America',
+    labelEs: 'América Central',
+    countries: [
+      { flag: '🇬🇹', nameEn: 'Guatemala',        nameEs: 'Guatemala' },
+      { flag: '🇧🇿', nameEn: 'Belize',           nameEs: 'Belice' },
+      { flag: '🇭🇳', nameEn: 'Honduras',         nameEs: 'Honduras' },
+      { flag: '🇸🇻', nameEn: 'El Salvador',      nameEs: 'El Salvador' },
+      { flag: '🇳🇮', nameEn: 'Nicaragua',        nameEs: 'Nicaragua' },
+      { flag: '🇨🇷', nameEn: 'Costa Rica',       nameEs: 'Costa Rica' },
+      { flag: '🇵🇦', nameEn: 'Panama',           nameEs: 'Panamá' },
+    ],
+  },
+  {
+    glob: '🌎',
+    labelEn: 'The Caribbean',
+    labelEs: 'El Caribe',
+    countries: [
+      { flag: '🇨🇺', nameEn: 'Cuba',                    nameEs: 'Cuba' },
+      { flag: '🇯🇲', nameEn: 'Jamaica',                 nameEs: 'Jamaica' },
+      { flag: '🇭🇹', nameEn: 'Haiti',                   nameEs: 'Haití' },
+      { flag: '🇩🇴', nameEn: 'Dominican Republic',      nameEs: 'Rep. Dominicana' },
+      { flag: '🇵🇷', nameEn: 'Puerto Rico',             nameEs: 'Puerto Rico' },
+      { flag: '🇹🇹', nameEn: 'Trinidad & Tobago',       nameEs: 'Trinidad y Tobago' },
+      { flag: '🇧🇸', nameEn: 'Bahamas',                 nameEs: 'Bahamas' },
+      { flag: '🇧🇧', nameEn: 'Barbados',                nameEs: 'Barbados' },
+      { flag: '🇱🇨', nameEn: 'Saint Lucia',            nameEs: 'Santa Lucía' },
+      { flag: '🇬🇩', nameEn: 'Grenada',                nameEs: 'Granada' },
+      { flag: '🇻🇨', nameEn: 'Saint Vincent',          nameEs: 'San Vicente' },
+      { flag: '🇦🇬', nameEn: 'Antigua & Barbuda',      nameEs: 'Antigua y Barbuda' },
+    ],
+  },
+  {
+    glob: '🌎',
+    labelEn: 'South America',
+    labelEs: 'América del Sur',
+    countries: [
+      { flag: '🇧🇷', nameEn: 'Brazil',      nameEs: 'Brasil' },
+      { flag: '🇦🇷', nameEn: 'Argentina',   nameEs: 'Argentina' },
+      { flag: '🇨🇱', nameEn: 'Chile',       nameEs: 'Chile' },
+      { flag: '🇨🇴', nameEn: 'Colombia',    nameEs: 'Colombia' },
+      { flag: '🇵🇪', nameEn: 'Peru',        nameEs: 'Perú' },
+      { flag: '🇻🇪', nameEn: 'Venezuela',   nameEs: 'Venezuela' },
+      { flag: '🇪🇨', nameEn: 'Ecuador',     nameEs: 'Ecuador' },
+      { flag: '🇧🇴', nameEn: 'Bolivia',     nameEs: 'Bolivia' },
+      { flag: '🇵🇾', nameEn: 'Paraguay',    nameEs: 'Paraguay' },
+      { flag: '🇺🇾', nameEn: 'Uruguay',     nameEs: 'Uruguay' },
+      { flag: '🇬🇾', nameEn: 'Guyana',      nameEs: 'Guyana' },
+      { flag: '🇸🇷', nameEn: 'Suriname',    nameEs: 'Surinam' },
+    ],
+  },
+  {
+    glob: '🌍',
+    labelEn: 'European Countries',
+    labelEs: 'Países de Europa',
+    countries: [
+      { flag: '🇪🇸', nameEn: 'Spain',           nameEs: 'España' },
+      { flag: '🇵🇹', nameEn: 'Portugal',         nameEs: 'Portugal' },
+      { flag: '🇫🇷', nameEn: 'France',           nameEs: 'Francia' },
+      { flag: '🇩🇪', nameEn: 'Germany',          nameEs: 'Alemania' },
+      { flag: '🇮🇹', nameEn: 'Italy',            nameEs: 'Italia' },
+      { flag: '🇬🇧', nameEn: 'United Kingdom',   nameEs: 'Reino Unido' },
+      { flag: '🇳🇱', nameEn: 'Netherlands',      nameEs: 'Países Bajos' },
+      { flag: '🇧🇪', nameEn: 'Belgium',          nameEs: 'Bélgica' },
+      { flag: '🇨🇭', nameEn: 'Switzerland',      nameEs: 'Suiza' },
+      { flag: '🇦🇹', nameEn: 'Austria',          nameEs: 'Austria' },
+      { flag: '🇸🇪', nameEn: 'Sweden',           nameEs: 'Suecia' },
+      { flag: '🇳🇴', nameEn: 'Norway',           nameEs: 'Noruega' },
+    ],
+  },
+];
 ---
 
 <BaseLayout title="Nexus Infinity — Elige tu Plataforma">
@@ -48,7 +132,44 @@ import Footer from '../components/Footer.astro';
         <span class="t-en">Select your Nexus Infinity Platform</span>
         <span class="t-es hidden">Selecciona tu Plataforma Nexus Infinity</span>
       </div>
+      <!-- Global Heading - Region Selector -->
+      <div class="w-full max-w-[860px] mb-4" id="region-selector">
+        <!-- Region tab pills -->
+        <div class="flex flex-wrap items-center justify-center gap-2" id="region-tabs">
+          {regions.map((r, i) => (
+            <button
+              class="region-tab group font-mono text-[10px] tracking-[1.5px] uppercase px-3.5 py-1.5 rounded-full border border-[rgba(0,212,255,0.2)] text-text-muted bg-transparent hover:border-primary hover:text-primary transition-all duration-200 flex items-center gap-1"
+              data-region={String(i)}
+            >
+              <span>{r.glob}</span>
+              <span class="t-en ml-0.5">{r.labelEn}</span>
+              <span class="t-es hidden ml-0.5">{r.labelEs}</span>
+              <span class="region-chevron ml-1 text-[8px] opacity-60 inline-block transition-transform duration-200">▾</span>
+            </button>
+          ))}
+        </div>
 
+        <!-- Expandable countries panel -->
+        <div
+          id="region-panel"
+          class="overflow-hidden transition-all duration-500"
+          style="max-height:0;opacity:0;margin-top:0;"
+        >
+          <div class="bg-[rgba(0,0,0,0.35)] border border-[rgba(0,212,255,0.13)] rounded-xl p-4 mt-2">
+            {regions.map((r, i) => (
+              <div class="region-countries hidden grid grid-cols-3 gap-x-6 gap-y-2" data-region={String(i)}>
+                {r.countries.map(c => (
+                  <div class="flex items-center gap-2 text-[12px] text-text-muted min-w-0">
+                    <span class="text-[15px] leading-none shrink-0">{c.flag}</span>
+                    <span class="t-en truncate">{c.nameEn}</span>
+                    <span class="t-es hidden truncate">{c.nameEs}</span>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
       <!-- Heading -->
       <h1 class="font-display text-[clamp(28px,4vw,56px)] font-black leading-[1.1] text-white text-center mb-4 tracking-[-1px]">
         <span class="t-en">Which solution<br/><span class="gradient-text-brand">do you need today?</span></span>
@@ -238,7 +359,7 @@ import Footer from '../components/Footer.astro';
       <p class="text-[13px] text-text-muted text-center mt-4 max-w-[480px]">
         <span class="t-en">Talk to a specialist and we'll help you find the ideal solution for your industry.</span>
         <span class="t-es hidden">Habla con un especialista y te ayudamos a encontrar la solución ideal para tu industria.</span>
-        <a href="/#demo" class="text-primary underline underline-offset-2 ml-1 hover:text-accent2 transition-colors">
+        <a href="/demo-form" class="text-primary underline underline-offset-2 ml-1 hover:text-accent2 transition-colors">
           <span class="t-en">Get free advice →</span>
           <span class="t-es hidden">Solicitar asesoría gratis →</span>
         </a>
@@ -251,6 +372,8 @@ import Footer from '../components/Footer.astro';
 </BaseLayout>
 
 <script>
+  import { navigate } from 'astro:transitions/client';
+
   // ── Shared state (declared first to avoid TDZ in setLang) ─
   let currentLang: 'en' | 'es' = 'en';
   let selectedTarget: string | null = null;
@@ -308,9 +431,24 @@ import Footer from '../components/Footer.astro';
     card.addEventListener('click', () => {
       const target = card.dataset.target!;
 
-      // On mobile (proceed button hidden) → navigate immediately
+      // On mobile (proceed button hidden) → show feedback then navigate
       if (window.innerWidth < 768) {
-        window.location.href = target;
+        // Brief visual feedback on the tapped card
+        cards.forEach((c) => {
+          c.querySelector<HTMLElement>('.card-ring')!.style.opacity = '0';
+          c.querySelector<HTMLElement>('.card-badge')!.style.opacity = '0';
+        });
+        card.querySelector<HTMLElement>('.card-ring')!.style.opacity = '1';
+        card.querySelector<HTMLElement>('.card-badge')!.style.opacity = '1';
+        card.classList.add('scale-[1.02]');
+        // Small delay so the selection flash is visible, then navigate
+        setTimeout(() => {
+          try {
+            navigate(target);
+          } catch {
+            window.location.href = target;
+          }
+        }, 180);
         return;
       }
 
@@ -343,6 +481,59 @@ import Footer from '../components/Footer.astro';
   // Navigation handlers
   proceedBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    if (selectedTarget) window.location.href = selectedTarget;
+    if (selectedTarget) navigate(selectedTarget);
+  });
+
+  // ── Region selector ──────────────────────────────────────
+  const regionTabs = document.querySelectorAll<HTMLButtonElement>('.region-tab');
+  const regionPanel = document.getElementById('region-panel')!;
+  const regionCountries = document.querySelectorAll<HTMLElement>('.region-countries');
+  let openRegion: string | null = null;
+
+  const TAB_ACTIVE = ['bg-[rgba(0,212,255,0.12)]', 'border-primary', 'text-primary'];
+  const TAB_IDLE   = ['border-[rgba(0,212,255,0.2)]', 'text-text-muted', 'bg-transparent'];
+
+  regionTabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const idx = tab.dataset.region!;
+
+      if (openRegion === idx) {
+        // Toggle closed
+        openRegion = null;
+        regionPanel.style.maxHeight = '0';
+        regionPanel.style.opacity = '0';
+        regionPanel.style.marginTop = '0';
+        regionCountries.forEach(el => el.classList.add('hidden'));
+        regionTabs.forEach(t => {
+          t.classList.remove(...TAB_ACTIVE);
+          t.classList.add(...TAB_IDLE);
+          t.querySelector<HTMLElement>('.region-chevron')!.style.transform = 'rotate(0deg)';
+        });
+      } else {
+        openRegion = idx;
+        // Reset all tabs
+        regionTabs.forEach(t => {
+          t.classList.remove(...TAB_ACTIVE);
+          t.classList.add(...TAB_IDLE);
+          t.querySelector<HTMLElement>('.region-chevron')!.style.transform = 'rotate(0deg)';
+        });
+        // Activate clicked tab
+        tab.classList.remove(...TAB_IDLE);
+        tab.classList.add(...TAB_ACTIVE);
+        tab.querySelector<HTMLElement>('.region-chevron')!.style.transform = 'rotate(180deg)';
+        // Show matching countries, hide others
+        regionCountries.forEach(el => {
+          if (el.dataset.region === idx) {
+            el.classList.remove('hidden');
+          } else {
+            el.classList.add('hidden');
+          }
+        });
+        // Expand panel
+        regionPanel.style.maxHeight = '500px';
+        regionPanel.style.opacity = '1';
+        regionPanel.style.marginTop = '8px';
+      }
+    });
   });
 </script>
