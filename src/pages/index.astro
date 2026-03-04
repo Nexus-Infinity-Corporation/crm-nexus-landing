@@ -2,6 +2,24 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Footer from '@/components/Footer.astro';
 
+const industries = [
+  { icon: '🏦', nameEn: 'Financial Services',     nameEs: 'Servicios Financieros',    platform: 'both', descEn: 'Client management & back-office automation',          descEs: 'Gestión de clientes y automatización contable' },
+  { icon: '📊', nameEn: 'Accounting',              nameEs: 'Contabilidad',              platform: 'erp',  descEn: 'Automated ledgers, invoicing & reporting',           descEs: 'Libros contables, facturación e informes' },
+  { icon: '👥', nameEn: 'Human Resources',         nameEs: 'Recursos Humanos',          platform: 'erp',  descEn: 'Payroll, recruitment & performance tracking',        descEs: 'Nómina, reclutamiento y desempeño' },
+  { icon: '🏭', nameEn: 'Manufacturing',           nameEs: 'Manufactura',               platform: 'erp',  descEn: 'Production planning, BOM & shop floor control',      descEs: 'Planificación de producción y control de planta' },
+  { icon: '🛒', nameEn: 'Retail & E-commerce',     nameEs: 'Retail y E-commerce',       platform: 'both', descEn: 'Omnichannel sales, inventory & loyalty programs',    descEs: 'Ventas omnicanal, inventario y fidelización' },
+  { icon: '🏠', nameEn: 'Real Estate',             nameEs: 'Bienes Raíces',             platform: 'crm',  descEn: 'Lead pipelines, property follow-ups & closings',     descEs: 'Pipelines de leads, seguimiento y cierres' },
+  { icon: '🏥', nameEn: 'Healthcare',              nameEs: 'Salud',                     platform: 'both', descEn: 'Patient CRM, billing & supply chain management',    descEs: 'CRM para pacientes, facturación y supply chain' },
+  { icon: '🎓', nameEn: 'Education',               nameEs: 'Educación',                 platform: 'crm',  descEn: 'Enrollment automation, student engagement & LMS',   descEs: 'Automatización de matrículas y enganche estudiantil' },
+  { icon: '🏗️', nameEn: 'Construction',           nameEs: 'Construcción',              platform: 'erp',  descEn: 'Project costing, procurement & subcontractor mgmt', descEs: 'Costos de proyecto, compras y subcontratistas' },
+  { icon: '🚚', nameEn: 'Logistics',               nameEs: 'Logística',                 platform: 'erp',  descEn: 'Fleet, warehouse & distribution management',        descEs: 'Gestión de flota, almacén y distribución' },
+  { icon: '⚖️', nameEn: 'Legal Services',          nameEs: 'Servicios Legales',         platform: 'crm',  descEn: 'Case tracking, client communication & billing',     descEs: 'Seguimiento de casos, comunicación y facturación' },
+  { icon: '🛡️', nameEn: 'Insurance',              nameEs: 'Seguros',                   platform: 'crm',  descEn: 'Policy management, claims & renewal automation',    descEs: 'Gestión de pólizas, siniestros y renovaciones' },
+  { icon: '🍽️', nameEn: 'Hospitality',            nameEs: 'Hospitalidad',              platform: 'crm',  descEn: 'Guest CRM, reservations & loyalty campaigns',       descEs: 'CRM de huéspedes, reservas y campañas de fidelización' },
+  { icon: '💻', nameEn: 'Technology',              nameEs: 'Tecnología',                platform: 'both', descEn: 'Subscription billing, support & DevOps procurement', descEs: 'Facturación, soporte y adquisición DevOps' },
+  { icon: '📡', nameEn: 'Telecommunications',      nameEs: 'Telecomunicaciones',        platform: 'crm',  descEn: 'Subscriber management, support & upsell campaigns', descEs: 'Gestión de suscriptores, soporte y upsell' },
+  { icon: '⚡', nameEn: 'Energy & Utilities',      nameEs: 'Energía y Servicios',       platform: 'erp',  descEn: 'Asset management, billing & regulatory compliance', descEs: 'Gestión de activos, facturación y cumplimiento' },
+];
 
 const regions = [
   {
@@ -132,8 +150,17 @@ const regions = [
         <span class="t-en">Select your Nexus Infinity Platform</span>
         <span class="t-es hidden">Selecciona tu Plataforma Nexus Infinity</span>
       </div>
+
       <!-- Global Heading - Region Selector -->
       <div class="w-full max-w-[860px] mb-4" id="region-selector">
+            <!-- Global Presence -->
+    <div class="mb-8 pb-8 border-b border-[rgba(0,212,255,0.15)]">
+      <h5 class="font-display text-[10px] tracking-[2px] text-primary mb-4 text-center">
+        <span class="t-en">GLOBAL PRESENCE</span>
+        <span class="t-es hidden">PRESENCIA GLOBAL</span>
+      </h5>
+    
+
         <!-- Region tab pills -->
         <div class="flex flex-wrap items-center justify-center gap-2" id="region-tabs">
           {regions.map((r, i) => (
@@ -148,7 +175,7 @@ const regions = [
             </button>
           ))}
         </div>
-
+        
         <!-- Expandable countries panel -->
         <div
           id="region-panel"
@@ -170,6 +197,103 @@ const regions = [
           </div>
         </div>
       </div>
+      </div>
+
+      <!-- Expandable Industries -->
+        <!-- Industries Dropdown -->
+      <div class="w-full max-w-[860px] my-3" id="industry-selector">
+
+        <!-- Trigger button -->
+        <div class="flex justify-center">
+          <button
+            id="industry-toggle"
+            class="group inline-flex items-center gap-3 font-mono text-[11px] tracking-[2px] uppercase px-6 py-3 rounded-full border border-[rgba(0,212,255,0.4)] text-primary bg-[rgba(0,212,255,0.07)] hover:bg-[rgba(0,212,255,0.13)] hover:border-primary hover:shadow-[0_0_24px_rgba(0,212,255,0.25)] transition-all duration-300 shadow-[0_0_12px_rgba(0,212,255,0.1)]"
+          >
+            <span class="w-6 h-6 rounded-lg bg-[rgba(0,212,255,0.12)] border border-[rgba(0,212,255,0.25)] flex items-center justify-center text-[13px] shrink-0">🏢</span>
+            <span class="t-en">Industries We Serve</span>
+            <span class="t-es hidden">Industrias que Atendemos</span>
+            <span id="industry-chevron" class="text-[9px] opacity-70 transition-transform duration-300 inline-block ml-1">▾</span>
+          </button>
+        </div>
+
+        <!-- Expandable panel -->
+        <div
+          id="industry-panel"
+          class="overflow-hidden transition-all duration-500"
+          style="max-height:0;opacity:0;margin-top:0;"
+        >
+          <div class="bg-bg-card border border-[rgba(0,212,255,0.2)] rounded-2xl p-5 mt-3 shadow-[0_0_40px_rgba(0,212,255,0.06)]">
+
+            <!-- Filter tabs -->
+            <div class="flex flex-wrap items-center justify-center gap-2 mb-5">
+              {[
+                { key: 'all',  labelEn: 'All Industries', labelEs: 'Todas',      color: 'text-text-muted border-[rgba(0,212,255,0.2)]' },
+                { key: 'crm',  labelEn: 'CRM',            labelEs: 'CRM',        color: 'text-primary   border-[rgba(0,212,255,0.35)]' },
+                { key: 'erp',  labelEn: 'ERP',            labelEs: 'ERP',        color: 'text-[#B088FF] border-[rgba(123,47,255,0.35)]' },
+                { key: 'both', labelEn: 'Both',           labelEs: 'Ambas',      color: 'text-accent2   border-[rgba(255,107,53,0.4)]' },
+              ].map(f => (
+                <button
+                  class={`ind-filter font-mono text-[10px] tracking-[1.5px] uppercase px-3.5 py-1.5 rounded-full border bg-transparent transition-all duration-200 ${f.color}`}
+                  data-filter={f.key}
+                >
+                  <span class="t-en">{f.labelEn}</span>
+                  <span class="t-es hidden">{f.labelEs}</span>
+                </button>
+              ))}
+            </div>
+
+            <!-- Industry grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3" id="industry-grid">
+              {industries.map(ind => (
+                <div
+                  class={`ind-card group relative flex flex-col gap-2 bg-bg-card rounded-xl p-3 overflow-hidden transition-all duration-300 cursor-default border ${
+                    ind.platform === 'crm'  ? 'border-[rgba(0,212,255,0.15)]  hover:border-primary    hover:shadow-[0_0_28px_rgba(0,212,255,0.2)]' :
+                    ind.platform === 'erp'  ? 'border-[rgba(123,47,255,0.15)] hover:border-[#B088FF]  hover:shadow-[0_0_28px_rgba(123,47,255,0.2)]' :
+                                              'border-[rgba(0,255,179,0.12)]  hover:border-accent2    hover:shadow-[0_0_28px_rgba(0,255,179,0.15)]'
+                  }`}
+                  data-platform={ind.platform}
+                >
+                  <!-- Top accent line -->
+                  <div class={`absolute top-0 left-0 right-0 h-[2px] ${
+                    ind.platform === 'crm'  ? 'bg-gradient-to-r from-primary/60 to-transparent' :
+                    ind.platform === 'erp'  ? 'bg-gradient-to-r from-[#B088FF]/60 to-transparent' :
+                                              'bg-gradient-to-r from-accent2/60 to-transparent'
+                  }`}></div>
+
+                  <!-- Icon + badge row -->
+                  <div class="flex items-center justify-between mt-1">
+                    <div class={`w-9 h-9 rounded-lg flex items-center justify-center text-[18px] ${
+                      ind.platform === 'crm'  ? 'bg-[rgba(0,212,255,0.1)]   border border-[rgba(0,212,255,0.2)]' :
+                      ind.platform === 'erp'  ? 'bg-[rgba(123,47,255,0.1)] border border-[rgba(123,47,255,0.2)]' :
+                                                'bg-[rgba(0,255,179,0.08)]  border border-[rgba(0,255,179,0.2)]'
+                    }`}>{ind.icon}</div>
+                    {ind.platform === 'crm' && (
+                      <span class="font-mono text-[8px] tracking-[1.5px] uppercase px-2 py-0.5 rounded-full bg-[rgba(0,212,255,0.1)] border border-[rgba(0,212,255,0.3)] text-primary">CRM</span>
+                    )}
+                    {ind.platform === 'erp' && (
+                      <span class="font-mono text-[8px] tracking-[1.5px] uppercase px-2 py-0.5 rounded-full bg-[rgba(123,47,255,0.1)] border border-[rgba(123,47,255,0.3)] text-[#B088FF]">ERP</span>
+                    )}
+                    {ind.platform === 'both' && (
+                      <span class="font-mono text-[8px] tracking-[1.5px] uppercase px-2 py-0.5 rounded-full border border-[rgba(0,255,179,0.3)] text-accent2" style="background:rgba(0,255,179,0.08)">Both</span>
+                    )}
+                  </div>
+                  <!-- Name -->
+                  <p class="font-display text-[12px] font-bold text-white leading-tight">
+                    <span class="t-en">{ind.nameEn}</span>
+                    <span class="t-es hidden">{ind.nameEs}</span>
+                  </p>
+                  <!-- Desc -->
+                  <p class="text-[10px] text-text-muted leading-[1.5]">
+                    <span class="t-en">{ind.descEn}</span>
+                    <span class="t-es hidden">{ind.descEs}</span>
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+      
       <!-- Heading -->
       <h1 class="font-display text-[clamp(28px,4vw,56px)] font-black leading-[1.1] text-white text-center mb-4 tracking-[-1px]">
         <span class="t-en">Which solution<br/><span class="gradient-text-brand">do you need today?</span></span>
@@ -347,7 +471,7 @@ const regions = [
       </div>
 
       <!-- Divider + compare note -->
-      <div class="flex items-center gap-4 mt-16 w-full max-w-[860px]">
+      <div class="flex items-center gap-4 mt-10 w-full max-w-[860px]">
         <div class="flex-1 h-px bg-[rgba(0,212,255,0.1)]"></div>
         <span class="text-xs text-text-dim font-mono whitespace-nowrap">
           <span class="t-en">Not sure which to choose?</span>
@@ -482,6 +606,64 @@ const regions = [
       e.preventDefault();
       if (selectedTarget) navigate(selectedTarget);
     });
+
+    // ── Industry dropdown ─────────────────────────────────────
+    const industryToggle = document.getElementById('industry-toggle')!;
+    const industryPanel  = document.getElementById('industry-panel')!;
+    const industryChevron = document.getElementById('industry-chevron')!;
+    const indFilters     = document.querySelectorAll<HTMLButtonElement>('.ind-filter');
+    const indCards       = document.querySelectorAll<HTMLElement>('.ind-card');
+    let industryOpen     = false;
+
+    const IND_ACTIVE: Record<string, string[]> = {
+      all:  ['bg-[rgba(0,212,255,0.1)]',   'border-primary',             'text-primary'],
+      crm:  ['bg-[rgba(0,212,255,0.12)]',  'border-[rgba(0,212,255,0.5)]', 'text-primary'],
+      erp:  ['bg-[rgba(123,47,255,0.12)]', 'border-[rgba(123,47,255,0.5)]','text-[#B088FF]'],
+      both: ['bg-[rgba(255,107,53,0.1)]',  'border-[rgba(255,107,53,0.5)]','text-accent2'],
+    };
+
+    if (industryToggle) {
+      industryToggle.addEventListener('click', () => {
+        industryOpen = !industryOpen;
+        if (industryOpen) {
+          industryPanel.style.maxHeight = '800px';
+          industryPanel.style.opacity   = '1';
+          industryPanel.style.marginTop = '0';
+          industryChevron.style.transform = 'rotate(180deg)';
+        } else {
+          industryPanel.style.maxHeight = '0';
+          industryPanel.style.opacity   = '0';
+          industryPanel.style.marginTop = '0';
+          industryChevron.style.transform = 'rotate(0deg)';
+        }
+      });
+    }
+
+    // Activate 'all' filter by default
+    function setIndFilter(key: string) {
+      indFilters.forEach(btn => {
+        const k = btn.dataset.filter!;
+        if (k === key) {
+          btn.classList.add(...IND_ACTIVE[k]);
+        } else {
+          btn.classList.remove(...Object.values(IND_ACTIVE).flat());
+        }
+      });
+      indCards.forEach(card => {
+        const p = card.dataset.platform!;
+        if (key === 'all' || p === key) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    indFilters.forEach(btn => {
+      btn.addEventListener('click', () => setIndFilter(btn.dataset.filter!));
+    });
+
+    setIndFilter('all');
 
     // ── Region selector ──────────────────────────────────────
     const regionTabs = document.querySelectorAll<HTMLButtonElement>('.region-tab');

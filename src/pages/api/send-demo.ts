@@ -114,8 +114,9 @@ export const POST: APIRoute = async ({ request }) => {
     <div class="header"><h1>¡Tu demo está en camino! 🚀</h1></div>
     <div class="body">
       <p>Hola <strong>${name}</strong>,</p>
-      <p>Hemos recibido tu solicitud de demo personalizada. Un miembro de nuestro equipo se pondrá en contacto contigo en las próximas <strong>2 horas</strong> para agendar tu sesión.</p>
-      <p>Mientras tanto, puedes explorar más sobre Nexus CRM en <a href="https://nexusinfinitycorp.com" style="color:#00D4FF">nexusinfinitycorp.com</a>.</p>
+      <p>Hemos recibido tu solicitud de demo personalizada. Un miembro de nuestro equipo se pondrá en contacto contigo para agendar tu sesión.</p>
+      <p>Mientras tanto, puedes explorar más sobre Nexus CRM en <a href="https://crm.nexusinfinitycorp.site" style="color:#00D4FF">nexusinfinitycorp.com</a>.</p>
+      <p>¿Prefieres elegir el horario tú mismo? <a href="https://calendly.com/sale-nexusinfinitycorp/30min" style="color:#B088FF;font-weight:bold">Reserva directo en Calendly →</a></p>
       <p>¡Gracias por confiar en nosotros!</p>
       <p>— El equipo de Nexus Infinity</p>
     </div>
@@ -142,8 +143,9 @@ export const POST: APIRoute = async ({ request }) => {
     <div class="header"><h1>Your demo is on its way! 🚀</h1></div>
     <div class="body">
       <p>Hi <strong>${name}</strong>,</p>
-      <p>We've received your personalized demo request. A member of our team will contact you within <strong>2 hours</strong> to schedule your session.</p>
-      <p>In the meantime, feel free to explore more about Nexus CRM at <a href="https://nexusinfinitycorp.com" style="color:#00D4FF">nexusinfinitycorp.com</a>.</p>
+      <p>We've received your personalized demo request. A member of our team will contact you  to schedule your session.</p>
+      <p>In the meantime, feel free to explore more about Nexus CRM at <a href="https://crm.nexusinfinitycorp.site" style="color:#00D4FF">nexusinfinitycorp.com</a>.</p>
+      <p>Want to pick a time yourself? <a href="https://calendly.com/sale-nexusinfinitycorp/30min" style="color:#B088FF;font-weight:bold">Book directly on Calendly →</a></p>
       <p>Thank you for choosing us!</p>
       <p>— The Nexus Infinity Team</p>
     </div>
