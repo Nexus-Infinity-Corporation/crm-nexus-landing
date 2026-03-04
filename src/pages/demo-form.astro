@@ -66,6 +66,32 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
             </div>
           ))}
         </div>
+
+        <!-- Calendly direct-schedule card -->
+        <div class="mt-8 bg-bg-card border border-[rgba(123,47,255,0.35)] rounded-2xl p-5 shadow-[0_0_24px_rgba(123,47,255,0.1)]">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl bg-[rgba(123,47,255,0.15)] border border-[rgba(123,47,255,0.3)] flex items-center justify-center text-[18px] shrink-0">📅</div>
+            <div class="flex-1">
+              <p class="font-display text-[13px] font-bold text-white mb-1">
+                <span class="t-en">Prefer to pick a time yourself?</span>
+                <span class="t-es hidden">¿Prefieres elegir el horario tú mismo?</span>
+              </p>
+              <p class="text-[12px] text-text-muted mb-3">
+                <span class="t-en">Book a 30-minute slot directly on our calendar — no waiting.</span>
+                <span class="t-es hidden">Reserva un espacio de 30 minutos directo en nuestro calendario, sin esperas.</span>
+              </p>
+              <a
+                href="https://calendly.com/sale-nexusinfinitycorp/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 font-mono text-[11px] tracking-[1.5px] uppercase px-4 py-2 rounded-full bg-[rgba(123,47,255,0.12)] border border-[rgba(123,47,255,0.4)] text-[#B088FF] hover:bg-[rgba(123,47,255,0.22)] hover:border-[#B088FF] hover:shadow-[0_0_18px_rgba(123,47,255,0.3)] transition-all duration-200"
+              >
+                <span class="t-en">Schedule on Calendly →</span>
+                <span class="t-es hidden">Agendar en Calendly →</span>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Right: Form -->
@@ -77,14 +103,24 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         <!-- Success message (hidden by default) -->
         <div id="form-success" class="hidden text-center py-6">
           <div class="text-4xl mb-3">🎉</div>
-          <p class="font-display text-lg font-bold text-primary mb-1">
+          <p class="font-display text-lg font-bold text-primary mb-2">
             <span class="t-en">Request sent!</span>
             <span class="t-es hidden">¡Solicitud enviada!</span>
           </p>
-          <p class="text-sm text-text-muted">
-            <span class="t-en">We'll be in touch within 2 hours.</span>
-            <span class="t-es hidden">Te contactaremos en las próximas 2 horas.</span>
+          <p class="text-sm text-text-muted mb-5">
+            <span class="t-en">We'll be in touch within 2 hours. Or book your slot right now:</span>
+            <span class="t-es hidden">Te contactaremos en las próximas 2 horas. O agenda tu espacio ahora mismo:</span>
           </p>
+          <a
+            href="https://calendly.com/sale-nexusinfinitycorp/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2.5 font-mono text-[11px] tracking-[2px] uppercase px-6 py-3 rounded-full bg-gradient-to-br from-secondary to-accent text-white font-bold hover:shadow-[0_0_24px_rgba(123,47,255,0.5)] transition-all duration-300"
+          >
+            📅
+            <span class="t-en">Book on Calendly</span>
+            <span class="t-es hidden">Agendar en Calendly</span>
+          </a>
         </div>
         <!-- Error message (hidden by default) -->
         <div id="form-error" class="hidden mb-4 px-4 py-3 rounded-lg bg-[rgba(255,60,60,0.1)] border border-[rgba(255,60,60,0.4)] text-sm text-red-400 text-center"></div>
