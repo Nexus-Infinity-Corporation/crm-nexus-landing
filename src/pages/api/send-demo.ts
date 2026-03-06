@@ -17,14 +17,16 @@ const mg = mailgun.client({ username: "api", key: MAILGUN_API_KEY });
 export const POST: APIRoute = async ({ request }) => {
   try {
     const body = await request.json();
-    const { name, company, email, phone, agents, lang } = body as {
+    const { name, company, email, phone, agents, lang, source } = body as {
       name: string;
       company: string;
       email: string;
       phone: string;
       agents: string;
       lang: "en" | "es";
+      source: "CRM" | "ERP" | "MAIN";
     };
+    const productSource = source === "ERP" ? "ERP" : source === "MAIN" ? "MAIN" : "CRM";
 
     // Basic validation
     if (!name || !email) {
@@ -63,7 +65,7 @@ export const POST: APIRoute = async ({ request }) => {
       <h1>🚀 New Demo Request</h1>
     </div>
     <div class="body">
-      <div class="badge">Lead · Nexus CRM</div>
+      <div class="badge">Lead · Nexus ${productSource}</div>
       <div class="field">
         <div class="label">Full Name</div>
         <div class="value">${name}</div>
@@ -158,7 +160,7 @@ export const POST: APIRoute = async ({ request }) => {
     await mg.messages.create(MAILGUN_DOMAIN, {
       from: FROM_EMAIL,
       to: [RECIPIENT_EMAIL],
-      subject: `🚀 New Demo Request — ${name} (${company || "No company"}) <${email}>`,
+      subject: `🚀 New ${productSource} Demo Request — ${name} (${company || "No company"}) <${email}>`,
       html: htmlBody,
     });
 

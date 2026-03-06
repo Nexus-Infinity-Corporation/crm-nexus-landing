@@ -5,6 +5,7 @@ export interface DemoFormData {
   phone: string;
   agents: string;
   lang: "en" | "es";
+  source: "CRM" | "ERP" | "MAIN";
 }
 
 export interface SendEmailResult {
