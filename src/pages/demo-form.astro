@@ -68,7 +68,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
         </div>
 
         <!-- Calendly direct-schedule card -->
-        <div class="mt-8 bg-bg-card border border-[rgba(123,47,255,0.35)] rounded-2xl p-5 shadow-[0_0_24px_rgba(123,47,255,0.1)]">
+        <!-- <div class="mt-8 bg-bg-card border border-[rgba(123,47,255,0.35)] rounded-2xl p-5 shadow-[0_0_24px_rgba(123,47,255,0.1)]">
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 rounded-xl bg-[rgba(123,47,255,0.15)] border border-[rgba(123,47,255,0.3)] flex items-center justify-center text-[18px] shrink-0">📅</div>
             <div class="flex-1">
@@ -76,7 +76,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
                 <span class="t-en">Prefer to pick a time yourself?</span>
                 <span class="t-es hidden">¿Prefieres elegir el horario tú mismo?</span>
               </p>
-              <!-- <p class="text-[12px] text-text-muted mb-3">
+              <p class="text-[12px] text-text-muted mb-3">
                 <span class="t-en">Book a 30-minute slot directly on our calendar — no waiting.</span>
                 <span class="t-es hidden">Reserva un espacio de 30 minutos directo en nuestro calendario, sin esperas.</span>
               </p>
@@ -88,10 +88,10 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
               >
                 <span class="t-en">Schedule on Calendly →</span>
                 <span class="t-es hidden">Agendar en Calendly →</span>
-              </a> -->
+              </a>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
 
       <!-- Right: Form -->
@@ -190,86 +190,89 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 <script>
   import { sendDemoEmail } from '@/scripts/send-email';
 
-  const btnEn    = document.getElementById('btn-en')!;
-  const btnEs    = document.getElementById('btn-es')!;
-  let currentLang: 'en' | 'es' = 'en';
+  function initDemoFormPage() {
+    let currentLang: 'en' | 'es' = 'en';
 
-  function setLang(lang: 'en' | 'es') {
-    currentLang = lang;
-    const show = lang === 'en' ? '.t-en' : '.t-es';
-    const hide = lang === 'en' ? '.t-es' : '.t-en';
-    document.querySelectorAll<HTMLElement>(show).forEach(el => el.classList.remove('hidden'));
-    document.querySelectorAll<HTMLElement>(hide).forEach(el => el.classList.add('hidden'));
-    const active = 'bg-[rgba(0,212,255,0.12)] border-primary text-primary';
-    const idle   = 'bg-transparent border-[rgba(0,212,255,0.2)] text-text-muted';
-    const base   = 'lang-btn font-mono text-[11px] tracking-[2px] uppercase px-4 py-1.5 rounded-full border transition-all';
-    if (lang === 'en') {
-      btnEn.className = `${base} ${active}`;
-      btnEs.className = `${base} ${idle}`;
-    } else {
-      btnEs.className = `${base} ${active}`;
-      btnEn.className = `${base} ${idle}`;
+    const btnEn = document.getElementById('btn-en') as HTMLButtonElement | null;
+    const btnEs = document.getElementById('btn-es') as HTMLButtonElement | null;
+
+    function setLang(lang: 'en' | 'es') {
+      currentLang = lang;
+      const show = lang === 'en' ? '.t-en' : '.t-es';
+      const hide = lang === 'en' ? '.t-es' : '.t-en';
+      document.querySelectorAll<HTMLElement>(show).forEach(el => el.classList.remove('hidden'));
+      document.querySelectorAll<HTMLElement>(hide).forEach(el => el.classList.add('hidden'));
+      const active = 'bg-[rgba(0,212,255,0.12)] border-primary text-primary';
+      const idle   = 'bg-transparent border-[rgba(0,212,255,0.2)] text-text-muted';
+      const base   = 'lang-btn font-mono text-[11px] tracking-[2px] uppercase px-4 py-1.5 rounded-full border transition-all';
+      if (btnEn && btnEs) {
+        btnEn.className = lang === 'en' ? `${base} ${active}` : `${base} ${idle}`;
+        btnEs.className = lang === 'es' ? `${base} ${active}` : `${base} ${idle}`;
+      }
+      localStorage.setItem('nxLang', lang);
     }
-    localStorage.setItem('nxLang', lang);
+
+    if (btnEn) btnEn.addEventListener('click', () => setLang('en'));
+    if (btnEs) btnEs.addEventListener('click', () => setLang('es'));
+
+    const saved = localStorage.getItem('nxLang') as 'en' | 'es' | null;
+    setLang(saved === 'es' ? 'es' : 'en');
+
+    // ── Form submission ──────────────────────────────────────────────────────
+    const submitBtn   = document.getElementById('submit-btn') as HTMLButtonElement | null;
+    const formFields  = document.getElementById('form-fields');
+    const formSuccess = document.getElementById('form-success');
+    const formError   = document.getElementById('form-error') as HTMLElement | null;
+
+    const fieldName    = document.getElementById('field-name')    as HTMLInputElement | null;
+    const fieldCompany = document.getElementById('field-company') as HTMLInputElement | null;
+    const fieldEmail   = document.getElementById('field-email')   as HTMLInputElement | null;
+    const fieldPhone   = document.getElementById('field-phone')   as HTMLInputElement | null;
+    const fieldAgents  = document.getElementById('field-agents')  as HTMLSelectElement | null;
+
+    if (!submitBtn || !formFields || !formSuccess || !formError || !fieldName || !fieldEmail || !fieldAgents) return;
+
+    submitBtn.addEventListener('click', async () => {
+      if (!fieldName.value.trim() || !fieldEmail.value.trim()) {
+        formError.textContent = currentLang === 'es'
+          ? 'Por favor completa los campos requeridos (nombre y email).'
+          : 'Please fill in the required fields (name and email).';
+        formError.classList.remove('hidden');
+        return;
+      }
+
+      formError.classList.add('hidden');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = currentLang === 'es'
+        ? '<span class="relative z-10">⏳ Enviando...</span>'
+        : '<span class="relative z-10">⏳ Sending...</span>';
+
+      const result = await sendDemoEmail({
+        name:    fieldName.value.trim(),
+        company: fieldCompany?.value.trim() ?? '',
+        email:   fieldEmail.value.trim(),
+        phone:   fieldPhone?.value.trim() ?? '',
+        agents:  fieldAgents.value,
+        lang:    currentLang,
+        source:  'MAIN',
+      });
+
+      if (result.success) {
+        formFields.classList.add('hidden');
+        formSuccess.classList.remove('hidden');
+        setLang(currentLang);
+      } else {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = currentLang === 'es'
+          ? '<span class="relative z-10">🚀 Solicitar Demo Gratuita</span>'
+          : '<span class="relative z-10">🚀 Request Free Demo</span>';
+        formError.textContent = result.error ?? (currentLang === 'es'
+          ? 'Algo salió mal. Intenta de nuevo.'
+          : 'Something went wrong. Please try again.');
+        formError.classList.remove('hidden');
+      }
+    });
   }
 
-  btnEn.addEventListener('click', () => setLang('en'));
-  btnEs.addEventListener('click', () => setLang('es'));
-
-  const saved = localStorage.getItem('nxLang') as 'en' | 'es' | null;
-  setLang(saved === 'es' ? 'es' : 'en');
-
-  // ── Form submission ──────────────────────────────────────────────────────────
-  const submitBtn   = document.getElementById('submit-btn') as HTMLButtonElement;
-  const formFields  = document.getElementById('form-fields')!;
-  const formSuccess = document.getElementById('form-success')!;
-  const formError   = document.getElementById('form-error')!;
-
-  const fieldName    = document.getElementById('field-name')    as HTMLInputElement;
-  const fieldCompany = document.getElementById('field-company') as HTMLInputElement;
-  const fieldEmail   = document.getElementById('field-email')   as HTMLInputElement;
-  const fieldPhone   = document.getElementById('field-phone')   as HTMLInputElement;
-  const fieldAgents  = document.getElementById('field-agents')  as HTMLSelectElement;
-
-  submitBtn.addEventListener('click', async () => {
-    // Basic client-side validation
-    if (!fieldName.value.trim() || !fieldEmail.value.trim()) {
-      formError.textContent = currentLang === 'es'
-        ? 'Por favor completa los campos requeridos (nombre y email).'
-        : 'Please fill in the required fields (name and email).';
-      formError.classList.remove('hidden');
-      return;
-    }
-
-    formError.classList.add('hidden');
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = currentLang === 'es'
-      ? '<span class="relative z-10">⏳ Enviando...</span>'
-      : '<span class="relative z-10">⏳ Sending...</span>';
-
-    const result = await sendDemoEmail({
-      name:    fieldName.value.trim(),
-      company: fieldCompany.value.trim(),
-      email:   fieldEmail.value.trim(),
-      phone:   fieldPhone.value.trim(),
-      agents:  fieldAgents.value,
-      lang:    currentLang,
-    });
-
-    if (result.success) {
-      formFields.classList.add('hidden');
-      formSuccess.classList.remove('hidden');
-      // Re-show language-specific success text
-      setLang(currentLang);
-    } else {
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = currentLang === 'es'
-        ? '<span class="relative z-10">🚀 Solicitar Demo Gratuita</span>'
-        : '<span class="relative z-10">🚀 Request Free Demo</span>';
-      formError.textContent = result.error ?? (currentLang === 'es'
-        ? 'Algo salió mal. Intenta de nuevo.'
-        : 'Something went wrong. Please try again.');
-      formError.classList.remove('hidden');
-    }
-  });
+  document.addEventListener('astro:page-load', initDemoFormPage);
 </script>
