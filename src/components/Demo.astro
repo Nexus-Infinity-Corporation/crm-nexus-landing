@@ -16,8 +16,8 @@ const { source = 'CRM' } = Astro.props;
           <span class="t-es hidden">¿Listo para empezar?</span>
         </div>
         <h2 class="font-display text-[clamp(32px,4vw,52px)] font-bold leading-[1.1] gradient-text mb-5">
-          <span class="t-en">Request your<br/>Personalized Demo</span>
-          <span class="t-es hidden">Solicita tu Demo<br/>Personalizada</span>
+          <span class="t-en">Request your<br/>Meeting</span>
+          <span class="t-es hidden">Solicita tu <br/>Reunion</span>
         </h2>
         <p class="text-lg text-text-muted leading-[1.7] max-w-[600px]">
           <span class="t-en">Schedule a 30-minute session. We’ll show you the platform configured for your specific industry.</span>
@@ -42,8 +42,8 @@ const { source = 'CRM' } = Astro.props;
       <!-- Right: Form -->
       <div class="bg-bg-card border border-[rgba(0,212,255,0.4)] rounded-2xl p-5 sm:p-8 shadow-glow-primary">
         <div class="font-display text-[17px] font-bold mb-5 text-center text-primary">
-          <span class="t-en">Schedule your <span>{source}</span> Free Demo</span>
-          <span class="t-es hidden">Agenda tu Demo <span>{source}</span> Gratis</span>
+          <span class="t-en">Schedule your <span>{source}</span> Meeting</span>
+          <span class="t-es hidden">Agenda tu <span>{source}</span> Reunion</span>
         </div>
 
         <!-- Success message (hidden by default) -->
@@ -119,8 +119,8 @@ const { source = 'CRM' } = Astro.props;
           type="button"
           class="btn-primary-glow w-full flex items-center justify-center gap-2.5 bg-gradient-to-br from-primary to-secondary text-white font-bold text-[15px] px-8 py-[15px] rounded-full border-none cursor-pointer shadow-glow-primary disabled:opacity-60 disabled:cursor-not-allowed"
         >
-          <span class="relative z-10 t-en">🚀 Request Free Demo</span>
-          <span class="relative z-10 t-es hidden">🚀 Solicitar Demo Gratuita</span>
+          <span class="relative z-10 t-en">🚀 Request a Meeting</span>
+          <span class="relative z-10 t-es hidden">🚀 Solicitar Reunion</span>
         </button>
         <p class="text-center text-[11px] text-text-dim mt-2.5">
           <span class="t-en">No spam. You agree to our Privacy Policy.</span>
@@ -198,8 +198,8 @@ const { source = 'CRM' } = Astro.props;
       } else {
         submitBtn.disabled = false;
         submitBtn.innerHTML = lang === 'es'
-          ? '<span class="relative z-10">🚀 Solicitar Demo Gratuita</span>'
-          : '<span class="relative z-10">🚀 Request Free Demo</span>';
+          ? '<span class="relative z-10">🚀 Solicitar Reunion</span>'
+          : '<span class="relative z-10">🚀 Request a Meeting</span>';
         formError.textContent = result.error ?? (lang === 'es'
           ? 'Algo salió mal. Intenta de nuevo.'
           : 'Something went wrong. Please try again.');

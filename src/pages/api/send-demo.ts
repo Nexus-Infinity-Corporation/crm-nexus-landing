@@ -8,8 +8,8 @@ const MAILGUN_API_KEY = import.meta.env.MAILGUN_API_KEY as string;
 const MAILGUN_DOMAIN = "crm.nexusinfinity.site";
 const RECIPIENT_EMAIL = "sale@nexusinfinitycorp.com";
 const FROM_EMAIL = import.meta.env.MAILGUN_FROM_EMAIL
-  ? `Nexus Demo Form <${import.meta.env.MAILGUN_FROM_EMAIL}>`
-  : `Nexus Demo Form <noreply@${MAILGUN_DOMAIN}>`;
+  ? `Nexus Meeting Form <${import.meta.env.MAILGUN_FROM_EMAIL}>`
+  : `Nexus Meeting Form <noreply@${MAILGUN_DOMAIN}>`;
 
 const mailgun = new Mailgun(FormData);
 const mg = mailgun.client({ username: "api", key: MAILGUN_API_KEY });
@@ -26,7 +26,8 @@ export const POST: APIRoute = async ({ request }) => {
       lang: "en" | "es";
       source: "CRM" | "ERP" | "MAIN";
     };
-    const productSource = source === "ERP" ? "ERP" : source === "MAIN" ? "MAIN" : "CRM";
+    const productSource =
+      source === "ERP" ? "ERP" : source === "MAIN" ? "MAIN" : "CRM";
 
     // Basic validation
     if (!name || !email) {
@@ -62,7 +63,7 @@ export const POST: APIRoute = async ({ request }) => {
 <body>
   <div class="container">
     <div class="header">
-      <h1>🚀 New Demo Request</h1>
+      <h1>🚀 New Meeting Request</h1>
     </div>
     <div class="body">
       <div class="badge">Lead · Nexus ${productSource}</div>
@@ -113,10 +114,10 @@ export const POST: APIRoute = async ({ request }) => {
 </head>
 <body>
   <div class="container">
-    <div class="header"><h1>¡Tu demo está en camino! 🚀</h1></div>
+    <div class="header"><h1>¡Tu reunion está en camino! 🚀</h1></div>
     <div class="body">
       <p>Hola <strong>${name}</strong>,</p>
-      <p>Hemos recibido tu solicitud de demo personalizada. Un miembro de nuestro equipo se pondrá en contacto contigo para agendar tu sesión.</p>
+      <p>Hemos recibido tu solicitud de reunion personalizada. Un miembro de nuestro equipo se pondrá en contacto contigo para agendar tu sesión.</p>
       <p>Mientras tanto, puedes explorar más sobre Nexus CRM en <a href="https://crm.nexusinfinitycorp.site" style="color:#00D4FF">nexusinfinitycorp.com</a>.</p>
       <p>¿Prefieres elegir el horario tú mismo? <a href="https://calendly.com/sale-nexusinfinitycorp/30min" style="color:#B088FF;font-weight:bold">Reserva directo en Calendly →</a></p>
       <p>¡Gracias por confiar en nosotros!</p>
@@ -142,10 +143,10 @@ export const POST: APIRoute = async ({ request }) => {
 </head>
 <body>
   <div class="container">
-    <div class="header"><h1>Your demo is on its way! 🚀</h1></div>
+    <div class="header"><h1>Your meeting is on its way! 🚀</h1></div>
     <div class="body">
       <p>Hi <strong>${name}</strong>,</p>
-      <p>We've received your personalized demo request. A member of our team will contact you  to schedule your session.</p>
+      <p>We've received your personalized meeting request. A member of our team will contact you  to schedule your session.</p>
       <p>In the meantime, feel free to explore more about Nexus CRM at <a href="https://crm.nexusinfinitycorp.site" style="color:#00D4FF">nexusinfinitycorp.com</a>.</p>
       <p>Want to pick a time yourself? <a href="https://calendly.com/sale-nexusinfinitycorp/30min" style="color:#B088FF;font-weight:bold">Book directly on Calendly →</a></p>
       <p>Thank you for choosing us!</p>
@@ -160,7 +161,7 @@ export const POST: APIRoute = async ({ request }) => {
     await mg.messages.create(MAILGUN_DOMAIN, {
       from: FROM_EMAIL,
       to: [RECIPIENT_EMAIL],
-      subject: `🚀 New ${productSource} Demo Request — ${name} (${company || "No company"}) <${email}>`,
+      subject: `🚀 New ${productSource} Meeting Request — ${name} (${company || "No company"}) <${email}>`,
       html: htmlBody,
     });
 
@@ -170,8 +171,8 @@ export const POST: APIRoute = async ({ request }) => {
         from: FROM_EMAIL,
         to: [email],
         subject: isEs
-          ? "¡Recibimos tu solicitud de demo! — Nexus Infinity"
-          : "We received your demo request! — Nexus Infinity",
+          ? "¡Recibimos tu solicitud de reunion! — Nexus Infinity"
+          : "We received your meeting request! — Nexus Infinity",
         html: confirmationHtml,
       });
     }
