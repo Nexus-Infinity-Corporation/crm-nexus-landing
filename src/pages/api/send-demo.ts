@@ -26,7 +26,8 @@ export const POST: APIRoute = async ({ request }) => {
       lang: "en" | "es";
       source: "CRM" | "ERP" | "MAIN";
     };
-    const productSource = source === "ERP" ? "ERP" : source === "MAIN" ? "MAIN" : "CRM";
+    const productSource =
+      source === "ERP" ? "ERP" : source === "MAIN" ? "MAIN" : "CRM";
 
     // Basic validation
     if (!name || !email) {
