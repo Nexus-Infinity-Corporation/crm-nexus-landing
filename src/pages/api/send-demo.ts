@@ -17,12 +17,26 @@ const mg = mailgun.client({ username: "api", key: MAILGUN_API_KEY });
 export const POST: APIRoute = async ({ request }) => {
   try {
     const body = await request.json();
-    const { name, company, email, phone, agents, lang, source } = body as {
+    const {
+      name,
+      company,
+      email,
+      phone,
+      agents,
+      product,
+      industry,
+      requirement,
+      lang,
+      source,
+    } = body as {
       name: string;
       company: string;
       email: string;
       phone: string;
       agents: string;
+      product: "CRM" | "ERP" | "BOTH";
+      industry: string;
+      requirement: string;
       lang: "en" | "es";
       source: "CRM" | "ERP" | "MAIN";
     };
@@ -88,6 +102,18 @@ export const POST: APIRoute = async ({ request }) => {
         <div class="value">${agents || "—"}</div>
       </div>
       <div class="field">
+        <div class="label">Product Interest</div>
+        <div class="value">${product || "—"}</div>
+      </div>
+      <div class="field">
+        <div class="label">Industry</div>
+        <div class="value">${industry || "—"}</div>
+      </div>
+      <div class="field">
+        <div class="label">Main Requirement</div>
+        <div class="value">${requirement || "—"}</div>
+      </div>
+      <div class="field">
         <div class="label">Language preference</div>
         <div class="value">${lang?.toUpperCase() || "EN"}</div>
       </div>
@@ -109,18 +135,20 @@ export const POST: APIRoute = async ({ request }) => {
     .header { background: linear-gradient(135deg, #00D4FF, #7B2FFF); padding: 30px; text-align: center; }
     .header h1 { margin: 0; color: #fff; font-size: 22px; }
     .body { padding: 30px; line-height: 1.7; color: #cbd5e1; }
+    .cta { display:block; margin: 24px auto; text-align: center; }
+    .cta a { display: inline-block; background: linear-gradient(135deg, #7B2FFF, #00D4FF); color: #fff; font-weight: bold; font-size: 15px; text-decoration: none; padding: 14px 32px; border-radius: 100px; }
     .footer { text-align: center; padding: 20px; font-size: 11px; color: #64748b; border-top: 1px solid rgba(255,255,255,0.05); }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="header"><h1>¡Tu reunion está en camino! 🚀</h1></div>
+    <div class="header"><h1>¡Solicitud recibida! 🎉</h1></div>
     <div class="body">
       <p>Hola <strong>${name}</strong>,</p>
-      <p>Hemos recibido tu solicitud de reunion personalizada. Un miembro de nuestro equipo se pondrá en contacto contigo para agendar tu sesión.</p>
-      <p>Mientras tanto, puedes explorar más sobre Nexus CRM en <a href="https://crm.nexusinfinitycorp.site" style="color:#00D4FF">nexusinfinitycorp.com</a>.</p>
-      <p>¿Prefieres elegir el horario tú mismo? <a href="https://calendly.com/sale-nexusinfinitycorp/30min" style="color:#B088FF;font-weight:bold">Reserva directo en Calendly →</a></p>
-      <p>¡Gracias por confiar en nosotros!</p>
+      <p>Hemos recibido tu solicitud. Si no agendaste tu reunión, elige el horario que mejor te convenga directamente en nuestro calendario:</p>
+      <div class="cta"><a href="https://calendly.com/sale-nexusinfinitycorp/30min">📅 Agendar mi reunión ahora →</a></div>
+      <p>Si ya elegiste un horario, ¡perfecto! Puedes usar el mismo enlace para reagendar en cualquier momento.</p>
+      <p>¿Tienes alguna duda? Escríbenos a <a href="mailto:sale@nexusinfinitycorp.com" style="color:#00D4FF">sale@nexusinfinitycorp.com</a>.</p>
       <p>— El equipo de Nexus Infinity</p>
     </div>
     <div class="footer">© Nexus Infinity Corporation · nexusinfinitycorp.com</div>
@@ -138,18 +166,20 @@ export const POST: APIRoute = async ({ request }) => {
     .header { background: linear-gradient(135deg, #00D4FF, #7B2FFF); padding: 30px; text-align: center; }
     .header h1 { margin: 0; color: #fff; font-size: 22px; }
     .body { padding: 30px; line-height: 1.7; color: #cbd5e1; }
+    .cta { display:block; margin: 24px auto; text-align: center; }
+    .cta a { display: inline-block; background: linear-gradient(135deg, #7B2FFF, #00D4FF); color: #fff; font-weight: bold; font-size: 15px; text-decoration: none; padding: 14px 32px; border-radius: 100px; }
     .footer { text-align: center; padding: 20px; font-size: 11px; color: #64748b; border-top: 1px solid rgba(255,255,255,0.05); }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="header"><h1>Your meeting is on its way! 🚀</h1></div>
+    <div class="header"><h1>Request received! 🎉</h1></div>
     <div class="body">
       <p>Hi <strong>${name}</strong>,</p>
-      <p>We've received your personalized meeting request. A member of our team will contact you  to schedule your session.</p>
-      <p>In the meantime, feel free to explore more about Nexus CRM at <a href="https://crm.nexusinfinitycorp.site" style="color:#00D4FF">nexusinfinitycorp.com</a>.</p>
-      <p>Want to pick a time yourself? <a href="https://calendly.com/sale-nexusinfinitycorp/30min" style="color:#B088FF;font-weight:bold">Book directly on Calendly →</a></p>
-      <p>Thank you for choosing us!</p>
+      <p>We've received your request. If you haven't scheduled your meeting yet, pick the time that works best for you directly on our calendar:</p>
+      <div class="cta"><a href="https://calendly.com/sale-nexusinfinitycorp/30min">📅 Schedule my meeting now →</a></div>
+      <p>If you've already picked a slot, great! You can use the same link to reschedule at any time.</p>
+      <p>Any questions? Reach us at <a href="mailto:sale@nexusinfinitycorp.com" style="color:#00D4FF">sale@nexusinfinitycorp.com</a>.</p>
       <p>— The Nexus Infinity Team</p>
     </div>
     <div class="footer">© Nexus Infinity Corporation · nexusinfinitycorp.com</div>
@@ -171,8 +201,8 @@ export const POST: APIRoute = async ({ request }) => {
         from: FROM_EMAIL,
         to: [email],
         subject: isEs
-          ? "¡Recibimos tu solicitud de reunion! — Nexus Infinity"
-          : "We received your meeting request! — Nexus Infinity",
+          ? "Agenda tu reunión con Nexus Infinity 📅"
+          : "Schedule your meeting with Nexus Infinity 📅",
         html: confirmationHtml,
       });
     }

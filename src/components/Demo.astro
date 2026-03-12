@@ -102,7 +102,18 @@ const { source = 'CRM' } = Astro.props;
           </label>
           <input id="demo-field-phone" type="tel" placeholder="+1 555 0000" class="w-full bg-bg-dark border border-[rgba(0,212,255,0.15)] rounded-lg px-3.5 py-2.5 text-text-base font-body text-[13px] transition-all focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_rgba(0,212,255,0.1)] placeholder:text-text-dim" />
         </div>
-        <div class="mb-5">
+        <div class="mb-3.5">
+          <label class="block text-[11px] text-text-muted mb-1.5 font-mono">
+            <span class="t-en">Which product are you interested in?</span>
+            <span class="t-es hidden">¿Qué producto te interesa?</span>
+          </label>
+          <select id="demo-field-product" class="w-full bg-bg-dark border border-[rgba(0,212,255,0.15)] rounded-lg px-3.5 py-2.5 text-text-base font-body text-[13px] transition-all focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_rgba(0,212,255,0.1)]">
+            <option value="CRM" selected={source !== 'ERP'}>Nexus CRM</option>
+            <option value="ERP" selected={source === 'ERP'}>Nexus ERP</option>
+            <option value="BOTH">CRM + ERP</option>
+          </select>
+        </div>
+        <div class="mb-3.5">
           <label class="block text-[11px] text-text-muted mb-1.5 font-mono">
             <span class="t-en">How many agents does your team have?</span>
             <span class="t-es hidden">¿Cuántos agentes tiene tu equipo?</span>
@@ -113,6 +124,31 @@ const { source = 'CRM' } = Astro.props;
             <option>21-50</option>
             <option>50+</option>
           </select>
+        </div>
+        <div class="mb-3.5">
+          <label class="block text-[11px] text-text-muted mb-1.5 font-mono">
+            <span class="t-en">Industry</span>
+            <span class="t-es hidden">Industria</span>
+          </label>
+          <select id="demo-field-industry" class="w-full bg-bg-dark border border-[rgba(0,212,255,0.15)] rounded-lg px-3.5 py-2.5 text-text-base font-body text-[13px] transition-all focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_rgba(0,212,255,0.1)]">
+            <option value="" disabled selected class="text-text-dim">Select your industry / Selecciona tu industria</option>
+            <option value="technology">Technology / Tecnología</option>
+            <option value="retail">Retail / Comercio</option>
+            <option value="healthcare">Healthcare / Salud</option>
+            <option value="finance">Finance / Finanzas</option>
+            <option value="education">Education / Educación</option>
+            <option value="logistics">Logistics / Logística</option>
+            <option value="real_estate">Real Estate / Inmobiliaria</option>
+            <option value="hospitality">Hospitality / Hostelería</option>
+            <option value="other">Other / Otro</option>
+          </select>
+        </div>
+        <div class="mb-5">
+          <label class="block text-[11px] text-text-muted mb-1.5 font-mono">
+            <span class="t-en">What is your main requirement?</span>
+            <span class="t-es hidden">¿Cuál es tu principal requerimiento?</span>
+          </label>
+          <textarea id="demo-field-requirement" rows="3" placeholder="" class="w-full bg-bg-dark border border-[rgba(0,212,255,0.15)] rounded-lg px-3.5 py-2.5 text-text-base font-body text-[13px] transition-all focus:outline-none focus:border-primary focus:shadow-[0_0_0_3px_rgba(0,212,255,0.1)] placeholder:text-text-dim resize-none"></textarea>
         </div>
         <button
           id="demo-submit-btn"
@@ -145,11 +181,14 @@ const { source = 'CRM' } = Astro.props;
     const formSuccess = document.getElementById('demo-form-success');
     const formError   = document.getElementById('demo-form-error') as HTMLElement | null;
 
-    const fieldName    = document.getElementById('demo-field-name')    as HTMLInputElement | null;
-    const fieldCompany = document.getElementById('demo-field-company') as HTMLInputElement | null;
-    const fieldEmail   = document.getElementById('demo-field-email')   as HTMLInputElement | null;
-    const fieldPhone   = document.getElementById('demo-field-phone')   as HTMLInputElement | null;
-    const fieldAgents  = document.getElementById('demo-field-agents')  as HTMLSelectElement | null;
+    const fieldName        = document.getElementById('demo-field-name')        as HTMLInputElement | null;
+    const fieldCompany     = document.getElementById('demo-field-company')     as HTMLInputElement | null;
+    const fieldEmail       = document.getElementById('demo-field-email')       as HTMLInputElement | null;
+    const fieldPhone       = document.getElementById('demo-field-phone')       as HTMLInputElement | null;
+    const fieldProduct     = document.getElementById('demo-field-product')     as HTMLSelectElement | null;
+    const fieldAgents      = document.getElementById('demo-field-agents')      as HTMLSelectElement | null;
+    const fieldIndustry    = document.getElementById('demo-field-industry')    as HTMLSelectElement | null;
+    const fieldRequirement = document.getElementById('demo-field-requirement') as HTMLTextAreaElement | null;
 
     if (!submitBtn || !formFields || !formSuccess || !formError || !fieldName || !fieldEmail || !fieldAgents) return;
 
@@ -182,19 +221,23 @@ const { source = 'CRM' } = Astro.props;
         : '<span class="relative z-10">⏳ Sending...</span>';
 
       const result = await sendDemoEmail({
-        name:    fieldName.value.trim(),
-        company: fieldCompany?.value.trim() ?? '',
-        email:   fieldEmail.value.trim(),
-        phone:   fieldPhone?.value.trim() ?? '',
-        agents:  fieldAgents.value,
+        name:        fieldName.value.trim(),
+        company:     fieldCompany?.value.trim() ?? '',
+        email:       fieldEmail.value.trim(),
+        phone:       fieldPhone?.value.trim() ?? '',
+        agents:      fieldAgents.value,
+        product:     (fieldProduct?.value ?? formSource) as 'CRM' | 'ERP' | 'BOTH',
+        industry:    fieldIndustry?.value ?? '',
+        requirement: fieldRequirement?.value.trim() ?? '',
         lang,
-        source:  formSource,
+        source:      formSource,
       });
 
       if (result.success) {
         formFields.classList.add('hidden');
         formSuccess.classList.remove('hidden');
         applyLangVisibility(lang);
+        window.open('https://calendly.com/sale-nexusinfinitycorp/30min', '_blank', 'noopener,noreferrer');
       } else {
         submitBtn.disabled = false;
         submitBtn.innerHTML = lang === 'es'
