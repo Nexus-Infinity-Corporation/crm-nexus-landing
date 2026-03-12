@@ -4,6 +4,9 @@ export interface DemoFormData {
   email: string;
   phone: string;
   agents: string;
+  product: "CRM" | "ERP" | "BOTH";
+  industry: string;
+  requirement: string;
   lang: "en" | "es";
   source: "CRM" | "ERP" | "MAIN";
 }

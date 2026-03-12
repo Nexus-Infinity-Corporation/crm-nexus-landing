@@ -17,12 +17,15 @@ const mg = mailgun.client({ username: "api", key: MAILGUN_API_KEY });
 export const POST: APIRoute = async ({ request }) => {
   try {
     const body = await request.json();
-    const { name, company, email, phone, agents, lang, source } = body as {
+    const { name, company, email, phone, agents, product, industry, requirement, lang, source } = body as {
       name: string;
       company: string;
       email: string;
       phone: string;
       agents: string;
+      product: "CRM" | "ERP" | "BOTH";
+      industry: string;
+      requirement: string;
       lang: "en" | "es";
       source: "CRM" | "ERP" | "MAIN";
     };
@@ -86,6 +89,18 @@ export const POST: APIRoute = async ({ request }) => {
       <div class="field">
         <div class="label">Team Size (agents)</div>
         <div class="value">${agents || "—"}</div>
+      </div>
+      <div class="field">
+        <div class="label">Product Interest</div>
+        <div class="value">${product || "—"}</div>
+      </div>
+      <div class="field">
+        <div class="label">Industry</div>
+        <div class="value">${industry || "—"}</div>
+      </div>
+      <div class="field">
+        <div class="label">Main Requirement</div>
+        <div class="value">${requirement || "—"}</div>
       </div>
       <div class="field">
         <div class="label">Language preference</div>
